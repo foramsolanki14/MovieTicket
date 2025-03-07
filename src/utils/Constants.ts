@@ -10,4 +10,5 @@ export const ScreenName = {
 
   //profile Screen
   Profile: 'Profile',
+  MyProfile: 'MyProfile',
 };
