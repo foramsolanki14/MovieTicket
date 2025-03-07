@@ -3,14 +3,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ScreenName} from '../utils/Constants';
 import Home from '../modules/Home/screens/Home/Home';
 import Movies from '../modules/Movies/screens/Movies/Movies';
-import Profile from '../modules/Profile/screens/Profile/Profile';
+import Profile from '../screens/Profile';
 import {Image} from 'react-native';
 
 const BottomTab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <BottomTab.Navigator screenOptions={{headerShown: false}}>
+    <BottomTab.Navigator>
       <BottomTab.Screen
         name={ScreenName.Home}
         component={Home}
