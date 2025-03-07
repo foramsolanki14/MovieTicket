@@ -1,3 +1,4 @@
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ScreenName} from '../utils/Constants';
 import Home from '../modules/Home/screens/Home/Home';
@@ -7,7 +8,7 @@ import {Image} from 'react-native';
 
 const BottomTab = createBottomTabNavigator();
 
-export default function TabNavigator() {
+const TabNavigator = () => {
   return (
     <BottomTab.Navigator screenOptions={{headerShown: false}}>
       <BottomTab.Screen
@@ -18,10 +19,7 @@ export default function TabNavigator() {
             return (
               <Image
                 source={require('../assets/tab/home.png')}
-                style={{
-                  width: 20,
-                  height: 20,
-                }}
+                style={{height: 20, width: 20}}
               />
             );
           },
@@ -35,7 +33,7 @@ export default function TabNavigator() {
             return (
               <Image
                 source={require('../assets/tab/movie.png')}
-                style={{width: 20, height: 20}}
+                style={{height: 20, width: 20}}
               />
             );
           },
@@ -49,7 +47,7 @@ export default function TabNavigator() {
             return (
               <Image
                 source={require('../assets/tab/profile.png')}
-                style={{width: 20, height: 20}}
+                style={{height: 20, width: 20}}
               />
             );
           },
@@ -57,4 +55,6 @@ export default function TabNavigator() {
       />
     </BottomTab.Navigator>
   );
-}
+};
+
+export default TabNavigator;
