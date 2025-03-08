@@ -19,7 +19,7 @@ const AppStack = () => {
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
         <Stack.Screen name={ScreenName.YourOrders} component={YourOrders} />
       </Stack.Group>
-      <Stack.Group>
+      <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
       </Stack.Group>
     </Stack.Navigator>
