@@ -7,6 +7,7 @@ import TabNavigator from './TabNavigator';
 import MyProfile from '../modules/Profile/screens/MyProfile/MyProfile';
 import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
 import MovieDetails from '../modules/Movies/screens/MovieDetails/MovieDetails';
+import SelectSheat from '../modules/Movies/screens/SelectSheat/SelectSheat';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const AppStack = () => {
       </Stack.Group>
       <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
+        <Stack.Screen name={ScreenName.SelectSheat} component={SelectSheat} />
       </Stack.Group>
     </Stack.Navigator>
   );
