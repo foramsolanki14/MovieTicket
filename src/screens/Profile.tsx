@@ -21,12 +21,15 @@ const Profile = () => {
           MyProfile
         </Text>
       </Pressable>
-      <View style={styles.data}>
+      <Pressable
+        style={styles.data}
+        onPress={() => navigation.navigate('YourOrders')}>
         <Text style={styles.txt}>
           <Image source={require('../assets/p1.png')} style={styles.img} />
           Your Orders
         </Text>
-      </View>
+        r
+      </Pressable>
       <View style={styles.data}>
         <Text style={styles.txt}>
           <Image source={require('../assets/p1.png')} style={styles.img} />
