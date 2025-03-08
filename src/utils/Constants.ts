@@ -7,6 +7,7 @@ export const ScreenName = {
 
   //movies screen
   Movies: 'Movies',
+  MovieDetails: 'MovieDetails',
 
   //profile Screen
   Profile: 'Profile',
