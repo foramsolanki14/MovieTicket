@@ -1,7 +1,10 @@
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
 const Movies = () => {
+  const navigation = useNavigation();
   const Movies = [
     {
       id: 1,
@@ -41,7 +44,10 @@ const Movies = () => {
       data={Movies}
       renderItem={({item}) => (
         <View style={styles.main}>
-          <Image source={item.image} style={styles.img} />
+          <Pressable onPress={() => navigation.navigate('MovieDetails')}>
+            <Image source={item.image} style={styles.img} />
+          </Pressable>
+
           <View>
             <Text>{item.title}</Text>
           </View>
