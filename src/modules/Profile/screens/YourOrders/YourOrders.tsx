@@ -18,11 +18,11 @@ const YourOrders = () => {
       <View style={styles.orderCard}>
         <View style={styles.movieDetails}>
           <Image
-            source={require('../../../../assets/img2.webp')}
+            source={require('../../../../assets/Chhaava.webp')}
             style={styles.moviePoster}
           />
           <View style={styles.movieInfo}>
-            <Text style={styles.movieTitle}>Chhava</Text>
+            <Text style={styles.movieTitle}>Chhaava</Text>
             <Text style={styles.movieLang}> Hindi</Text>
             <Text style={styles.movieTime}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
             <Text style={styles.theater}>NY Cinemas: Swagat Mall</Text>

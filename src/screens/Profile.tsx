@@ -17,7 +17,7 @@ const Profile = () => {
         style={styles.data}
         onPress={() => navigation.navigate('MyProfile')}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           MyProfile
         </Text>
       </Pressable>
@@ -25,32 +25,32 @@ const Profile = () => {
         style={styles.data}
         onPress={() => navigation.navigate('YourOrders')}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Your Orders
         </Text>
         r
       </Pressable>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Stream Library
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Play Cradit Card
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Help Center
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Account & Settings
         </Text>
       </View>
@@ -59,32 +59,32 @@ const Profile = () => {
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           Rewards
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} />
+          <Image source={require('../assets/profile.png')} style={styles.img} />
           offers
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} /> Gift
-          Cards
+          <Image source={require('../assets/profile.png')} style={styles.img} />{' '}
+          Gift Cards
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} /> Food
-          & Beverages
+          <Image source={require('../assets/profile.png')} style={styles.img} />{' '}
+          Food & Beverages
         </Text>
       </View>
       <View style={styles.data}>
         <Text style={styles.txt}>
-          <Image source={require('../assets/p1.png')} style={styles.img} /> List
-          your Show
+          <Image source={require('../assets/profile.png')} style={styles.img} />{' '}
+          List your Show
         </Text>
       </View>
     </ScrollView>
