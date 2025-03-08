@@ -13,7 +13,7 @@ const AppStack = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={ScreenName.BottomTab} component={TabNavigator} />
 
-      <Stack.Group>
+      <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
       </Stack.Group>
     </Stack.Navigator>
