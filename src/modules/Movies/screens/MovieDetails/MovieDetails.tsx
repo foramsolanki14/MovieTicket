@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
@@ -20,7 +13,7 @@ function MovieDetails({route}) {
 
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => navigation.navigate('SelectSheat')}>
+        onPress={() => navigation.navigate('Cinema')}>
         <Text style={styles.btntxt}>Book Tickets</Text>
       </TouchableOpacity>
     </View>
