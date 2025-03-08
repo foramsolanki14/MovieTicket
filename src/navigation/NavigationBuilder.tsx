@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import TabNavigator from './TabNavigator';
 import MyProfile from '../modules/Profile/screens/MyProfile/MyProfile';
+import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const AppStack = () => {
 
       <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
+        <Stack.Screen name={ScreenName.YourOrders} component={YourOrders} />
       </Stack.Group>
     </Stack.Navigator>
   );
