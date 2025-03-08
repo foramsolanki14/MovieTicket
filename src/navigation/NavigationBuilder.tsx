@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import TabNavigator from './TabNavigator';
 import MyProfile from '../modules/Profile/screens/MyProfile/MyProfile';
 import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
+import MovieDetails from '../modules/Movies/screens/MovieDetails/MovieDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,9 @@ const AppStack = () => {
       <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
         <Stack.Screen name={ScreenName.YourOrders} component={YourOrders} />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
       </Stack.Group>
     </Stack.Navigator>
   );
