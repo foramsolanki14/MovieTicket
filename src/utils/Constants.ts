@@ -8,6 +8,7 @@ export const ScreenName = {
   //movies screen
   Movies: 'Movies',
   MovieDetails: 'MovieDetails',
+  SelectSheat: 'SelectSheat',
 
   //profile Screen
   Profile: 'Profile',
