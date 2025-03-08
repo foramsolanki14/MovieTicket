@@ -7,8 +7,10 @@ import {
   Button,
 } from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 function MovieDetails({route}) {
+  const navigation = useNavigation();
   const {movie} = route.params;
   return (
     <View style={styles.Conatiner}>
@@ -16,7 +18,9 @@ function MovieDetails({route}) {
       <Image source={movie.image} style={styles.img} />
       <Text style={styles.Details}>{movie.Details}</Text>
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate('SelectSheat')}>
         <Text style={styles.btntxt}>Book Tickets</Text>
       </TouchableOpacity>
     </View>
