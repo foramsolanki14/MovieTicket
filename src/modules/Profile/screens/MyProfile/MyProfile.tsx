@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 import React from 'react';
 
@@ -36,7 +37,7 @@ const MyProfile = () => {
         <Text style={styles.txt}>BirthDay Date(optional)</Text>
         <TextInput style={styles.txtInput} placeholder="Enter BirthDay Date" />
         <Text style={styles.txt}> Identity(Optional)</Text>
-        <View style={{flexDirection: 'row', gap: 10}}>
+        <View style={{flexDirection: 'row', gap: 10, padding: 5}}>
           <TouchableOpacity
             style={{borderWidth: 1, borderRadius: 5, width: 50}}>
             <Text style={{textAlign: 'center'}}>male</Text>
@@ -46,6 +47,7 @@ const MyProfile = () => {
             <Text style={{textAlign: 'center'}}>Female</Text>
           </TouchableOpacity>
         </View>
+        <Button title="Save" color={'gray'} />
       </View>
     </ScrollView>
   );
@@ -79,9 +81,10 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontSize: 20,
+    padding: 10,
   },
   card: {
     gap: 10,
-    padding: 10,
+    padding: 4,
   },
 });
