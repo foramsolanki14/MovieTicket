@@ -9,6 +9,7 @@ import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
 import MovieDetails from '../modules/Movies/screens/MovieDetails/MovieDetails';
 import SelectSeat from '../modules/Movies/screens/SelectSeat/SelectSeat';
 import Cinema from '../modules/Movies/screens/Cinema/Cinema';
+import ContactDetails from '../modules/Movies/screens/ContactDetails/ContactDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,10 @@ const AppStack = () => {
         <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
         <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
         <Stack.Screen name={ScreenName.SelectSeat} component={SelectSeat} />
+        <Stack.Screen
+          name={ScreenName.ContactDetails}
+          component={ContactDetails}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
