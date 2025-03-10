@@ -10,6 +10,7 @@ export const ScreenName = {
   MovieDetails: 'MovieDetails',
   Cinema: 'Cinema',
   SelectSeat: 'SelectSeat',
+  ContactDetails: 'ContactDetails',
 
   //profile Screen
   Profile: 'Profile',
