@@ -26,7 +26,7 @@ const YourOrders = () => {
             <Text style={styles.movieLang}> Hindi</Text>
             <Text style={styles.movieTime}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
             <Text style={styles.theater}>NY Cinemas: Swagat Mall</Text>
-            <Text style={styles.seates}>2 ticket : Prime - E5, E6 </Text>
+            <Text style={styles.seats}>2 ticket : Prime - E5, E6 </Text>
           </View>
           <View>
             <Text style={styles.data}>M-Ticket</Text>
@@ -37,13 +37,13 @@ const YourOrders = () => {
           <TouchableHighlight style={styles.btn}>
             <Text style={styles.btnText}>REFUNDABLE</Text>
           </TouchableHighlight>
-          <Text style={styles.casetext}>
+          <Text style={styles.caseText}>
             Refund cradit to your BMS cash balance
           </Text>
         </View>
       </View>
       <TouchableOpacity style={styles.book}>
-        <Text style={styles.booktxt}> View Order Bookings</Text>
+        <Text style={styles.bookTxt}> View Order Bookings</Text>
       </TouchableOpacity>
     </View>
   );
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     padding: 5,
   },
-  seates: {
+  seats: {
     padding: 5,
     fontWeight: 'bold',
   },
@@ -135,14 +135,14 @@ const styles = StyleSheet.create({
     color: '#f5f2ed',
     fontWeight: 'bold',
   },
-  casetext: {
+  caseText: {
     padding: 5,
   },
   book: {
     alignItems: 'center',
     marginTop: -20,
   },
-  booktxt: {
+  bookTxt: {
     color: 'red',
     fontWeight: 'bold',
   },

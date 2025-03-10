@@ -9,7 +9,7 @@ export const ScreenName = {
   Movies: 'Movies',
   MovieDetails: 'MovieDetails',
   Cinema: 'Cinema',
-  SelectSheat: 'SelectSheat',
+  SelectSeat: 'SelectSeat',
 
   //profile Screen
   Profile: 'Profile',

@@ -54,9 +54,8 @@ const Profile = () => {
           Account & Settings
         </Text>
       </View>
-      <View style={{backgroundColor: '#c0c4c1'}}>
-        <Text></Text>
-      </View>
+      <View style={{backgroundColor: '#c0c4c1'}} />
+
       <View style={styles.data}>
         <Text style={styles.txt}>
           <Image source={require('../assets/profile.png')} style={styles.img} />

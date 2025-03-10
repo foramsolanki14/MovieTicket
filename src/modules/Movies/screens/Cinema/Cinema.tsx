@@ -115,7 +115,7 @@ const Cinema = () => {
                     <TouchableOpacity
                       key={index}
                       style={styles.timeBtn}
-                      onPress={() => navigation.navigate('SelectSheat')}>
+                      onPress={() => navigation.navigate('SelectSeat')}>
                       <Text>{time}</Text>
                     </TouchableOpacity>
                   ))}
