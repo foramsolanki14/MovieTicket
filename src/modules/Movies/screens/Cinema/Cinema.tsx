@@ -31,42 +31,42 @@ const Cinema = () => {
     {
       theater: 'PVR: Palladium Mall, Ahmedabad',
       cancellable: 'cancellation Available',
-      showtimes: ['03:15 PM', '08:05 PM'],
+      showTimes: ['03:15 PM', '08:05 PM'],
     },
     {
       theater: 'PVR: Acropolis, Ahmedabad',
       cancellable: 'cancellation Available',
-      showtimes: ['08:15 PM', '10:20 PM'],
+      showTimes: ['08:15 PM', '10:20 PM'],
     },
     {
       theater: 'Nexus Ahmedabad One',
       cancellable: 'Non-Cancellbale',
-      showtimes: ['02:30 PM', '04:35 PM'],
+      showTimes: ['02:30 PM', '04:35 PM'],
     },
     {
       theater: 'City Gold, Ashram Road',
       cancellable: 'Non-Cancellbale ',
-      showtimes: ['02:45 PM', '05:30 PM', '08:30 PM'],
+      showTimes: ['02:45 PM', '05:30 PM', '08:30 PM'],
     },
     {
       theater: 'PVR: Palladium Mall, Ahmedabad',
       cancellable: 'cancellation Available',
-      showtimes: ['03:15 PM', '08:05 PM'],
+      showTimes: ['03:15 PM', '08:05 PM'],
     },
     {
       theater: 'PVR: Palladium Mall, Ahmedabad',
       cancellable: 'cancellation Available',
-      showtimes: ['03:15 PM', '08:05 PM'],
+      showTimes: ['03:15 PM', '08:05 PM'],
     },
     {
       theater: 'Orange Cinemas: Bapunagar',
       cancellable: 'cancellation Available',
-      showtimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
+      showTimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
     },
     {
       theater: 'Orange Cinemas: Bapunagar',
       cancellable: 'cancellation Available',
-      showtimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
+      showTimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
     },
   ];
 
@@ -110,11 +110,11 @@ const Cinema = () => {
               <View style={styles.movieItem}>
                 <Text style={styles.name}> &#x2661; {item.theater}</Text>
                 <Text style={styles.cancellable}>{item.cancellable}</Text>
-                <View style={styles.timeview}>
-                  {item.showtimes.map((time, index) => (
+                <View style={styles.timeView}>
+                  {item.showTimes.map((time, index) => (
                     <TouchableOpacity
                       key={index}
-                      style={styles.timebtn}
+                      style={styles.timeBtn}
                       onPress={() => navigation.navigate('SelectSheat')}>
                       <Text>{time}</Text>
                     </TouchableOpacity>
@@ -176,13 +176,13 @@ const styles = StyleSheet.create({
     marginTop: -10,
     padding: 5,
   },
-  timeview: {
+  timeView: {
     flexDirection: 'row',
     padding: 10,
     gap: 10,
     flexWrap: 'wrap',
   },
-  timebtn: {
+  timeBtn: {
     borderWidth: 1,
     borderRadius: 5,
     height: 35,
