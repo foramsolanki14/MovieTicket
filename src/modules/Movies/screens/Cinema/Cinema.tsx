@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   View,
@@ -9,6 +10,7 @@ import {
 } from 'react-native';
 
 const Cinema = () => {
+  const navigation = useNavigation();
   const Dates = [
     {id: 1, day: 'MON', date: '01', month: 'MAR'},
     {id: 2, day: 'TUE', date: '02', month: 'MAR'},
@@ -110,7 +112,10 @@ const Cinema = () => {
                 <Text style={styles.cancellable}>{item.cancellable}</Text>
                 <View style={styles.timeview}>
                   {item.showtimes.map((time, index) => (
-                    <TouchableOpacity key={index} style={styles.timebtn}>
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.timebtn}
+                      onPress={() => navigation.navigate('SelectSheat')}>
                       <Text>{time}</Text>
                     </TouchableOpacity>
                   ))}
