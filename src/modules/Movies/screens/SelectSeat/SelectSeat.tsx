@@ -1,12 +1,15 @@
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const SelectSeat = () => {
+  const navigation = useNavigation();
   const seat1 = [1, 2, 3, 4];
   const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
   const seat3 = [1, 2, 3, 4, 5, 6];
   const seat4 = [1, 2, 3, 4, 5, 6, 7];
   const slot = ['Bestseller', 'Available', 'Selected', 'Sold'];
+
   return (
     <View style={styles.container}>
       <View style={styles.topView}>
@@ -93,7 +96,9 @@ const SelectSeat = () => {
         />
       </View>
       <View>
-        <TouchableOpacity style={styles.countBtn}>
+        <TouchableOpacity
+          style={styles.countBtn}
+          onPress={() => navigation.navigate('ContactDetails')}>
           <Text style={styles.btnTxt}>Pay ₹ 0</Text>
         </TouchableOpacity>
       </View>
