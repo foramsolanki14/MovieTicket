@@ -6,8 +6,10 @@ import {
   StyleSheet,
 } from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const ContactDetails = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -25,7 +27,9 @@ const ContactDetails = () => {
         </Text>
       </View>
       <View style={styles.btnView}>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate('ConfirmBooking')}>
           <Text style={styles.btnTxt}>Update Details</Text>
         </TouchableOpacity>
       </View>
