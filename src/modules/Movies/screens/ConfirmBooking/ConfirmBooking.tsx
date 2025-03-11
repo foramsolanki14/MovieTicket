@@ -1,73 +1,93 @@
-import {View, Text, StyleSheet, TouchableOpacity, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Button,
+  Image,
+} from 'react-native';
 import React from 'react';
 
 const ConfirmBooking = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <View style={styles.card}>
-          <View>
-            <Text style={styles.name}>Chhaava</Text>
-            <Text style={styles.date}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
-            <Text> Hindi</Text>
-            <Text>NY Cinemas: Swagat Mall</Text>
-          </View>
-          <View>
-            <Text style={styles.number}>2</Text>
-            <Text style={{fontWeight: '500'}}>M-Ticket</Text>
-          </View>
-        </View>
-        <View style={styles.cardBottom}>
-          <Text style={styles.txtLine1}>Cancellation Available</Text>
-          <Text style={styles.txtLine2}>
-            This Venue supports booking cancellation. to konw more view
-            cancellation policy
-          </Text>
+    <View style={styles.mainContainer}>
+      <View style={styles.headerView}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../../../assets/backBtn.png')}
+              style={styles.backButtonImage}
+            />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Confirm Booking</Text>
         </View>
       </View>
-      <View style={styles.priceCard}>
-        <View style={styles.card2}>
-          <Text style={styles.label}>Ticket(s) price</Text>
-          <Text style={styles.label1}>₹300.00</Text>
-        </View>
-        <View style={styles.card2}>
-          <Text style={styles.label}>Convenience fees</Text>
-          <Text style={styles.label1}>₹59.00</Text>
-        </View>
-        <View style={styles.card2}>
-          <Text style={styles.label}>Donate to BookAChange</Text>
-          <Text style={styles.label1}>₹0.00</Text>
-        </View>
-        <View style={styles.total}>
-          <Text style={styles.label}>Order total</Text>
-          <Text style={styles.label}>₹359.00</Text>
-        </View>
-      </View>
-      <View style={styles.detailView}>
-        <View style={styles.detailsCard}>
-          <Text style={{fontWeight: 'bold'}}>
-            Your details
-            <Text style={{fontWeight: '400'}}>
-              (For sending booking details)
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <View style={styles.card}>
+            <View>
+              <Text style={styles.name}>Chhaava</Text>
+              <Text style={styles.date}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
+              <Text> Hindi</Text>
+              <Text>NY Cinemas: Swagat Mall</Text>
+            </View>
+            <View>
+              <Text style={styles.number}>2</Text>
+              <Text style={{fontWeight: '500'}}>M-Ticket</Text>
+            </View>
+          </View>
+          <View style={styles.cardBottom}>
+            <Text style={styles.txtLine1}>Cancellation Available</Text>
+            <Text style={styles.txtLine2}>
+              This Venue supports booking cancellation. to konw more view
+              cancellation policy
             </Text>
-          </Text>
-          <TouchableOpacity>
-            <Text style={{fontWeight: 'bold'}}>Edit</Text>
-          </TouchableOpacity>
+          </View>
         </View>
-        <Text>abc@gmail.com</Text>
-        <Text>9016171433 | Gujrat</Text>
-      </View>
+        <View style={styles.priceCard}>
+          <View style={styles.card2}>
+            <Text style={styles.label}>Ticket(s) price</Text>
+            <Text style={styles.label1}>₹300.00</Text>
+          </View>
+          <View style={styles.card2}>
+            <Text style={styles.label}>Convenience fees</Text>
+            <Text style={styles.label1}>₹59.00</Text>
+          </View>
+          <View style={styles.card2}>
+            <Text style={styles.label}>Donate to BookAChange</Text>
+            <Text style={styles.label1}>₹0.00</Text>
+          </View>
+          <View style={styles.total}>
+            <Text style={styles.label}>Order total</Text>
+            <Text style={styles.label}>₹359.00</Text>
+          </View>
+        </View>
+        <View style={styles.detailView}>
+          <View style={styles.detailsCard}>
+            <Text style={{fontWeight: 'bold'}}>
+              Your details
+              <Text style={{fontWeight: '400'}}>
+                (For sending booking details)
+              </Text>
+            </Text>
+            <TouchableOpacity>
+              <Text style={{fontWeight: 'bold'}}>Edit</Text>
+            </TouchableOpacity>
+          </View>
+          <Text>abc@gmail.com</Text>
+          <Text>9016171433 | Gujrat</Text>
+        </View>
 
-      <View style={styles.totalView}>
-        <View>
-          <Text style={styles.label}>Total</Text>
-          <Text style={styles.label}>₹359.00</Text>
-        </View>
-        <View style={styles.btnView}>
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnTxt}>Continue</Text>
-          </TouchableOpacity>
+        <View style={styles.totalView}>
+          <View>
+            <Text style={styles.label}>Total</Text>
+            <Text style={styles.label}>₹359.00</Text>
+          </View>
+          <View style={styles.btnView}>
+            <TouchableOpacity style={styles.btn}>
+              <Text style={styles.btnTxt}>Continue</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -77,11 +97,32 @@ const ConfirmBooking = () => {
 export default ConfirmBooking;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: '#ebf2f2',
+  },
   container: {
-    flex: 1,
     padding: 10,
     gap: 10,
     backgroundColor: '#ebf2f2',
+  },
+  headerView: {
+    padding: 10,
+    backgroundColor: '#fffafa',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  backButtonImage: {
+    height: 24,
+    width: 24,
+    resizeMode: 'contain',
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingLeft: 20,
   },
   main: {
     borderRadius: 10,
