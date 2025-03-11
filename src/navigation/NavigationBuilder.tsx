@@ -23,7 +23,7 @@ const AppStack = () => {
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
         <Stack.Screen name={ScreenName.YourOrders} component={YourOrders} />
       </Stack.Group>
-      <Stack.Group screenOptions={{headerShown: true}}>
+      <Stack.Group screenOptions={{headerShown: false}}>
         <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
         <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
         <Stack.Screen name={ScreenName.SelectSeat} component={SelectSeat} />
