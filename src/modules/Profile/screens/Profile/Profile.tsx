@@ -1,12 +1,122 @@
-import {View, Text} from 'react-native';
+import {
+  View,
+  Pressable,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const Profile = () => {
+  const navigation = useNavigation();
   return (
-    <View>
-      <Text>Profile</Text>
-    </View>
+    <ScrollView>
+      <Pressable
+        style={styles.data}
+        onPress={() => navigation.navigate('MyProfile')}>
+        <Image
+          source={require('../../../../assets/profile.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>MyProfile</Text>
+      </Pressable>
+      <Pressable
+        style={styles.data}
+        onPress={() => navigation.navigate('YourOrders')}>
+        <Image
+          source={require('../../../../assets/yourorder.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Your Orders</Text>
+      </Pressable>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/streem.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Stream Library</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/playcradit.webp')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Play Cradit Card</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/help.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Help Center</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/settings.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Account & Settings</Text>
+      </View>
+      <View style={{backgroundColor: '#c0c4c1', paddingTop: 15}} />
+
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/reward.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Rewards</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/offer.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>offers</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/gift-card.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Gift Cards</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/food.png')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>Food & Beverages</Text>
+      </View>
+      <View style={styles.data}>
+        <Image
+          source={require('../../../../assets/show.webp')}
+          style={styles.img}
+        />
+        <Text style={styles.txt}>List your Show</Text>
+      </View>
+    </ScrollView>
   );
 };
 
 export default Profile;
+const styles = StyleSheet.create({
+  data: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: 'gray',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  txt: {
+    justifyContent: 'center',
+    fontSize: 20,
+  },
+  img: {
+    padding: 10,
+    height: 30,
+    width: 30,
+    margin: 10,
+  },
+});
