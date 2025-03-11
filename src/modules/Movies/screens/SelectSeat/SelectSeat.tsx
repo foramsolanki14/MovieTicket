@@ -1,9 +1,17 @@
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Image,
+} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const SelectSeat = () => {
+function SelectSeat({route}) {
   const navigation = useNavigation();
+  const {movie} = route.params;
   const seat1 = [1, 2, 3, 4];
   const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
   const seat3 = [1, 2, 3, 4, 5, 6];
@@ -11,6 +19,17 @@ const SelectSeat = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.headerView}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../../../assets/backBtn.png')}
+              style={styles.backButtonImage}
+            />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>{movie.title}</Text>
+        </View>
+      </View>
       <View style={styles.topView}>
         <View style={styles.DateTime}>
           <Text style={styles.date}>Mon, 03 Mar</Text>
@@ -111,15 +130,34 @@ const SelectSeat = () => {
       </View>
     </View>
   );
-};
+}
 
 export default SelectSeat;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fafcfc',
   },
+  headerView: {
+    padding: 10,
+    backgroundColor: '#fffafa',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  backButtonImage: {
+    height: 24,
+    width: 24,
+    resizeMode: 'contain',
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+  },
+
   topView: {
     backgroundColor: '#e4eaeb',
     height: '11%',
@@ -171,7 +209,7 @@ const styles = StyleSheet.create({
     margin: 4,
     textAlign: 'center',
     borderRadius: 3,
-    flexWrap: 'wrap ',
+    flexWrap: 'wrap',
   },
   screenView: {
     paddingLeft: '30%',

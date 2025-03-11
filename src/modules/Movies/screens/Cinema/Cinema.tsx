@@ -1,9 +1,17 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
-const Cinema = () => {
+function Cinema({route}) {
   const navigation = useNavigation();
+  const {movie} = route.params;
   const Dates = [
     {id: 1, day: 'MON', date: '01', month: 'MAR'},
     {id: 2, day: 'TUE', date: '02', month: 'MAR'},
@@ -83,6 +91,17 @@ const Cinema = () => {
 
   return (
     <View>
+      <View style={styles.headerView}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../../../assets/backBtn.png')}
+              style={styles.backButtonImage}
+            />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>{movie.title}</Text>
+        </View>
+      </View>
       <FlatList horizontal data={Dates} renderItem={renderDateItem} />
       <View style={styles.priceDetail}>
         <FlatList
@@ -108,7 +127,7 @@ const Cinema = () => {
                   <TouchableOpacity
                     key={index}
                     style={styles.timeBtn}
-                    onPress={() => navigation.navigate('SelectSeat')}>
+                    onPress={() => navigation.navigate('SelectSeat', {movie})}>
                     <Text>{time}</Text>
                   </TouchableOpacity>
                 ))}
@@ -119,13 +138,32 @@ const Cinema = () => {
       </View>
     </View>
   );
-};
+}
 
 export default Cinema;
 
 const styles = StyleSheet.create({
   mainView: {
     backgroundColor: '#cccaca',
+  },
+  headerView: {
+    padding: 10,
+    backgroundColor: '#fffafa',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  backButtonImage: {
+    height: 24,
+    width: 24,
+    resizeMode: 'contain',
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingLeft: 20,
   },
   date: {
     padding: 20,

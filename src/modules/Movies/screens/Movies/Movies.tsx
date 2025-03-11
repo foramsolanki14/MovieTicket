@@ -1,7 +1,6 @@
 import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import MovieDetails from '../MovieDetails/MovieDetails';
 
 const Movies = () => {
   const navigation = useNavigation();

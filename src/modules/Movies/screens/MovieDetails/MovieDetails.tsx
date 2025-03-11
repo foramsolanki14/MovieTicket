@@ -9,11 +9,9 @@ function MovieDetails({route}) {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
-              source={require('../../../../assets/backbtn.png')}
+              source={require('../../../../assets/backBtn.png')}
               style={styles.backButtonImage}
             />
           </TouchableOpacity>
@@ -26,7 +24,7 @@ function MovieDetails({route}) {
 
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate('Cinema')}>
+          onPress={() => navigation.navigate('Cinema', {movie})}>
           <Text style={styles.btnTxt}>Book Tickets</Text>
         </TouchableOpacity>
       </View>
