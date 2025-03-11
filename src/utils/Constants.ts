@@ -7,13 +7,14 @@ export const ScreenName = {
 
   //movies screen
   Movies: 'Movies',
-  MovieDetails: 'MovieDetails',
+  MovieDetails: 'Movie Details',
   Cinema: 'Cinema',
   SelectSeat: 'SelectSeat',
-  ContactDetails: 'ContactDetails',
+  ContactDetails: 'Contact Details',
+  ConfirmBooking: 'Confirm Booking',
 
   //profile Screen
   Profile: 'Profile',
-  MyProfile: 'MyProfile',
-  YourOrders: 'YourOrders',
+  MyProfile: 'My Profile',
+  YourOrders: 'Your Orders',
 };
