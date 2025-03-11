@@ -1,13 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 const Cinema = () => {
   const navigation = useNavigation();
@@ -103,27 +96,26 @@ const Cinema = () => {
         />
       </View>
       <View style={styles.cinemaScroll}>
-        <ScrollView style={styles.cinema}>
-          <FlatList
-            data={MovieList}
-            renderItem={({item}) => (
-              <View style={styles.movieItem}>
-                <Text style={styles.name}> &#x2661; {item.theater}</Text>
-                <Text style={styles.cancellable}>{item.cancellable}</Text>
-                <View style={styles.timeView}>
-                  {item.showTimes.map((time, index) => (
-                    <TouchableOpacity
-                      key={index}
-                      style={styles.timeBtn}
-                      onPress={() => navigation.navigate('SelectSeat')}>
-                      <Text>{time}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
+        <FlatList
+          style={styles.cinema}
+          data={MovieList}
+          renderItem={({item}) => (
+            <View style={styles.movieItem}>
+              <Text style={styles.name}> &#x2661; {item.theater}</Text>
+              <Text style={styles.cancellable}>{item.cancellable}</Text>
+              <View style={styles.timeView}>
+                {item.showTimes.map((time, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={styles.timeBtn}
+                    onPress={() => navigation.navigate('SelectSeat')}>
+                    <Text>{time}</Text>
+                  </TouchableOpacity>
+                ))}
               </View>
-            )}
-          />
-        </ScrollView>
+            </View>
+          )}
+        />
       </View>
     </View>
   );
