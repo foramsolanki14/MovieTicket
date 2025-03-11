@@ -17,7 +17,7 @@ const Profile = () => {
         style={styles.data}
         onPress={() => navigation.navigate('MyProfile')}>
         <Image
-          source={require('../../../../assets/profile.png')}
+          source={require('../../../../assets/icon/profile.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>MyProfile</Text>
@@ -26,35 +26,35 @@ const Profile = () => {
         style={styles.data}
         onPress={() => navigation.navigate('YourOrders')}>
         <Image
-          source={require('../../../../assets/yourorder.png')}
+          source={require('../../../../assets/icon/yourorder.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Your Orders</Text>
       </Pressable>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/streem.png')}
+          source={require('../../../../assets/icon/streem.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Stream Library</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/playcradit.webp')}
+          source={require('../../../../assets/icon/playcradit.webp')}
           style={styles.img}
         />
         <Text style={styles.txt}>Play Cradit Card</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/help.png')}
+          source={require('../../../../assets/icon/help.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Help Center</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/settings.png')}
+          source={require('../../../../assets/icon/settings.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Account & Settings</Text>
@@ -63,35 +63,35 @@ const Profile = () => {
 
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/reward.png')}
+          source={require('../../../../assets/icon/reward.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Rewards</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/offer.png')}
+          source={require('../../../../assets/icon/offer.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>offers</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/gift-card.png')}
+          source={require('../../../../assets/icon/gift-card.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Gift Cards</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/food.png')}
+          source={require('../../../../assets/icon/food.png')}
           style={styles.img}
         />
         <Text style={styles.txt}>Food & Beverages</Text>
       </View>
       <View style={styles.data}>
         <Image
-          source={require('../../../../assets/show.webp')}
+          source={require('../../../../assets/icon/show.webp')}
           style={styles.img}
         />
         <Text style={styles.txt}>List your Show</Text>

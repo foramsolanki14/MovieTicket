@@ -17,7 +17,7 @@ const ContactDetails = () => {
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
-              source={require('../../../../assets/backBtn.png')}
+              source={require('../../../../assets/icon/backBtn.png')}
               style={styles.backButtonImage}
             />
           </TouchableOpacity>

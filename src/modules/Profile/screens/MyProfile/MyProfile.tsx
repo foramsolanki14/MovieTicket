@@ -16,7 +16,7 @@ const MyProfile = () => {
       <Text style={styles.mainTxt}>My Profile</Text>
       <View style={styles.main}>
         <Image
-          source={require('../../../../assets/profile.png')}
+          source={require('../../../../assets/icon/profile.png')}
           style={styles.img}
         />
       </View>
