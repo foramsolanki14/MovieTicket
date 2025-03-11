@@ -8,7 +8,6 @@ const SelectSeat = () => {
   const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
   const seat3 = [1, 2, 3, 4, 5, 6];
   const seat4 = [1, 2, 3, 4, 5, 6, 7];
-  const slot = ['Bestseller', 'Available', 'Selected', 'Sold'];
 
   return (
     <View style={styles.container}>
@@ -83,19 +82,27 @@ const SelectSeat = () => {
           <Text style={styles.screenTxt}>All Eyes this way Please</Text>
         </View>
       </View>
-      <View style={styles.seatSlot}>
-        <FlatList
-          data={slot}
-          numColumns={4}
-          renderItem={({item}) => (
-            <View style={styles.seatItm}>
-              <View style={{width: 15, height: 15, borderWidth: 1}} />
-              <Text>{item}</Text>
-            </View>
-          )}
-        />
-      </View>
       <View>
+        <View style={styles.slot}>
+          <View style={styles.slotItem}>
+            <View style={[styles.slotColor, {backgroundColor: '#FFD700'}]} />
+            <Text style={styles.slotText}>Bestseller</Text>
+          </View>
+          <View style={styles.slotItem}>
+            <View style={[styles.slotColor, {backgroundColor: '#FFFFFF'}]} />
+            <Text style={styles.slotText}>Available</Text>
+          </View>
+          <View style={styles.slotItem}>
+            <View style={[styles.slotColor, {backgroundColor: '#008000'}]} />
+            <Text style={styles.slotText}>Selected</Text>
+          </View>
+          <View style={styles.slotItem}>
+            <View style={[styles.slotColor, {backgroundColor: '#808080'}]} />
+            <Text style={styles.slotText}>Sold</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.btnView}>
         <TouchableOpacity
           style={styles.countBtn}
           onPress={() => navigation.navigate('ContactDetails')}>
@@ -164,6 +171,7 @@ const styles = StyleSheet.create({
     margin: 4,
     textAlign: 'center',
     borderRadius: 3,
+    flexWrap: 'wrap ',
   },
   screenView: {
     paddingLeft: '30%',
@@ -180,16 +188,27 @@ const styles = StyleSheet.create({
     fontSize: 13,
     paddingLeft: 10,
   },
-  seatSlot: {
-    margin: 10,
-    justifyContent: 'center',
-    backgroundColor: '#e8e3e4',
-    height: 40,
-    marginTop: 40,
-  },
-  seatItm: {
-    padding: 17,
+  slot: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 16,
+    paddingTop: 30,
+  },
+  slotItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  slotColor: {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    marginRight: 8,
+  },
+  slotText: {
+    fontSize: 14,
+  },
+  btnView: {
+    paddingTop: 10,
   },
   countBtn: {
     backgroundColor: '#e3204a',
