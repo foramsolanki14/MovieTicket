@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   searchBtn: {
-    height: 25,
-    width: 25,
+    height: 30,
+    width: 30,
     resizeMode: 'contain',
     paddingLeft: '120%',
   },
