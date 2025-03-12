@@ -11,7 +11,8 @@ import {useNavigation} from '@react-navigation/native';
 
 function SelectSeat({route}) {
   const navigation = useNavigation();
-  const {movie} = route.params;
+  const {movie, theater} = route.params;
+
   const seat1 = [1, 2, 3, 4];
   const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
   const seat3 = [1, 2, 3, 4, 5, 6];
@@ -29,6 +30,7 @@ function SelectSeat({route}) {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{movie.title}</Text>
         </View>
+        <Text style={styles.theaterName}>{theater}</Text>
       </View>
       <View style={styles.topView}>
         <View style={styles.DateTime}>
@@ -146,7 +148,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-
+  theaterName: {
+    fontSize: 15,
+    color: 'gray',
+    paddingLeft: 13,
+  },
   backButtonImage: {
     height: 24,
     width: 24,

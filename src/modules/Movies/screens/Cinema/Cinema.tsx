@@ -133,7 +133,12 @@ function Cinema({route}) {
                   <TouchableOpacity
                     key={index}
                     style={styles.timeBtn}
-                    onPress={() => navigation.navigate('SelectSeat', {movie})}>
+                    onPress={() =>
+                      navigation.navigate('SelectSeat', {
+                        movie,
+                        theater: item.theater,
+                      })
+                    }>
                     <Text>{time}</Text>
                   </TouchableOpacity>
                 ))}
