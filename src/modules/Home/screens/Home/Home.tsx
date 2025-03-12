@@ -1,4 +1,12 @@
-import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
@@ -50,29 +58,67 @@ const Home = () => {
   ];
 
   return (
-    <FlatList
-      numColumns={2}
-      data={Movies}
-      keyExtractor={item => item.id}
-      renderItem={({item}) => (
-        <View style={styles.main}>
-          <Pressable
-            onPress={() => navigation.navigate('MovieDetails', {movie: item})}>
-            <Image source={item.image} style={styles.img} />
-          </Pressable>
-
-          <View>
-            <Text>{item.title}</Text>
-          </View>
+    <View style={styles.container}>
+      <View style={styles.headerView}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Home</Text>
+          <TouchableOpacity>
+            <Image
+              source={require('../../../../assets/icon/search.png')}
+              style={styles.searchBtn}
+            />
+          </TouchableOpacity>
         </View>
-      )}
-    />
+      </View>
+      <FlatList
+        numColumns={2}
+        data={Movies}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <View style={styles.main}>
+            <Pressable
+              onPress={() =>
+                navigation.navigate('MovieDetails', {movie: item})
+              }>
+              <Image source={item.image} style={styles.img} />
+            </Pressable>
+
+            <View>
+              <Text>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
   );
 };
 
 export default Home;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f5f3f0',
+  },
+  headerView: {
+    padding: 10,
+    backgroundColor: '#fffafa',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+  },
+  searchBtn: {
+    height: 25,
+    width: 25,
+    resizeMode: 'contain',
+    paddingLeft: '120%',
+  },
   main: {
     padding: 5,
     backgroundColor: '#dedddc',

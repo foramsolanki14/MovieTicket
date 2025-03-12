@@ -100,6 +100,12 @@ function Cinema({route}) {
             />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{movie.title}</Text>
+          <TouchableOpacity>
+            <Image
+              source={require('../../../../assets/icon/search.png')}
+              style={styles.searchBtn}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <FlatList horizontal data={Dates} renderItem={renderDateItem} />
@@ -164,6 +170,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     paddingLeft: 20,
+  },
+  searchBtn: {
+    height: 25,
+    width: 25,
+    resizeMode: 'contain',
+    paddingLeft: '110%',
   },
   date: {
     padding: 20,
