@@ -7,11 +7,19 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Home = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const [selectedCity, setSelectedCity] = useState('Select City');
+
+  useEffect(() => {
+    if (route.params && route.params.selectedCity) {
+      setSelectedCity(route.params.selectedCity);
+    }
+  }, [route.params]);
   const Movies = [
     {
       id: 1,
@@ -61,7 +69,9 @@ const Home = () => {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Home</Text>
+          <View>
+            <Text style={styles.headerTitle}>Home</Text>
+          </View>
           <TouchableOpacity>
             <Image
               source={require('../../../../assets/icon/search.png')}
@@ -69,11 +79,24 @@ const Home = () => {
             />
           </TouchableOpacity>
         </View>
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.nameCity}>{selectedCity}</Text>
+          </View>
+          <TouchableOpacity
+            onPressOut={() =>
+              navigation.navigate('Cites', {currentCity: selectedCity})
+            }>
+            <Image
+              source={require('../../../../assets/icon/arrow-right.png')}
+              style={styles.arrow}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <FlatList
         numColumns={2}
         data={Movies}
-        keyExtractor={item => item.id}
         renderItem={({item}) => (
           <View style={styles.main}>
             <Pressable
@@ -102,6 +125,7 @@ const styles = StyleSheet.create({
   headerView: {
     padding: 10,
     backgroundColor: '#fffafa',
+    height: 60,
   },
   header: {
     flexDirection: 'row',
@@ -109,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     paddingLeft: 20,
   },
@@ -118,6 +142,18 @@ const styles = StyleSheet.create({
     width: 25,
     resizeMode: 'contain',
     paddingLeft: '120%',
+  },
+  nameCity: {
+    fontSize: 15,
+    paddingLeft: 20,
+    fontWeight: '500',
+  },
+  arrow: {
+    height: 15,
+    width: 16,
+    resizeMode: 'contain',
+    paddingLeft: '20%',
+    paddingTop: 20,
   },
   main: {
     padding: 5,
