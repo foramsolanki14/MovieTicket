@@ -72,7 +72,7 @@ const Home = () => {
           <View>
             <Text style={styles.headerTitle}>Home</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
             <Image
               source={require('../../../../assets/icon/search.png')}
               style={styles.searchBtn}
