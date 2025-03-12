@@ -11,6 +11,8 @@ import SelectSeat from '../modules/Movies/screens/SelectSeat/SelectSeat';
 import Cinema from '../modules/Movies/screens/Cinema/Cinema';
 import ContactDetails from '../modules/Movies/screens/ContactDetails/ContactDetails';
 import ConfirmBooking from '../modules/Movies/screens/ConfirmBooking/ConfirmBooking';
+import Cites from '../modules/Cites/screens/Cites/Cites';
+import Home from '../modules/Home/screens/Home/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,10 @@ const AppStack = () => {
           name={ScreenName.ConfirmBooking}
           component={ConfirmBooking}
         />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen name={ScreenName.Home} component={Home} />
+        <Stack.Screen name={ScreenName.Cites} component={Cites} />
       </Stack.Group>
     </Stack.Navigator>
   );
