@@ -61,7 +61,7 @@ const Home = () => {
       title: 'Best Of Luck Pandya',
       image: require('../../../../assets/BestOfLuckPandya.png'),
       Details:
-        ' Comedy Drama released in Gujarati language in theatre near you in kolkata. Know about Film reviews, lead cast & crew, ...',
+        ' Comedy Drama released in Gujarati language in theatre near you in kolkata . Know about Film reviews, lead cast & crew, ...',
     },
   ];
 
