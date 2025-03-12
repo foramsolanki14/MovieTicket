@@ -13,6 +13,7 @@ import ContactDetails from '../modules/Movies/screens/ContactDetails/ContactDeta
 import ConfirmBooking from '../modules/Movies/screens/ConfirmBooking/ConfirmBooking';
 import Cites from '../modules/Cites/screens/Cites/Cites';
 import Home from '../modules/Home/screens/Home/Home';
+import Search from '../modules/Home/screens/Search/Search';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ const AppStack = () => {
       <Stack.Group>
         <Stack.Screen name={ScreenName.Home} component={Home} />
         <Stack.Screen name={ScreenName.Cites} component={Cites} />
+        <Stack.Screen name={ScreenName.Search} component={Search} />
       </Stack.Group>
     </Stack.Navigator>
   );
