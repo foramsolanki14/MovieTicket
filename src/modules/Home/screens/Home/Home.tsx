@@ -18,7 +18,7 @@ const Home = () => {
       id: 1,
       title: 'Chhaava',
       image: require('../../../../assets/Chhaava.webp'),
-      Genres: 'Historical',
+      genres: ['Historical'],
       Details:
         'Chhaava is a 2025 Indian Hindi-language historical action film based on the life of Sambhaji Maharaj, the second ruler of the Maratha Empire, who is played ...',
     },
@@ -26,7 +26,7 @@ const Home = () => {
       id: 2,
       title: 'Fati Ne ?',
       image: require('../../../../assets/Fatine.png'),
-      Genres: 'Horror',
+      genres: ['Horror'],
       Details:
         'Param Laal and Padam Laal, two dimwitted but well-meaning cops in Melbourne, owe their jobs to their legendary uncle Velji',
     },
@@ -34,7 +34,7 @@ const Home = () => {
       id: 3,
       title: 'Umbaro',
       image: require('../../../../assets/Umbaro.webp'),
-      Genres: 'Family',
+      genres: ['Family'],
       Details:
         'Seven women from rural Gujarat embark on their first international trip to London, facing cultural clashes, language barriers in word.',
     },
@@ -42,7 +42,7 @@ const Home = () => {
       id: 4,
       title: 'Mom Tne Nai Samjay',
       image: require('../../../../assets/MomTneNaiSmjai.webp'),
-      Genres: 'Family',
+      genres: ['Family'],
       Details:
         'Set in London, this emotional drama follows the life of Aashka and Kunal, a couple who strive to uphold Indian culture while raising their children',
     },
@@ -50,7 +50,7 @@ const Home = () => {
       id: 5,
       title: 'The Monkey',
       image: require('../../../../assets/TheMonkey.webp'),
-      Genres: 'Horror',
+      genres: ['Horror'],
       Details:
         'It follows twin brothers whose lives are turned upside down by a cursed toy monkey that causes random horrific deaths around them.',
     },
@@ -58,10 +58,32 @@ const Home = () => {
       id: 6,
       title: 'Best Of Luck Pandya',
       image: require('../../../../assets/BestOfLuckPandya.png'),
-      Genres: 'Drama',
+      genres: ['Drama', 'Comedy'],
       Details:
         ' Comedy Drama released in Gujarati language in theatre near you in kolkata . Know about Film reviews, lead cast & crew, ...',
     },
+    {
+      id: 7,
+      title: 'Mere Husband ki Biwi',
+      image: require('../../../../assets/merehusbandkibiwi.webp'),
+      genres: ['Romantic'],
+      Details:
+        'A lovelorn Delhi realtor, Ankur, finally finds new love after a bitter divorce. But when his amnesiac ex-wife, stuck in a blissful memory of their past, stumbles back into his life, Ankur is caught in a hilarious and heart-warming tug-of-war between past and present love, forcing him to navigate wedding plans and rekindled memories in a desperate bid to choose his future.',
+    },
+  ];
+
+  const getMoviesByGenre = genre => {
+    return Movies.filter(movie => movie.genres.includes(genre));
+  };
+
+  const genres = [
+    'Recommended',
+    'Horror',
+    'Historical',
+    'Drama',
+    'Family',
+    'Comedy',
+    'Romantic',
   ];
 
   return (
@@ -100,93 +122,43 @@ const Home = () => {
             <Text style={styles.iconText}>Movies</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.section1}>
-          <View style={styles.card}>
-            <Text style={styles.cardHeader}>Recommended Movies</Text>
-            <TouchableOpacity>
-              <Text style={styles.txtBtn}>
-                See All
-                <Image
-                  source={require('../../../../assets/icon/arrow-right.png')}
-                  style={styles.arrow1}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
-            horizontal
-            data={Movies}
-            renderItem={({item}) => (
-              <View style={styles.main}>
-                <Pressable
-                  onPress={() =>
-                    navigation.navigate('MovieDetails', {movie: item})
-                  }>
-                  <Image source={item.image} style={styles.imgSection1} />
-                </Pressable>
-                <Text style={styles.txtImg}>{item.title}</Text>
+        {genres.map(genre => {
+          const moviesToShow =
+            genre === 'Recommended' ? Movies : getMoviesByGenre(genre);
+          if (moviesToShow.length === 0) return null;
+
+          return (
+            <View key={genre} style={styles.section}>
+              <View style={styles.card}>
+                <Text style={styles.cardHeader}>{genre} Movies</Text>
+                <TouchableOpacity>
+                  <Text style={styles.txtBtn}>
+                    See All
+                    <Image
+                      source={require('../../../../assets/icon/arrow-right.png')}
+                      style={styles.arrow1}
+                    />
+                  </Text>
+                </TouchableOpacity>
               </View>
-            )}
-          />
-        </View>
-        <View style={styles.section2}>
-          <View style={styles.card}>
-            <Text style={styles.cardHeader}>Recommended Movies</Text>
-            <TouchableOpacity>
-              <Text style={styles.txtBtn}>
-                See All
-                <Image
-                  source={require('../../../../assets/icon/arrow-right.png')}
-                  style={styles.arrow1}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
-            horizontal
-            data={Movies}
-            renderItem={({item}) => (
-              <View style={styles.main}>
-                <Pressable
-                  onPress={() =>
-                    navigation.navigate('MovieDetails', {movie: item})
-                  }>
-                  <Image source={item.image} style={styles.imgSection2} />
-                </Pressable>
-                <Text style={styles.txtImg}>{item.title}</Text>
-              </View>
-            )}
-          />
-        </View>
-        <View style={styles.section3}>
-          <View style={styles.card}>
-            <Text style={styles.cardHeader}>Recommended Movies</Text>
-            <TouchableOpacity>
-              <Text style={styles.txtBtn}>
-                See All
-                <Image
-                  source={require('../../../../assets/icon/arrow-right.png')}
-                  style={styles.arrow1}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
-            horizontal
-            data={Movies}
-            renderItem={({item}) => (
-              <View style={styles.main}>
-                <Pressable
-                  onPress={() =>
-                    navigation.navigate('MovieDetails', {movie: item})
-                  }>
-                  <Image source={item.image} style={styles.imgSection3} />
-                </Pressable>
-                <Text style={styles.txtImg}>{item.title}</Text>
-              </View>
-            )}
-          />
-        </View>
+              <FlatList
+                horizontal
+                data={moviesToShow}
+                renderItem={({item}) => (
+                  <View style={styles.main}>
+                    <Pressable
+                      onPress={() =>
+                        navigation.navigate('MovieDetails', {movie: item})
+                      }>
+                      <Image source={item.image} style={styles.imgSection} />
+                    </Pressable>
+                    <Text style={styles.txtImg}>{item.title}</Text>
+                  </View>
+                )}
+              />
+            </View>
+          );
+        })}
       </ScrollView>
     </View>
   );
@@ -207,7 +179,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-
   headerTitle: {
     fontFamily: 'Lato-Bold',
     fontSize: 20,
@@ -223,7 +194,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     fontSize: 15,
     paddingLeft: 20,
-    fontWeight: '500',
   },
   arrow: {
     height: 15,
@@ -252,7 +222,7 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingTop: 10,
   },
-  imgSection1: {
+  imgSection: {
     width: 179,
     height: 220,
     borderRadius: 10,
@@ -266,34 +236,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     paddingLeft: 10,
   },
-  section1: {
+  section: {
     paddingLeft: 11,
-    paddingTop: 15,
+    paddingTop: 20,
   },
   txtBtn: {
     fontFamily: 'Lato-Black',
   },
   txtImg: {
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Lato-Regular',
     textAlign: 'center',
-  },
-  section2: {
-    paddingLeft: 11,
-    paddingTop: 20,
-  },
-  imgSection2: {
-    width: 179,
-    height: 220,
-    borderRadius: 10,
-  },
-  section3: {
-    paddingLeft: 11,
-    paddingTop: 20,
-  },
-  imgSection3: {
-    width: 179,
-    height: 220,
-    borderRadius: 10,
+    paddingTop: 10,
   },
 });
