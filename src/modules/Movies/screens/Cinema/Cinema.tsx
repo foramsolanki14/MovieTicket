@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
   },
   priceDetail: {
     marginTop: 20,
+    elevation: 15,
   },
   price: {
     borderWidth: 1,
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc2c2',
   },
   cinema: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#f2f0f0',
     borderRadius: 10,
     margin: 10,

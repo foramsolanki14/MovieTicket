@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   theaterName: {
-    fontSize: 15,
+    fontSize: 12,
     color: 'gray',
     paddingLeft: 13,
   },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     paddingLeft: 20,
   },
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 16,
-    paddingTop: 30,
+    paddingTop: 20,
   },
   slotItem: {
     flexDirection: 'row',
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnView: {
-    paddingTop: 10,
+    paddingTop: 9,
   },
   countBtn: {
     backgroundColor: '#e3204a',

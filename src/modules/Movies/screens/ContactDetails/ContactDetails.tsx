@@ -34,7 +34,7 @@ const ContactDetails = () => {
         </View>
         <View style={styles.main}>
           <Text style={styles.txt}>Phone number</Text>
-          <TextInput style={styles.txtInput} placeholder="Enter number" />
+          <TextInput style={styles.txtInput} placeholder="eg:91480XXXXX" />
           <Text style={styles.line}>
             To access the ticket(s) on other devices, Login with this number
           </Text>

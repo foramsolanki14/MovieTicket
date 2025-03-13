@@ -61,13 +61,20 @@ const Movies = () => {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Movies</Text>
-          <TouchableOpacity>
+          <View>
+            <Text style={styles.headerTitle}>Now Showing</Text>
+          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
             <Image
               source={require('../../../../assets/icon/search.png')}
               style={styles.searchBtn}
             />
           </TouchableOpacity>
+        </View>
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.nameCity}>Rajkot | {Movies.length} Movies</Text>
+          </View>
         </View>
       </View>
       <FlatList
@@ -109,7 +116,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     paddingLeft: 20,
   },
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
     resizeMode: 'contain',
-    paddingLeft: '118%',
+    paddingLeft: '100%',
   },
   main: {
     padding: 5,
@@ -127,5 +134,10 @@ const styles = StyleSheet.create({
     width: 195,
     height: 270,
     borderRadius: 10,
+  },
+  nameCity: {
+    fontSize: 15,
+    paddingLeft: 20,
+    fontWeight: '500',
   },
 });
