@@ -98,7 +98,7 @@ function SelectSeat({route}) {
         />
       </View>
       <View style={styles.screenView}>
-        <View style={styles.screen}></View>
+        <View style={styles.screen} />
         <View>
           <Text style={styles.screenTxt}>All Eyes this way Please</Text>
         </View>
