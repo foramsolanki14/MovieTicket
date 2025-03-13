@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Navigation from '../../../../navigation/NavigationBuilder';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -131,7 +132,10 @@ const Home = () => {
             <View key={genre} style={styles.section}>
               <View style={styles.card}>
                 <Text style={styles.cardHeader}>{genre} Movies</Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('Section', {genre, moviesToShow})
+                  }>
                   <Text style={styles.txtBtn}>
                     See All
                     <Image

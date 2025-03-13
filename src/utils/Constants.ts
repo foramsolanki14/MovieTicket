@@ -6,6 +6,7 @@ export const ScreenName = {
   Home: 'Home',
   Cites: 'Cites',
   Search: 'Search',
+  Section: 'Section',
 
   //movies screen
   Movies: 'Movies',
