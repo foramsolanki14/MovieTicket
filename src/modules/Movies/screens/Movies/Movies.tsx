@@ -91,8 +91,7 @@ const Movies = () => {
               }>
               <Image source={item.image} style={styles.img} />
             </Pressable>
-
-            <View>
+            <View style={styles.txtView}>
               <Text style={styles.imgText}>{item.title}</Text>
             </View>
           </View>
@@ -107,6 +106,7 @@ export default Movies;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
+    paddingBottom: 70,
   },
   headerView: {
     padding: 10,
@@ -143,8 +143,15 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     fontFamily: 'Lato-Regular',
   },
+  txtView: {
+    paddingTop: 5,
+    justifyContent: 'center',
+  },
   imgText: {
     fontFamily: 'Lato-Bold',
     fontSize: 15,
+    backgroundColor: '#bdbebf',
+    borderRadius: 4,
+    paddingLeft: 7,
   },
 });

@@ -173,6 +173,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
+    paddingBottom: 70,
   },
   headerView: {
     padding: 10,
