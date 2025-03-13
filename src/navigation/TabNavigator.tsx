@@ -12,7 +12,11 @@ const BottomTab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <BottomTab.Navigator
-      screenOptions={{headerShown: false, tabBarActiveTintColor: 'red'}}>
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: 'red',
+        tabBarLabelStyle: {fontFamily: 'Lato-Black', fontSize: 12},
+      }}>
       <BottomTab.Screen
         name={ScreenName.Home}
         component={Home}
