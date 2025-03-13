@@ -77,13 +77,16 @@ function Cinema({route}) {
     <TouchableOpacity
       style={[styles.date, selectedDateId === item.id && styles.selectedDate]}
       onPress={() => setSelectedDateId(item.id)}>
-      <Text style={[selectedDateId === item.id && styles.selectedText]}>
+      <Text
+        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
         {item.day}
       </Text>
-      <Text style={[selectedDateId === item.id && styles.selectedText]}>
+      <Text
+        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
         {item.date}
       </Text>
-      <Text style={[selectedDateId === item.id && styles.selectedText]}>
+      <Text
+        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
         {item.month}
       </Text>
     </TouchableOpacity>
@@ -115,7 +118,7 @@ function Cinema({route}) {
           data={priceFilters}
           renderItem={({item}) => (
             <TouchableOpacity style={styles.price}>
-              <Text>{item.price}</Text>
+              <Text style={styles.priceText}>{item.price}</Text>
             </TouchableOpacity>
           )}
         />
@@ -139,7 +142,7 @@ function Cinema({route}) {
                         theater: item.theater,
                       })
                     }>
-                    <Text>{time}</Text>
+                    <Text style={styles.timeText}>{time}</Text>
                   </TouchableOpacity>
                 ))}
               </View>
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   searchBtn: {
@@ -191,8 +194,19 @@ const styles = StyleSheet.create({
   selectedDate: {
     backgroundColor: '#e3204a',
   },
+  txt: {
+    fontFamily: 'Lato-Bold',
+    paddingLeft: 0,
+  },
   selectedText: {
     color: '#ebe6e6',
+    fontFamily: 'Lato-Regular',
+    padding: 1,
+    paddingLeft: 0,
+  },
+  priceText: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 14,
   },
   priceDetail: {
     marginTop: 20,
@@ -215,13 +229,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   name: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: 'Lato-Bold',
     padding: 10,
   },
   cancellable: {
     fontSize: 15,
     marginTop: -10,
+    fontFamily: 'Lato-Regular',
     padding: 5,
   },
   timeView: {
@@ -237,6 +252,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  timeText: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 15,
   },
   movieItem: {
     marginBottom: 10,

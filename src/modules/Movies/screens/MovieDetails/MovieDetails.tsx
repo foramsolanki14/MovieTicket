@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   movieImage: {
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   Details: {
     marginTop: 20,
     fontSize: 16,
+    fontFamily: 'Lato-Regular',
     lineHeight: 22,
   },
   btn: {
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     textAlign: 'center',
     color: '#f5f0f1',
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontFamily: 'Lato-Bold',
+    fontSize: 17,
   },
 });

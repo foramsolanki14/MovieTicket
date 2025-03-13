@@ -26,9 +26,7 @@ const MyProfile = () => {
         <Text style={styles.txt}>Email Address</Text>
         <TextInput style={styles.txtInput} placeholder="Enter Email Address" />
       </View>
-      <View style={{backgroundColor: '#a6adaa'}}>
-        <Text></Text>
-      </View>
+      <View style={{backgroundColor: '#c0c4c1', paddingTop: 15}} />
       <View style={styles.card}>
         <Text style={styles.txt}>First Name</Text>
         <TextInput style={styles.txtInput} placeholder="Enter First Name" />
@@ -38,16 +36,16 @@ const MyProfile = () => {
         <TextInput style={styles.txtInput} placeholder="Enter BirthDay Date" />
         <Text style={styles.txt}> Identity(Optional)</Text>
         <View style={{flexDirection: 'row', gap: 10, padding: 5}}>
-          <TouchableOpacity
-            style={{borderWidth: 1, borderRadius: 5, width: 50}}>
-            <Text style={{textAlign: 'center'}}>male</Text>
+          <TouchableOpacity style={styles.genderView}>
+            <Text style={styles.gender}>male</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{borderWidth: 1, borderRadius: 5, width: 60}}>
-            <Text style={{textAlign: 'center'}}>Female</Text>
+          <TouchableOpacity style={styles.genderView}>
+            <Text style={styles.gender}>Female</Text>
           </TouchableOpacity>
         </View>
-        <Button title="Save" color={'gray'} />
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.btnText}>SAVE</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -60,6 +58,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     padding: 20,
+    fontFamily: 'Lato-Bold',
   },
   img: {
     width: 100,
@@ -73,6 +72,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     margin: 10,
+    fontFamily: 'Lato-Regular',
   },
   view: {
     padding: 10,
@@ -82,9 +82,31 @@ const styles = StyleSheet.create({
   txt: {
     fontSize: 20,
     padding: 10,
+    fontFamily: 'Lato-Regular',
   },
   card: {
     gap: 10,
     padding: 4,
+  },
+  genderView: {
+    borderWidth: 1,
+    borderRadius: 5,
+    width: 70,
+  },
+  gender: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 15,
+    textAlign: 'center',
+  },
+  btn: {
+    backgroundColor: 'gray',
+    height: 30,
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  btnText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 15,
+    textAlign: 'center',
   },
 });

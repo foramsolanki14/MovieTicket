@@ -5,6 +5,7 @@ import Home from '../modules/Home/screens/Home/Home';
 import Movies from '../modules/Movies/screens/Movies/Movies';
 import Profile from '../modules/Profile/screens/Profile/Profile';
 import {Image, StyleSheet} from 'react-native';
+import Cites from '../modules/Cites/screens/Cites/Cites';
 
 const BottomTab = createBottomTabNavigator();
 

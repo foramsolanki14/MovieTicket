@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'gray',
     paddingLeft: 13,
+    fontFamily: 'Lato-Regular',
   },
   backButtonImage: {
     height: 24,
@@ -160,7 +161,8 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
+
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
 
@@ -177,11 +179,11 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
   },
   ticket: {
     fontSize: 13,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
   },
   timeBtn: {
     height: 35,
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
   },
   timeTxt: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     color: 'white',
   },
   section: {
@@ -200,7 +202,7 @@ const styles = StyleSheet.create({
   },
   sectionTxt: {
     fontSize: 13,
-    fontWeight: '400',
+    fontFamily: 'Lato-Bold',
     borderBottomWidth: 1,
     borderColor: '#e0dadb',
   },
@@ -209,6 +211,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   seat: {
+    fontFamily: 'Lato-Regular',
     height: 20,
     width: 20,
     borderWidth: 1,
@@ -229,6 +232,7 @@ const styles = StyleSheet.create({
     borderColor: '#70bdc4',
   },
   screenTxt: {
+    fontFamily: 'Lato-Regular',
     fontSize: 13,
     paddingLeft: 10,
   },
@@ -249,6 +253,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   slotText: {
+    fontFamily: 'Lato-Regular',
     fontSize: 14,
   },
   btnView: {
@@ -262,7 +267,7 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     color: 'white',
   },
 });

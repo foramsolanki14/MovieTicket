@@ -76,23 +76,26 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   txt: {
-    fontWeight: '500',
+    fontFamily: 'Lato-Bold',
+    paddingBottom: 10,
+    fontSize: 16,
   },
   txtInput: {
     borderWidth: 1,
     borderRadius: 5,
+    fontFamily: 'Lato-Bold',
   },
   main: {
     paddingTop: 20,
     padding: 5,
   },
   line: {
-    fontSize: 11,
-    fontWeight: '500',
+    fontSize: 12,
+    fontFamily: 'Lato-Regular',
     padding: 5,
   },
   btnView: {
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     color: '#f2eeed',
     textAlign: 'center',
   },

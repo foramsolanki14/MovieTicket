@@ -11,7 +11,7 @@ import React from 'react';
 const YourOrders = () => {
   return (
     <View style={styles.main}>
-      <Text style={{padding: 10}}>
+      <Text style={styles.txt}>
         Order on :
         <Text style={styles.orderDetail}> 08 Mar , 2025 at 09:40:29 AM</Text>
       </Text>
@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
     gap: 10,
     backgroundColor: '#dedbd7',
   },
+  txt: {
+    fontFamily: 'Lato-Regular',
+    padding: 10,
+  },
   orderCard: {
     backgroundColor: 'white',
     marginHorizontal: 16,
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   orderDetail: {
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
   movieDetails: {
     flexDirection: 'row',
@@ -82,17 +86,18 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     fontSize: 17,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
     padding: 5,
     marginTop: -10,
   },
   movieLang: {
     fontSize: 14,
+    fontFamily: 'Lato-Regular',
     color: 'gray',
-    marginTop: -10,
+    marginTop: -7,
   },
   movieTime: {
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
     fontSize: 13,
     marginTop: 10,
     padding: 5,
@@ -100,19 +105,21 @@ const styles = StyleSheet.create({
   theater: {
     fontSize: 14,
     padding: 5,
+    fontFamily: 'Lato-Regular',
   },
   seats: {
     padding: 5,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
   },
   data: {
-    fontWeight: 400,
+    fontFamily: 'Lato-Regular',
     fontSize: 14,
     color: 'gray',
   },
   screen: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     marginTop: 85,
   },
   case: {
@@ -133,10 +140,11 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: '#f5f2ed',
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
   },
   caseText: {
     padding: 5,
+    fontFamily: 'Lato-Regular',
   },
   book: {
     alignItems: 'center',
@@ -144,6 +152,6 @@ const styles = StyleSheet.create({
   },
   bookTxt: {
     color: 'red',
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
 });

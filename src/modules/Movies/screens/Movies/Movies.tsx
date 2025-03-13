@@ -73,7 +73,9 @@ const Movies = () => {
         </View>
         <View style={styles.header}>
           <View>
-            <Text style={styles.nameCity}>Rajkot | {Movies.length} Movies</Text>
+            <Text style={styles.nameCity}>
+              Ahemdabad | {Movies.length} Movies
+            </Text>
           </View>
         </View>
       </View>
@@ -91,7 +93,7 @@ const Movies = () => {
             </Pressable>
 
             <View>
-              <Text>{item.title}</Text>
+              <Text style={styles.imgText}>{item.title}</Text>
             </View>
           </View>
         )}
@@ -117,27 +119,32 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   searchBtn: {
-    height: 25,
+    height: 20,
     width: 25,
     resizeMode: 'contain',
     paddingLeft: '100%',
   },
   main: {
     padding: 5,
-    paddingTop: 20,
+    paddingTop: 10,
   },
   img: {
     width: 195,
-    height: 270,
-    borderRadius: 10,
+    height: 290,
+    borderRadius: 5,
   },
   nameCity: {
     fontSize: 15,
     paddingLeft: 20,
-    fontWeight: '500',
+    paddingTop: 3,
+    fontFamily: 'Lato-Regular',
+  },
+  imgText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 15,
   },
 });

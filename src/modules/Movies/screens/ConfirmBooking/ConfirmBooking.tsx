@@ -23,12 +23,12 @@ const ConfirmBooking = () => {
             <View>
               <Text style={styles.name}>Chhaava</Text>
               <Text style={styles.date}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
-              <Text> Hindi</Text>
-              <Text>NY Cinemas: Swagat Mall</Text>
+              <Text style={styles.theater}>Hindi</Text>
+              <Text style={styles.theater}>NY Cinemas: Swagat Mall</Text>
             </View>
             <View>
               <Text style={styles.number}>2</Text>
-              <Text style={{fontWeight: '500'}}>M-Ticket</Text>
+              <Text style={styles.ticket}>M-Ticket</Text>
             </View>
           </View>
           <View style={styles.cardBottom}>
@@ -59,18 +59,16 @@ const ConfirmBooking = () => {
         </View>
         <View style={styles.detailView}>
           <View style={styles.detailsCard}>
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.data}>
               Your details
-              <Text style={{fontWeight: '400'}}>
-                (For sending booking details)
-              </Text>
+              <Text style={styles.data1}>(For sending booking details)</Text>
             </Text>
             <TouchableOpacity>
-              <Text style={{fontWeight: 'bold'}}>Edit</Text>
+              <Text style={styles.data}>Edit</Text>
             </TouchableOpacity>
           </View>
-          <Text>abc@gmail.com</Text>
-          <Text>9016171433 | Gujrat</Text>
+          <Text style={styles.data1}>abc@gmail.com</Text>
+          <Text style={styles.data1}>9016171433 | Gujrat</Text>
         </View>
 
         <View style={styles.totalView}>
@@ -115,8 +113,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   main: {
@@ -124,6 +122,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fcf0f2',
     borderColor: '#adadad',
     elevation: 15,
+  },
+  theater: {
+    fontFamily: 'Lato-Regular',
   },
   card: {
     flexDirection: 'row',
@@ -136,25 +137,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   txtLine1: {
-    fontWeight: '500',
-    fontSize: 12,
+    fontFamily: 'Lato-Bold',
+    fontSize: 13,
   },
   txtLine2: {
-    fontSize: 11,
-    fontWeight: '400',
+    fontSize: 12,
+    fontFamily: 'Lato-Regular',
   },
   name: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
   date: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
   },
   number: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
     paddingLeft: 50,
+  },
+  ticket: {
+    fontFamily: 'Lato-Bold',
   },
   priceCard: {
     backgroundColor: '#faf5f6',
@@ -168,12 +172,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   label: {
-    fontSize: 13,
-    fontWeight: 'bold',
+    fontSize: 15,
+    fontFamily: 'Lato-Black',
   },
   label1: {
     fontSize: 14,
-    fontWeight: '400',
+    fontFamily: 'Lato-Bold',
   },
   total: {
     flexDirection: 'row',
@@ -197,8 +201,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#faf5f6',
     marginTop: '69%',
     flexDirection: 'row',
-    gap: 5,
     height: 60,
+    width: '100%',
   },
   btnView: {
     paddingLeft: '50%',
@@ -213,8 +217,16 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     fontSize: 15,
-    fontWeight: '500',
+    fontFamily: 'Lato-Bold',
     color: '#f5f0f1',
     textAlign: 'center',
+  },
+  data: {
+    fontFamily: 'Lato-Black',
+    fontSize: 16,
+  },
+  data1: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 15,
   },
 });

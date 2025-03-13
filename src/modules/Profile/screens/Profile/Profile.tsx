@@ -32,7 +32,7 @@ const Profile = () => {
             source={require('../../../../assets/icon/profile.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>MyProfile</Text>
+          <Text style={styles.txt}>My Profile</Text>
         </Pressable>
         <Pressable
           style={styles.data}
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
   searchBtn: {
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
   txt: {
     justifyContent: 'center',
     fontSize: 20,
+    fontFamily: 'Lato-Regular',
   },
   img: {
     padding: 10,

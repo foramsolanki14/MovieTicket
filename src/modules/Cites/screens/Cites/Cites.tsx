@@ -125,7 +125,7 @@ const Cites = () => {
                 onPress={() => {
                   navigation.navigate('Home', {selectedCity: item});
                 }}>
-                <Text>{item}</Text>
+                <Text style={styles.name}>{item}</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -153,10 +153,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'gray',
     borderBottomWidth: 1,
-    padding: 5,
+    padding: 7,
   },
 
   headerTitle: {
+    fontFamily: 'Lato-Bold',
     fontSize: 18,
     paddingLeft: 20,
   },
@@ -166,12 +167,12 @@ const styles = StyleSheet.create({
   },
   gps: {
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: 'Lato-Bold',
     paddingLeft: 10,
   },
   cityTitle: {
     fontSize: 15,
-    fontWeight: '500',
+    fontFamily: 'Lato-Bold',
   },
   citesTitle: {
     backgroundColor: '#f5edf7',
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
   },
   cites: {
     fontSize: 9,
-    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
     paddingTop: 10,
   },
   citesImage: {
@@ -204,5 +205,9 @@ const styles = StyleSheet.create({
   cityView: {
     borderBottomWidth: 1,
     padding: 10,
+  },
+  name: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 16,
   },
 });
