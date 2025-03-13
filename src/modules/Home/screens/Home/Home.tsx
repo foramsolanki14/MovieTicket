@@ -114,14 +114,34 @@ const Home = () => {
         </View>
       </View>
       <ScrollView>
-        <View style={styles.iconView}>
-          <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
-            <Image
-              source={require('../../../../assets/icon/film.png')}
-              style={styles.film}
-            />
-            <Text style={styles.iconText}>Movies</Text>
-          </TouchableOpacity>
+        <View style={styles.mainView}>
+          <View style={styles.iconView}>
+            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
+              <Image
+                source={require('../../../../assets/icon/film.png')}
+                style={styles.film}
+              />
+              <Text style={styles.iconText}>Movies</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.iconView}>
+            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
+              <Image
+                source={require('../../../../assets/icon/comedy.png')}
+                style={styles.film}
+              />
+              <Text style={styles.iconText}>Comedy</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.iconView}>
+            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
+              <Image
+                source={require('../../../../assets/icon/music.png')}
+                style={styles.film}
+              />
+              <Text style={styles.iconText}>Music</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         {genres.map(genre => {
           const moviesToShow =
@@ -174,6 +194,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
     paddingBottom: 70,
+  },
+  mainView: {
+    flexDirection: 'row',
+    gap: 30,
   },
   headerView: {
     padding: 10,
