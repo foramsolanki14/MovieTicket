@@ -11,10 +11,7 @@ declare module '*.png' {
   const value: ImageSourcePropType;
   export default value;
 }
-declare module '*.avif' {
-  const value: ImageSourcePropType;
-  export default value;
-}
+
 declare module '*.webp' {
   const value: ImageSourcePropType;
   export default value;

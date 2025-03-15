@@ -34,7 +34,7 @@ const Section = () => {
           <TouchableOpacity
             style={styles.movieItem}
             onPress={() => navigation.navigate('MovieDetails', {movie: item})}>
-            <Image source={item.image} style={styles.movieImage} />
+            <Image src={item.image} style={styles.movieImage} />
             <Text style={styles.movieTitle}>{item.title}</Text>
           </TouchableOpacity>
         )}
@@ -74,9 +74,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   movieImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 8,
+    width: 185,
+    height: 290,
+    borderRadius: 5,
+    resizeMode: 'cover',
   },
   movieTitle: {
     marginTop: 8,

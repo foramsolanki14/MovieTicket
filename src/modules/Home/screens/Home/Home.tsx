@@ -100,12 +100,6 @@ const Home = () => {
           <View>
             <Text style={styles.headerTitle}>Welcome Guest!</Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-            <Image
-              source={require('../../../../assets/icon/search.png')}
-              style={styles.searchBtn}
-            />
-          </TouchableOpacity>
         </View>
         <View style={styles.header}>
           <View>
@@ -120,35 +114,6 @@ const Home = () => {
         </View>
       </View>
       <ScrollView>
-        <View style={styles.mainView}>
-          <View style={styles.iconView}>
-            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
-              <Image
-                source={require('../../../../assets/icon/film.png')}
-                style={styles.film}
-              />
-              <Text style={styles.iconText}>Movies</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.iconView}>
-            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
-              <Image
-                source={require('../../../../assets/icon/comedy.png')}
-                style={styles.film}
-              />
-              <Text style={styles.iconText}>Comedy</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.iconView}>
-            <TouchableOpacity onPress={() => navigation.navigate('Movies')}>
-              <Image
-                source={require('../../../../assets/icon/music.png')}
-                style={styles.film}
-              />
-              <Text style={styles.iconText}>Music</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
         {genres.map(genre => {
           const moviesToShow =
             genre === 'Recommended' ? Movies : getMoviesByGenre(genre);
@@ -221,12 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
   },
-  searchBtn: {
-    height: 20,
-    width: 30,
-    resizeMode: 'contain',
-    paddingLeft: '100%',
-  },
+
   nameCity: {
     fontFamily: 'Lato-Regular',
     fontSize: 15,

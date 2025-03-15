@@ -85,12 +85,6 @@ const Movies = () => {
           <View>
             <Text style={styles.headerTitle}>Now Showing</Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-            <Image
-              source={require('../../../../assets/icon/search.png')}
-              style={styles.searchBtn}
-            />
-          </TouchableOpacity>
         </View>
         <View style={styles.header}>
           <View>
@@ -143,18 +137,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
-  searchBtn: {
-    height: 20,
-    width: 25,
-    resizeMode: 'contain',
-    paddingLeft: '100%',
-  },
+
   main: {
-    padding: 5,
-    paddingTop: 10,
+    padding: 10,
   },
   img: {
-    width: 195,
+    width: 185,
     height: 290,
     borderRadius: 5,
     resizeMode: 'cover',
