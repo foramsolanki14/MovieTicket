@@ -100,17 +100,25 @@ const Home = () => {
           <View>
             <Text style={styles.headerTitle}>Welcome Guest!</Text>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Image
+              source={require('../../../../assets/icon/menu.png')}
+              style={styles.searchBtn}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.header}>
           <View>
             <Text style={styles.nameCity}>Ahmedabad</Text>
           </View>
-          <TouchableOpacity onPressOut={() => navigation.navigate('Cites')}>
-            <Image
-              source={require('../../../../assets/icon/arrow-right.png')}
-              style={styles.arrow}
-            />
-          </TouchableOpacity>
+          <View style={styles.menu}>
+            <TouchableOpacity onPressOut={() => navigation.navigate('Cites')}>
+              <Image
+                source={require('../../../../assets/icon/arrow-right.png')}
+                style={styles.arrow}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <ScrollView>
@@ -186,7 +194,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
   },
-
+  searchBtn: {
+    height: 20,
+    width: 30,
+    resizeMode: 'contain',
+    paddingLeft: '100%',
+    paddingTop: '7%',
+  },
   nameCity: {
     fontFamily: 'Lato-Regular',
     fontSize: 15,
@@ -198,6 +212,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     paddingLeft: '20%',
     paddingTop: 20,
+  },
+  menu: {
+    justifyContent: 'center',
   },
   arrow1: {
     height: 11,

@@ -39,7 +39,7 @@ const AppStack = () => {
           component={ConfirmBooking}
         />
       </Stack.Group>
-      <Stack.Group>
+      <Stack.Group screenOptions={{headerShown: false}}>
         <Stack.Screen name={ScreenName.Home} component={Home} />
         <Stack.Screen name={ScreenName.Cites} component={Cites} />
         <Stack.Screen name={ScreenName.Section} component={Section} />

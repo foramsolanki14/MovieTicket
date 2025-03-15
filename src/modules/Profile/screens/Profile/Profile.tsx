@@ -16,7 +16,13 @@ const Profile = () => {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Profile</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../../../assets/icon/backBtn.png')}
+              style={styles.backButtonImage}
+            />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Hey!</Text>
 
           <Image
             source={require('../../../../assets/icon/profile.png')}
@@ -24,7 +30,7 @@ const Profile = () => {
           />
         </View>
       </View>
-      <ScrollView>
+      <View>
         <Pressable
           style={styles.data}
           onPress={() => navigation.navigate('MyProfile')}>
@@ -32,7 +38,9 @@ const Profile = () => {
             source={require('../../../../assets/icon/profile.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>My Profile</Text>
+          <View>
+            <Text style={styles.txt}>My Profile</Text>
+          </View>
         </Pressable>
         <Pressable
           style={styles.data}
@@ -41,35 +49,56 @@ const Profile = () => {
             source={require('../../../../assets/icon/yourorder.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Your Orders</Text>
+          <View>
+            <Text style={styles.txt}>Your Orders</Text>
+            <Text style={styles.textLine}>
+              View all your booking & purchases
+            </Text>
+          </View>
         </Pressable>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/streem.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Stream Library</Text>
+          <View>
+            <Text style={styles.txt}>Stream Library</Text>
+            <Text style={styles.textLine}>Rented & Purchsed Movies</Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/playcradit.webp')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Play Cradit Card</Text>
+          <View>
+            <Text style={styles.txt}>Play Cradit Card</Text>
+            <Text style={styles.textLine}>
+              View your play cardit card details and offers
+            </Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/help.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Help Center</Text>
+          <View>
+            <Text style={styles.txt}>Help Center</Text>
+            <Text style={styles.textLine}>Need help or have questions?</Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/settings.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Account & Settings</Text>
+          <View>
+            <Text style={styles.txt}>Account & Settings</Text>
+            <Text style={styles.textLine}>
+              Location, payments,permission & More
+            </Text>
+          </View>
         </View>
         <View style={{backgroundColor: '#c0c4c1', paddingTop: 15}} />
 
@@ -78,37 +107,51 @@ const Profile = () => {
             source={require('../../../../assets/icon/reward.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Rewards</Text>
+          <View>
+            <Text style={styles.txt}>Rewareds</Text>
+            <Text style={styles.textLine}>
+              View your rewards & unlock new ones
+            </Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/offer.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>offers</Text>
+          <View>
+            <Text style={styles.txt}>offers</Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/gift-card.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Gift Cards</Text>
+          <View>
+            <Text style={styles.txt}>Gift Cards</Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/food.png')}
             style={styles.img}
           />
-          <Text style={styles.txt}>Food & Beverages</Text>
+          <View>
+            <Text style={styles.txt}>Food & Beverages</Text>
+          </View>
         </View>
         <View style={styles.data}>
           <Image
             source={require('../../../../assets/icon/show.webp')}
             style={styles.img}
           />
-          <Text style={styles.txt}>List your Show</Text>
+          <View>
+            <Text style={styles.txt}>List your Show</Text>
+            <Text style={styles.textLine}>got an event ? Partner with us</Text>
+          </View>
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 };
@@ -132,11 +175,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     paddingLeft: 20,
   },
+  backButtonImage: {
+    height: 24,
+    width: 24,
+    resizeMode: 'contain',
+  },
   searchBtn: {
     height: 30,
     width: 30,
     resizeMode: 'contain',
-    paddingLeft: '140%',
+    paddingLeft: '130%',
   },
   data: {
     flexDirection: 'row',
@@ -144,16 +192,25 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingBottom: 7,
   },
   txt: {
     justifyContent: 'center',
-    fontSize: 20,
+    fontSize: 17,
     fontFamily: 'Lato-Regular',
+    paddingLeft: 12,
+  },
+  textLine: {
+    justifyContent: 'center',
+    fontSize: 12,
+    fontFamily: 'Lato-Regular',
+    paddingLeft: 12,
+    paddingTop: 3,
   },
   img: {
     padding: 10,
-    height: 30,
-    width: 30,
+    height: 22,
+    width: 22,
     margin: 10,
   },
 });
