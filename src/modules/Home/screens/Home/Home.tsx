@@ -21,7 +21,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/chhaava-et00408691-1737623374.jpg',
       genres: ['Historical'],
       Details:
-        'Chhaava is a 2025 Indian Hindi-language historical action film based on the life of Sambhaji Maharaj, the second ruler of the Maratha Empire, who is played ...',
+        ' Chhaava is a 2025 Indian Hindi-language historical action film based on the life of Sambhaji Maharaj, the second ruler of the Maratha Empire, who is played ...',
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/faati-ne-et00428340-1739770188.jpg',
       genres: ['Horror'],
       Details:
-        'Param Laal and Padam Laal, two dimwitted but well-meaning cops in Melbourne, owe their jobs to their legendary uncle Velji',
+        ' Param Laal and Padam Laal, two dimwitted but well-meaning cops in Melbourne, owe their jobs to their legendary uncle Velji',
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/umbarro-et00420660-1734089497.jpg',
       genres: ['Family'],
       Details:
-        'Seven women from rural Gujarat embark on their first international trip to London, facing cultural clashes, language barriers in word.',
+        ' Seven women from rural Gujarat embark on their first international trip to London, facing cultural clashes, language barriers in word.',
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mom-tane-nai-samjay-et00424440-1734259829.jpg',
       genres: ['Family'],
       Details:
-        'Set in London, this emotional drama follows the life of Aashka and Kunal, a couple who strive to uphold Indian culture while raising their children',
+        ' Set in London, this emotional drama follows the life of Aashka and Kunal, a couple who strive to uphold Indian culture while raising their children',
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-monkey-et00430332-1737555963.jpg',
       genres: ['Horror'],
       Details:
-        'It follows twin brothers whose lives are turned upside down by a cursed toy monkey that causes random horrific deaths around them.',
+        ' It follows twin brothers whose lives are turned upside down by a cursed toy monkey that causes random horrific deaths around them.',
     },
     {
       id: 6,
@@ -75,7 +75,7 @@ const Home = () => {
         'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mere-husband-ki-biwi-et00430518-1738572406.jpg',
       genres: ['Romantic'],
       Details:
-        'A lovelorn Delhi realtor, Ankur, finally finds new love after a bitter divorce. But when his amnesiac ex-wife, stuck in a blissful memory of their past, stumbles back into his life, Ankur is caught in a hilarious and heart-warming tug-of-war between past and present love, forcing him to navigate wedding plans and rekindled memories in a desperate bid to choose his future.',
+        ' A lovelorn Delhi realtor, Ankur, finally finds new love after a bitter divorce. But when his amnesiac ex-wife, stuck in a blissful memory of their past, stumbles back into his life, Ankur is caught in a hilarious and heart-warming tug-of-war between past and present love, forcing him to navigate wedding plans and rekindled memories in a desperate bid to choose his future.',
     },
   ];
 
@@ -102,7 +102,7 @@ const Home = () => {
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Image
-              source={require('../../../../assets/icon/menu.png')}
+              source={require('../../../../assets/icon/menubar.png')}
               style={styles.searchBtn}
             />
           </TouchableOpacity>
