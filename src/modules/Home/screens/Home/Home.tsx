@@ -155,7 +155,7 @@ const Home = () => {
                       }>
                       <Image src={item.image} style={styles.imgSection} />
                     </Pressable>
-                    <View style={{paddingTop: 5}}>
+                    <View style={styles.title}>
                       <Text style={styles.txtImg}>{item.title}</Text>
                     </View>
                   </View>
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
   main: {
     padding: 4,
     paddingTop: 10,
+    gap: 4,
   },
   imgSection: {
     width: 150,
@@ -260,10 +261,14 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   txtImg: {
-    fontFamily: 'Lato-Regular',
-    fontSize: 12,
-    backgroundColor: '#bdbebf',
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
     borderRadius: 4,
     paddingLeft: 7,
+  },
+  title: {
+    padding: 5,
+    backgroundColor: '#bdbebf',
+    borderRadius: 5,
   },
 });

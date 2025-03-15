@@ -25,6 +25,11 @@ const Section = () => {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{genre} Movies </Text>
         </View>
+        <View>
+          <Text style={styles.nameCity}>
+            Ahemdabad | {moviesToShow.length} Movies
+          </Text>
+        </View>
       </View>
       <FlatList
         data={moviesToShow}
@@ -84,5 +89,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Lato-Regular',
     textAlign: 'center',
+  },
+  nameCity: {
+    fontSize: 13,
+    paddingLeft: 30,
+    paddingTop: 3,
+    fontFamily: 'Lato-Regular',
   },
 });
