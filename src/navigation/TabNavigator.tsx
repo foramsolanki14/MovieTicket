@@ -4,7 +4,7 @@ import {ScreenName} from '../utils/Constants';
 import Home from '../modules/Home/screens/Home/Home';
 import Movies from '../modules/Movies/screens/Movies/Movies';
 import Profile from '../modules/Profile/screens/Profile/Profile';
-import {Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import Cites from '../modules/Cites/screens/Cites/Cites';
 
 const BottomTab = createBottomTabNavigator();
@@ -12,11 +12,7 @@ const BottomTab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <BottomTab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: 'red',
-        tabBarLabelStyle: {fontFamily: 'Lato-Black', fontSize: 12},
-      }}>
+      screenOptions={{headerShown: false, tabBarStyle: {display: 'none'}}}>
       <BottomTab.Screen
         name={ScreenName.Home}
         component={Home}
