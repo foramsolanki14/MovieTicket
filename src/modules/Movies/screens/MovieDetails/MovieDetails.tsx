@@ -58,6 +58,7 @@ export default MovieDetails;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 70,
   },
   headerView: {
     padding: 10,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   btnView: {
     padding: 10,
-    paddingTop: 310,
+    paddingTop: '100%',
   },
   btn: {
     backgroundColor: '#e33653',

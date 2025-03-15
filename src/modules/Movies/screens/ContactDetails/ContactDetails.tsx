@@ -27,14 +27,14 @@ const ContactDetails = () => {
       <View style={styles.container}>
         <View style={styles.main}>
           <Text style={styles.txt}>Your Email</Text>
-          <TextInput style={styles.txtInput} placeholder="eg:abc@gmail.com" />
+          <TextInput style={styles.txtInput} placeholder="eg : abc@gmail.com" />
           <Text style={styles.line}>
             This E-mail will only be used for sending ticket(s)
           </Text>
         </View>
         <View style={styles.main}>
           <Text style={styles.txt}>Phone number</Text>
-          <TextInput style={styles.txtInput} placeholder="eg:91480XXXXX" />
+          <TextInput style={styles.txtInput} placeholder="eg : 91480XXXXX" />
           <Text style={styles.line}>
             To access the ticket(s) on other devices, Login with this number
           </Text>
@@ -56,6 +56,7 @@ export default ContactDetails;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fcf2f2',
+    paddingTop: 50,
   },
   container: {
     padding: 10,
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   txtInput: {
     borderWidth: 1,
     borderRadius: 5,
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Lato-Bold ',
   },
   main: {
     paddingTop: 20,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   btnView: {
-    paddingTop: 500,
+    paddingTop: '135%',
   },
   btn: {
     backgroundColor: '#525151',

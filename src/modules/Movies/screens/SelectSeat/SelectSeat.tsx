@@ -135,6 +135,9 @@ export default SelectSeat;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fafcfc',
+    paddingTop: 50,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   headerView: {
     padding: 10,
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
   theaterName: {
     fontSize: 12,
     color: 'gray',
-    paddingLeft: 13,
+    paddingLeft: 17,
     fontFamily: 'Lato-Regular',
   },
   backButtonImage: {
@@ -218,7 +221,7 @@ const styles = StyleSheet.create({
   },
   screenView: {
     paddingLeft: '30%',
-    paddingTop: 50,
+    paddingTop: '20%',
   },
   screen: {
     height: 70,
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 16,
-    paddingTop: 20,
+    paddingTop: '10%',
   },
   slotItem: {
     flexDirection: 'row',
@@ -253,11 +256,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnView: {
-    paddingTop: 9,
+    paddingTop: '10%',
   },
   countBtn: {
     backgroundColor: '#e3204a',
-    height: '20%',
+    height: '22%',
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -92,6 +92,7 @@ export default ConfirmBooking;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#ebf2f2',
+    paddingTop: 60,
   },
   container: {
     padding: 10,
@@ -129,7 +130,8 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 15,
+    paddingTop: 30,
   },
   cardBottom: {
     backgroundColor: '#f5dadd',
@@ -174,6 +176,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 15,
     fontFamily: 'Lato-Black',
+    paddingLeft: 20,
   },
   label1: {
     fontSize: 14,
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
   },
   totalView: {
     backgroundColor: '#faf5f6',
-    marginTop: '69%',
+    marginTop: '90%',
     flexDirection: 'row',
     height: 60,
     width: '100%',

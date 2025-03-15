@@ -93,7 +93,7 @@ function Cinema({route}) {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -151,6 +151,9 @@ function Cinema({route}) {
 export default Cinema;
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
   mainView: {
     backgroundColor: '#cccaca',
   },

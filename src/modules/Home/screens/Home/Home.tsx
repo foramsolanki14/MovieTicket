@@ -95,76 +95,78 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerView}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.headerTitle}>Welcome Guest!</Text>
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-            <Image
-              source={require('../../../../assets/icon/menubar.png')}
-              style={styles.searchBtn}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.nameCity}>Ahmedabad</Text>
-          </View>
-          <View style={styles.menu}>
-            <TouchableOpacity onPressOut={() => navigation.navigate('Cites')}>
+      <View>
+        <View style={styles.headerView}>
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.headerTitle}>Welcome Guest!</Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
               <Image
-                source={require('../../../../assets/icon/arrow-right.png')}
-                style={styles.arrow}
+                source={require('../../../../assets/icon/menubar.png')}
+                style={styles.searchBtn}
               />
             </TouchableOpacity>
           </View>
-        </View>
-      </View>
-      <ScrollView>
-        {genres.map(genre => {
-          const moviesToShow =
-            genre === 'Recommended' ? Movies : getMoviesByGenre(genre);
-          if (moviesToShow.length === 0) return null;
-
-          return (
-            <View key={genre} style={styles.section}>
-              <View style={styles.card}>
-                <Text style={styles.cardHeader}>{genre} Movies</Text>
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('Section', {genre, moviesToShow})
-                  }>
-                  <Text style={styles.txtBtn}>
-                    See All
-                    <Image
-                      source={require('../../../../assets/icon/arrow-right.png')}
-                      style={styles.arrow1}
-                    />
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <FlatList
-                horizontal
-                data={moviesToShow}
-                renderItem={({item}) => (
-                  <View style={styles.main}>
-                    <Pressable
-                      onPress={() =>
-                        navigation.navigate('MovieDetails', {movie: item})
-                      }>
-                      <Image src={item.image} style={styles.imgSection} />
-                    </Pressable>
-                    <View style={styles.title}>
-                      <Text style={styles.txtImg}>{item.title}</Text>
-                    </View>
-                  </View>
-                )}
-              />
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.nameCity}>Ahmedabad</Text>
             </View>
-          );
-        })}
-      </ScrollView>
+            <View style={styles.menu}>
+              <TouchableOpacity onPressOut={() => navigation.navigate('Cites')}>
+                <Image
+                  source={require('../../../../assets/icon/arrow-right.png')}
+                  style={styles.arrow}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <ScrollView>
+          {genres.map(genre => {
+            const moviesToShow =
+              genre === 'Recommended' ? Movies : getMoviesByGenre(genre);
+            if (moviesToShow.length === 0) return null;
+
+            return (
+              <View key={genre} style={styles.section}>
+                <View style={styles.card}>
+                  <Text style={styles.cardHeader}>{genre} Movies</Text>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('Section', {genre, moviesToShow})
+                    }>
+                    <Text style={styles.txtBtn}>
+                      See All
+                      <Image
+                        source={require('../../../../assets/icon/arrow-right.png')}
+                        style={styles.arrow1}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <FlatList
+                  horizontal
+                  data={moviesToShow}
+                  renderItem={({item}) => (
+                    <View style={styles.main}>
+                      <Pressable
+                        onPress={() =>
+                          navigation.navigate('MovieDetails', {movie: item})
+                        }>
+                        <Image src={item.image} style={styles.imgSection} />
+                      </Pressable>
+                      <View style={styles.title}>
+                        <Text style={styles.txtImg}>{item.title}</Text>
+                      </View>
+                    </View>
+                  )}
+                />
+              </View>
+            );
+          })}
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -174,14 +176,12 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
-    paddingBottom: 70,
+    paddingBottom: '30%',
+    paddingTop: 50,
   },
-  mainView: {
-    flexDirection: 'row',
-    gap: 30,
-  },
+
   headerView: {
-    padding: 10,
+    padding: 5,
     backgroundColor: '#fffafa',
     height: 60,
   },

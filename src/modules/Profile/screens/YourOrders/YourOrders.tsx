@@ -153,6 +153,6 @@ const styles = StyleSheet.create({
   },
   bookTxt: {
     color: 'red',
-    fontFamily: 'Lato-Black',
+    fontFamily: 'Lato-Bold',
   },
 });

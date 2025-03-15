@@ -14,7 +14,7 @@ const Section = () => {
   const route = useRoute();
   const {genre, moviesToShow} = route.params;
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -53,6 +53,8 @@ export default Section;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fafbfc',
+    paddingTop: 50,
+    paddingBottom: '20%',
   },
   headerView: {
     padding: 10,

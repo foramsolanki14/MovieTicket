@@ -30,7 +30,7 @@ const Profile = () => {
           />
         </View>
       </View>
-      <View>
+      <View style={styles.main}>
         <Pressable
           style={styles.data}
           onPress={() => navigation.navigate('MyProfile')}>
@@ -160,6 +160,10 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
+    paddingTop: 50,
+  },
+  main: {
+    paddingTop: 20,
   },
   headerView: {
     padding: 10,
@@ -184,7 +188,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     resizeMode: 'contain',
-    paddingLeft: '130%',
+    paddingLeft: '140%',
   },
   data: {
     flexDirection: 'row',
