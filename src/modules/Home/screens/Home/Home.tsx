@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Navigation from '../../../../navigation/NavigationBuilder';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -19,7 +18,7 @@ const Home = () => {
       id: 1,
       title: 'Chhaava',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4zLzEwICAyOTUuNksgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00408691-wqmumfxjtk-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/chhaava-et00408691-1737623374.jpg',
       genres: ['Historical'],
       Details:
         'Chhaava is a 2025 Indian Hindi-language historical action film based on the life of Sambhaji Maharaj, the second ruler of the Maratha Empire, who is played ...',
@@ -28,7 +27,7 @@ const Home = () => {
       id: 2,
       title: 'Fati Ne ?',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4yLzEwICAxLjhLIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00428340-qubtwcwbeb-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/faati-ne-et00428340-1739770188.jpg',
       genres: ['Horror'],
       Details:
         'Param Laal and Padam Laal, two dimwitted but well-meaning cops in Melbourne, owe their jobs to their legendary uncle Velji',
@@ -37,7 +36,7 @@ const Home = () => {
       id: 3,
       title: 'Umbaro',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4xLzEwICA1LjVLIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00420660-yemjtgvzze-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/umbarro-et00420660-1734089497.jpg',
       genres: ['Family'],
       Details:
         'Seven women from rural Gujarat embark on their first international trip to London, facing cultural clashes, language barriers in word.',
@@ -46,7 +45,7 @@ const Home = () => {
       id: 4,
       title: 'Mom Tne Nai Samjay',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC4zLzEwICAxLjdLIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00424440-htumtjtrgz-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mom-tane-nai-samjay-et00424440-1734259829.jpg',
       genres: ['Family'],
       Details:
         'Set in London, this emotional drama follows the life of Aashka and Kunal, a couple who strive to uphold Indian culture while raising their children',
@@ -55,7 +54,7 @@ const Home = () => {
       id: 5,
       title: 'The Monkey',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-Ni4zLzEwICA0MDEgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00430332-sarpksnaqb-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-monkey-et00430332-1737555963.jpg',
       genres: ['Horror'],
       Details:
         'It follows twin brothers whose lives are turned upside down by a cursed toy monkey that causes random horrific deaths around them.',
@@ -64,7 +63,7 @@ const Home = () => {
       id: 6,
       title: 'Best Of Luck Pandya',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS41LzEwICA0MjkgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00432831-zzbmbvvtsa-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/all-the-best-pandya-et00432831-1740136851.jpg',
       genres: ['Drama', 'Comedy'],
       Details:
         ' Comedy Drama released in Gujarati language in theatre near you in kolkata . Know about Film reviews, lead cast & crew, ...',
@@ -73,7 +72,7 @@ const Home = () => {
       id: 7,
       title: 'Mere Husband ki Biwi',
       image:
-        'https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-Ni45LzEwICAzLjlLIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00430518-pbbpufjmrb-portrait.jpg',
+        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mere-husband-ki-biwi-et00430518-1738572406.jpg',
       genres: ['Romantic'],
       Details:
         'A lovelorn Delhi realtor, Ankur, finally finds new love after a bitter divorce. But when his amnesiac ex-wife, stuck in a blissful memory of their past, stumbles back into his life, Ankur is caught in a hilarious and heart-warming tug-of-war between past and present love, forcing him to navigate wedding plans and rekindled memories in a desperate bid to choose his future.',
@@ -183,7 +182,9 @@ const Home = () => {
                       }>
                       <Image src={item.image} style={styles.imgSection} />
                     </Pressable>
-                    <Text style={styles.txtImg}>{item.title}</Text>
+                    <View style={{paddingTop: 5}}>
+                      <Text style={styles.txtImg}>{item.title}</Text>
+                    </View>
                   </View>
                 )}
               />
@@ -259,10 +260,10 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   imgSection: {
-    width: 180,
-    height: 200,
-    borderRadius: 10,
+    width: 150,
+    height: 220,
     resizeMode: 'contain',
+    borderRadius: 10,
   },
   card: {
     flexDirection: 'row',
@@ -279,11 +280,13 @@ const styles = StyleSheet.create({
   },
   txtBtn: {
     fontFamily: 'Lato-Black',
+    paddingRight: 10,
   },
   txtImg: {
-    fontSize: 15,
     fontFamily: 'Lato-Regular',
-    textAlign: 'center',
-    paddingTop: 10,
+    fontSize: 12,
+    backgroundColor: '#bdbebf',
+    borderRadius: 4,
+    paddingLeft: 7,
   },
 });
