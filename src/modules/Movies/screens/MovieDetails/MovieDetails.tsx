@@ -1,6 +1,14 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 function MovieDetails({route}) {
   const navigation = useNavigation();
@@ -20,14 +28,15 @@ function MovieDetails({route}) {
       </View>
       <View style={{padding: 10}}>
         <Image source={movie.image} style={styles.movieImage} />
-        <Text style={styles.Details}>{movie.Details}</Text>
-
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate('Cinema', {movie})}>
-          <Text style={styles.btnTxt}>Book Tickets</Text>
-        </TouchableOpacity>
+        <ReadMore numberOfLines={2} style={styles.Details}>
+          {movie.Details}
+        </ReadMore>
       </View>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate('Cinema', {movie})}>
+        <Text style={styles.btnTxt}>Book Tickets</Text>
+      </TouchableOpacity>
     </View>
   );
 }
