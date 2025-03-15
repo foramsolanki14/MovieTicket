@@ -27,7 +27,7 @@ function MovieDetails({route}) {
         </View>
       </View>
       <View style={{padding: 10}}>
-        <Image source={movie.image} style={styles.movieImage} />
+        <Image src={movie.image} style={styles.movieImage} />
         <ReadMore numberOfLines={2} style={styles.Details}>
           {movie.Details}
         </ReadMore>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
     marginTop: 10,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   Details: {
     marginTop: 20,
