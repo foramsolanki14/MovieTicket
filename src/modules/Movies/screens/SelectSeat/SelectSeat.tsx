@@ -106,10 +106,6 @@ function SelectSeat({route}) {
       <View>
         <View style={styles.slot}>
           <View style={styles.slotItem}>
-            <View style={[styles.slotColor, {backgroundColor: '#FFD700'}]} />
-            <Text style={styles.slotText}>Bestseller</Text>
-          </View>
-          <View style={styles.slotItem}>
             <View style={[styles.slotColor, {backgroundColor: '#FFFFFF'}]} />
             <Text style={styles.slotText}>Available</Text>
           </View>
