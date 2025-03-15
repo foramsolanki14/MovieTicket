@@ -68,7 +68,7 @@ const Profile = () => {
         </View>
         <View style={styles.data}>
           <Image
-            source={require('../../../../assets/icon/playcradit.webp')}
+            src="https://assets-in.bmscdn.com/members/common/icons/playcreditcard.png"
             style={styles.img}
           />
           <View>
@@ -209,8 +209,9 @@ const styles = StyleSheet.create({
   },
   img: {
     padding: 10,
-    height: 22,
-    width: 22,
+    height: 23,
+    width: 23,
     margin: 10,
+    resizeMode: 'contain',
   },
 });

@@ -269,6 +269,6 @@ const styles = StyleSheet.create({
   title: {
     padding: 5,
     backgroundColor: '#ede9e8',
-    borderRadius: 5,
+    borderRadius: 7,
   },
 });

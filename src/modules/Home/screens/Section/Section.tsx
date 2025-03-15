@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 10,
   },
   headerTitle: {
     fontFamily: 'Lato-Bold',
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
   },
   nameCity: {
     fontSize: 13,
-    paddingLeft: 30,
+    paddingLeft: 100,
     paddingTop: 3,
     fontFamily: 'Lato-Regular',
   },
