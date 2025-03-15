@@ -26,17 +26,18 @@ function MovieDetails({route}) {
           <Text style={styles.headerTitle}>{movie.title}</Text>
         </View>
       </View>
-      <View style={{padding: 10}}>
+      <View style={{padding: 20}}>
         <Image src={movie.image} style={styles.movieImage} />
         <ReadMore numberOfLines={2} style={styles.Details}>
           {movie.Details}
         </ReadMore>
+
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate('Cinema', {movie})}>
+          <Text style={styles.btnTxt}>Book Tickets</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() => navigation.navigate('Cinema', {movie})}>
-        <Text style={styles.btnTxt}>Book Tickets</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
     marginTop: 10,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   Details: {
     marginTop: 20,
