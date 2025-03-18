@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -9,8 +10,18 @@ import {
   Image,
 } from 'react-native';
 
+interface CinemaData {
+  createdat: string;
+  location: string;
+  name: string;
+  theater_id: number;
+  totalscreens: number;
+}
+
 function Cinema({route}) {
   const navigation = useNavigation();
+  const [cinema, setCinema] = useState<CinemaData[]>([]);
+  // const [selectedDateId, setSelectedDateId] = useState(null);
   const {movie} = route.params;
   const Dates = [
     {id: 1, day: 'MON', date: '01', month: 'MAR'},
@@ -28,69 +39,20 @@ function Cinema({route}) {
     {price: '₹401-₹500'},
   ];
 
-  const MovieList = [
-    {
-      theater: 'PVR: Palladium Mall, Ahmedabad',
-      cancellable: 'cancellation Available',
-      showTimes: ['03:15 PM', '08:05 PM'],
-    },
-    {
-      theater: 'PVR: Acropolis, Ahmedabad',
-      cancellable: 'cancellation Available',
-      showTimes: ['08:15 PM', '10:20 PM'],
-    },
-    {
-      theater: 'Nexus Ahmedabad One',
-      cancellable: 'Non-Cancellbale',
-      showTimes: ['02:30 PM', '04:35 PM'],
-    },
-    {
-      theater: 'City Gold, Ashram Road',
-      cancellable: 'Non-Cancellbale ',
-      showTimes: ['02:45 PM', '05:30 PM', '08:30 PM'],
-    },
-    {
-      theater: 'PVR: Palladium Mall, Ahmedabad',
-      cancellable: 'cancellation Available',
-      showTimes: ['03:15 PM', '08:05 PM'],
-    },
-    {
-      theater: 'PVR: Palladium Mall, Ahmedabad',
-      cancellable: 'cancellation Available',
-      showTimes: ['03:15 PM', '08:05 PM'],
-    },
-    {
-      theater: 'Orange Cinemas: Bapunagar',
-      cancellable: 'cancellation Available',
-      showTimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
-    },
-    {
-      theater: 'Orange Cinemas: Bapunagar',
-      cancellable: 'cancellation Available',
-      showTimes: ['12:30 PM', '03:30 PM', '06:30 PM'],
-    },
-  ];
+  const API_URL = 'http://10.0.2.2:5000/theaters/all-theaters';
 
-  const [selectedDateId, setSelectedDateId] = useState(null);
+  const fetchCinema = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setCinema(res.data.data);
+    } catch (err) {
+      console.log('Error fetching cinema:', err);
+    }
+  };
 
-  const renderDateItem = ({item}) => (
-    <TouchableOpacity
-      style={[styles.date, selectedDateId === item.id && styles.selectedDate]}
-      onPress={() => setSelectedDateId(item.id)}>
-      <Text
-        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
-        {item.day}
-      </Text>
-      <Text
-        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
-        {item.date}
-      </Text>
-      <Text
-        style={[selectedDateId === item.id && styles.selectedText, styles.txt]}>
-        {item.month}
-      </Text>
-    </TouchableOpacity>
-  );
+  useEffect(() => {
+    fetchCinema();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -105,41 +67,41 @@ function Cinema({route}) {
           <Text style={styles.headerTitle}>{movie.title}</Text>
         </View>
       </View>
-      <FlatList horizontal data={Dates} renderItem={renderDateItem} />
-      <View style={styles.priceDetail}>
+      <View>
         <FlatList
           horizontal
-          data={priceFilters}
+          data={Dates}
           renderItem={({item}) => (
-            <TouchableOpacity style={styles.price}>
-              <Text style={styles.priceText}>{item.price}</Text>
-            </TouchableOpacity>
+            <View style={styles.date}>
+              <TouchableOpacity>
+                <Text style={styles.txt}>{item.date}</Text>
+                <Text style={styles.txt}>{item.day}</Text>
+                <Text style={styles.txt}>{item.month}</Text>
+              </TouchableOpacity>
+            </View>
           )}
         />
+        <View style={styles.priceDetail}>
+          <FlatList
+            horizontal
+            data={priceFilters}
+            renderItem={({item}) => (
+              <TouchableOpacity style={styles.price}>
+                <Text style={styles.priceText}>{item.price}</Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
+
       <View style={styles.cinemaScroll}>
         <FlatList
           style={styles.cinema}
-          data={MovieList}
+          data={cinema}
           renderItem={({item}) => (
             <View style={styles.movieItem}>
-              <Text style={styles.name}> &#x2661; {item.theater}</Text>
-              <Text style={styles.cancellable}>{item.cancellable}</Text>
-              <View style={styles.timeView}>
-                {item.showTimes.map((time, index) => (
-                  <TouchableOpacity
-                    key={index}
-                    style={styles.timeBtn}
-                    onPress={() =>
-                      navigation.navigate('SelectSeat', {
-                        movie,
-                        theater: item.theater,
-                      })
-                    }>
-                    <Text style={styles.timeText}>{time}</Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
+              <Text style={styles.name}> &#x2661; {item.name}</Text>
+              <Text>{item.createdat}</Text>
             </View>
           )}
         />
@@ -152,7 +114,7 @@ export default Cinema;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    // paddingTop: 50,
   },
   mainView: {
     backgroundColor: '#cccaca',
@@ -209,10 +171,14 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 4,
     borderRadius: 15,
+    paddingBottom: 6,
+    marginTop: 1,
+    alignItems: 'center',
   },
   cinemaScroll: {
     maxHeight: '80%',
     backgroundColor: '#ccc2c2',
+    paddingBottom: 12,
   },
   cinema: {
     padding: 10,

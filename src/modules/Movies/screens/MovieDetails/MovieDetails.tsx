@@ -4,15 +4,31 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
+  FlatList,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import ReadMore from '@fawazahmed/react-native-read-more';
+import {fetchMovieDetails} from '../../../Api/Api';
 
 function MovieDetails({route}) {
   const navigation = useNavigation();
   const {movie} = route.params;
+  const [movieDetails, setMovieDetails] = useState(null);
+
+  useEffect(() => {
+    const loadMovies = async () => {
+      try {
+        const data = await fetchMovieDetails(movie.movie_id);
+        setMovieDetails(data);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    loadMovies();
+  }, [movie.movie_id]);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -28,16 +44,28 @@ function MovieDetails({route}) {
       </View>
       <View>
         <View style={styles.dataView}>
-          <Image src={movie.image} style={styles.movieImage} />
+          <Image src={movie.posterurl} style={styles.movieImage} />
           <View style={styles.textView}>
-            <Text style={styles.text}>2h 41m</Text>
-            <Text style={styles.text}>Action, Drama, Historical</Text>
-            <Text style={styles.text}>14 Fab , 2025</Text>
+            <Text style={styles.text}>
+              {movie.duration
+                ? `${Math.floor(movie.duration / 60)}h ${movie.duration % 60}m`
+                : 'N/A'}
+            </Text>
+            <Text style={styles.text}>{movie.genres}</Text>
+            <Text style={styles.text}>
+              {movie.release_date
+                ? new Date(movie.release_date).toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })
+                : 'N/A'}
+            </Text>
           </View>
         </View>
         <Text style={styles.title}>About Movie</Text>
         <ReadMore numberOfLines={4} style={styles.Details}>
-          {movie.Details}
+          {movie.description}
         </ReadMore>
       </View>
       <View>
@@ -58,7 +86,7 @@ export default MovieDetails;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
+    // paddingTop: 70,
   },
   headerView: {
     padding: 10,
@@ -103,7 +131,7 @@ const styles = StyleSheet.create({
   },
   btnView: {
     padding: 10,
-    paddingTop: '100%',
+    paddingTop: '85%',
   },
   btn: {
     backgroundColor: '#e33653',

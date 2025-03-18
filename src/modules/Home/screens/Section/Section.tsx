@@ -34,14 +34,18 @@ const Section = () => {
       <FlatList
         data={moviesToShow}
         numColumns={2}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.movie_id.toString()}
         renderItem={({item}) => (
-          <TouchableOpacity
-            style={styles.movieItem}
-            onPress={() => navigation.navigate('MovieDetails', {movie: item})}>
-            <Image src={item.image} style={styles.movieImage} />
-            <Text style={styles.movieTitle}>{item.title}</Text>
-          </TouchableOpacity>
+          <View style={styles.section}>
+            <TouchableOpacity
+              style={styles.movieItem}
+              onPress={() =>
+                navigation.navigate('MovieDetails', {movie: item})
+              }>
+              <Image src={item.posterurl} style={styles.movieImage} />
+              <Text style={styles.movieTitle}>{item.title}</Text>
+            </TouchableOpacity>
+          </View>
         )}
       />
     </View>
@@ -53,7 +57,7 @@ export default Section;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fafbfc',
-    paddingTop: 50,
+    // paddingTop: 50,
     paddingBottom: '20%',
   },
   headerView: {
@@ -74,16 +78,21 @@ const styles = StyleSheet.create({
     width: 24,
     resizeMode: 'contain',
   },
+  section: {
+    paddingTop: 10,
+    paddingLeft: 1.5,
+  },
   movieItem: {
     flex: 1 / 2,
     margin: 8,
     alignItems: 'center',
   },
   movieImage: {
-    width: 185,
-    height: 290,
-    borderRadius: 5,
-    resizeMode: 'cover',
+    width: 190,
+    height: 300,
+    borderRadius: 10,
+    resizeMode: 'contain',
+    elevation: 15,
   },
   movieTitle: {
     marginTop: 8,

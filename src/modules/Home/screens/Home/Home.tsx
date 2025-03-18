@@ -1,4 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
+import {fetchMovies} from '../../../Api/Api';
 import {
   FlatList,
   Image,
@@ -10,88 +13,45 @@ import {
   View,
 } from 'react-native';
 
+interface movieData {
+  description: string;
+  duration: number;
+  genres: string;
+  movie_id: number;
+  posterurl: string;
+  release_date: string;
+  title: string;
+}
+
 const Home = () => {
   const navigation = useNavigation();
+  const [movie, setMovie] = useState<movieData[]>([]);
+  const [genres, setGenres] = useState<string[]>([]);
 
-  const Movies = [
-    {
-      id: 1,
-      title: 'Chhaava',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/chhaava-et00408691-1737623374.jpg',
-      genres: ['Historical'],
-      Details:
-        ' Chhaava is a 2025 Indian Hindi-language historical action film based on the life of Sambhaji Maharaj, the second ruler of the Maratha Empire, who is played ...',
-    },
-    {
-      id: 2,
-      title: 'Fati Ne ?',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/faati-ne-et00428340-1739770188.jpg',
-      genres: ['Horror'],
-      Details:
-        ' Param Laal and Padam Laal, two dimwitted but well-meaning cops in Melbourne, owe their jobs to their legendary uncle Velji',
-    },
-    {
-      id: 3,
-      title: 'Umbaro',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/umbarro-et00420660-1734089497.jpg',
-      genres: ['Family'],
-      Details:
-        ' Seven women from rural Gujarat embark on their first international trip to London, facing cultural clashes, language barriers in word.',
-    },
-    {
-      id: 4,
-      title: 'Mom Tne Nai Samjay',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mom-tane-nai-samjay-et00424440-1734259829.jpg',
-      genres: ['Family'],
-      Details:
-        ' Set in London, this emotional drama follows the life of Aashka and Kunal, a couple who strive to uphold Indian culture while raising their children',
-    },
-    {
-      id: 5,
-      title: 'The Monkey',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-monkey-et00430332-1737555963.jpg',
-      genres: ['Horror'],
-      Details:
-        ' It follows twin brothers whose lives are turned upside down by a cursed toy monkey that causes random horrific deaths around them.',
-    },
-    {
-      id: 6,
-      title: 'Best Of Luck Pandya',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/all-the-best-pandya-et00432831-1740136851.jpg',
-      genres: ['Drama', 'Comedy'],
-      Details:
-        ' Comedy Drama released in Gujarati language in theatre near you in kolkata . Know about Film reviews, lead cast & crew, ...',
-    },
-    {
-      id: 7,
-      title: 'Mere Husband ki Biwi',
-      image:
-        'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mere-husband-ki-biwi-et00430518-1738572406.jpg',
-      genres: ['Romantic'],
-      Details:
-        ' A lovelorn Delhi realtor, Ankur, finally finds new love after a bitter divorce. But when his amnesiac ex-wife, stuck in a blissful memory of their past, stumbles back into his life, Ankur is caught in a hilarious and heart-warming tug-of-war between past and present love, forcing him to navigate wedding plans and rekindled memories in a desperate bid to choose his future.',
-    },
-  ];
-
-  const getMoviesByGenre = genre => {
-    return Movies.filter(movie => movie.genres.includes(genre));
+  const getMoviesByGenre = (genre: string) => {
+    return movie.filter(movie => movie.genres.includes(genre));
   };
 
-  const genres = [
-    'Recommended',
-    'Horror',
-    'Historical',
-    'Drama',
-    'Family',
-    'Comedy',
-    'Romantic',
-  ];
+  useEffect(() => {
+    const loadMovies = async () => {
+      try {
+        const moviesData = await fetchMovies();
+        setMovie(moviesData);
+        const allGenres = Array.from(
+          new Set(
+            moviesData.flatMap((movie: {genres: string}) =>
+              movie.genres.split(', '),
+            ),
+          ),
+        );
+        setGenres(allGenres);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    loadMovies();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -101,12 +61,14 @@ const Home = () => {
             <View>
               <Text style={styles.headerTitle}>Welcome Guest!</Text>
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-              <Image
-                source={require('../../../../assets/icon/menubar.png')}
-                style={styles.searchBtn}
-              />
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                <Image
+                  source={require('../../../../assets/icon/menubar.png')}
+                  style={styles.searchBtn}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.header}>
             <View>
@@ -125,7 +87,7 @@ const Home = () => {
         <ScrollView>
           {genres.map(genre => {
             const moviesToShow =
-              genre === 'Recommended' ? Movies : getMoviesByGenre(genre);
+              genre === 'Recommended' ? movie : getMoviesByGenre(genre);
             if (moviesToShow.length === 0) return null;
 
             return (
@@ -154,7 +116,10 @@ const Home = () => {
                         onPress={() =>
                           navigation.navigate('MovieDetails', {movie: item})
                         }>
-                        <Image src={item.image} style={styles.imgSection} />
+                        <Image
+                          source={{uri: item.posterurl}}
+                          style={styles.imgSection}
+                        />
                       </Pressable>
                       <View style={styles.title}>
                         <Text style={styles.txtImg}>{item.title}</Text>
@@ -177,7 +142,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f3f0',
     paddingBottom: '30%',
-    paddingTop: 50,
+    // paddingTop: 50,
   },
 
   headerView: {
@@ -198,7 +163,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 30,
     resizeMode: 'contain',
-    paddingLeft: '100%',
+    paddingLeft: '105%',
     paddingTop: '7%',
   },
   nameCity: {
@@ -240,7 +205,7 @@ const styles = StyleSheet.create({
   imgSection: {
     width: 150,
     height: 220,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 10,
   },
   card: {
