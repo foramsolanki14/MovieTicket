@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import {fetchCinema, fetchShow} from '../../../Api/Api';
 
 interface CinemaData {
   createdat: string;
@@ -18,19 +19,28 @@ interface CinemaData {
   totalscreens: number;
 }
 
+interface DateItem {
+  id: number;
+  day: string;
+  date: string;
+  month: string;
+  fullDate: Date; // Add a full Date object
+}
+interface ShowData {
+  show_id: number;
+  ticketprice: number;
+  theater_name: string;
+  showdate: string;
+  showtime: string;
+}
+
 function Cinema({route}) {
   const navigation = useNavigation();
   const [cinema, setCinema] = useState<CinemaData[]>([]);
-  // const [selectedDateId, setSelectedDateId] = useState(null);
+  const [datesOfWeek, setDatesOfWeek] = useState<DateItem[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [shows, setShows] = useState<ShowData[]>([]);
   const {movie} = route.params;
-  const Dates = [
-    {id: 1, day: 'MON', date: '01', month: 'MAR'},
-    {id: 2, day: 'TUE', date: '02', month: 'MAR'},
-    {id: 3, day: 'THU', date: '03', month: 'MAR'},
-    {id: 4, day: 'FRI', date: '04', month: 'MAR'},
-    {id: 5, day: 'STU', date: '05', month: 'MAR'},
-    {id: 6, day: 'SUN', date: '06', month: 'MAR'},
-  ];
   const priceFilters = [
     {price: '₹0-₹100'},
     {price: '₹101-₹200'},
@@ -39,20 +49,75 @@ function Cinema({route}) {
     {price: '₹401-₹500'},
   ];
 
-  const API_URL = 'http://10.0.2.2:5000/theaters/all-theaters';
+  useEffect(() => {
+    const loadMovies = async () => {
+      try {
+        const theaterData = await fetchCinema();
+        setCinema(theaterData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const loadShow = async () => {
+      try {
+        const showdate = await fetchShow();
+        setShows(showdate);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const fetchCinema = async () => {
-    try {
-      const res = await axios.get(API_URL);
-      setCinema(res.data.data);
-    } catch (err) {
-      console.log('Error fetching cinema:', err);
+    loadMovies();
+    generateDatesOfWeek();
+  }, []);
+
+  const generateDatesOfWeek = () => {
+    const today = new Date();
+    const currentDay = today.getDay();
+    const startDate = new Date(today);
+
+    const diff = startDate.getDate() - currentDay + (currentDay === 0 ? -7 : 1);
+    startDate.setDate(diff);
+
+    const weekDates: DateItem[] = [];
+    for (let i = 0; i < 7; i++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(startDate.getDate() + i);
+      const dayOptions: Intl.DateTimeFormatOptions = {weekday: 'short'};
+      const dateOptions: Intl.DateTimeFormatOptions = {day: '2-digit'};
+      const monthOptions: Intl.DateTimeFormatOptions = {month: 'short'};
+
+      weekDates.push({
+        id: i + 1,
+        day: currentDate.toLocaleDateString('en-IN', dayOptions).toUpperCase(),
+        date: currentDate.toLocaleDateString('en-IN', dateOptions),
+        month: currentDate
+          .toLocaleDateString('en-IN', monthOptions)
+          .toUpperCase(),
+        fullDate: currentDate,
+      });
+    }
+    setDatesOfWeek(weekDates);
+    if (weekDates.length > 0) {
+      setSelectedDate(weekDates[0].fullDate);
     }
   };
 
-  useEffect(() => {
-    fetchCinema();
-  }, []);
+  const handleDatePress = (dateItem: DateItem) => {
+    setSelectedDate(dateItem.fullDate);
+    console.log('Selected Date:', dateItem.fullDate);
+  };
+
+  const isSameDate = (date1: Date | null, date2: Date | null) => {
+    if (!date1 || !date2) {
+      return false;
+    }
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -70,25 +135,53 @@ function Cinema({route}) {
       <View>
         <FlatList
           horizontal
-          data={Dates}
+          data={datesOfWeek}
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
-            <View style={styles.date}>
-              <TouchableOpacity>
-                <Text style={styles.txt}>{item.date}</Text>
-                <Text style={styles.txt}>{item.day}</Text>
-                <Text style={styles.txt}>{item.month}</Text>
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              style={[
+                styles.date,
+                isSameDate(item.fullDate, selectedDate) && styles.selectedDate,
+              ]}
+              onPress={() => handleDatePress(item)}>
+              <Text
+                style={[
+                  styles.txt,
+                  isSameDate(item.fullDate, selectedDate) &&
+                    styles.selectedText,
+                ]}>
+                {item.date}
+              </Text>
+              <Text
+                style={[
+                  styles.txt,
+                  isSameDate(item.fullDate, selectedDate) &&
+                    styles.selectedText,
+                ]}>
+                {item.day}
+              </Text>
+              <Text
+                style={[
+                  styles.txt,
+                  isSameDate(item.fullDate, selectedDate) &&
+                    styles.selectedText,
+                ]}>
+                {item.month}
+              </Text>
+            </TouchableOpacity>
           )}
         />
         <View style={styles.priceDetail}>
           <FlatList
             horizontal
             data={priceFilters}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => (
-              <TouchableOpacity style={styles.price}>
-                <Text style={styles.priceText}>{item.price}</Text>
-              </TouchableOpacity>
+              <View style={{paddingBottom: 5}}>
+                <TouchableOpacity style={styles.price}>
+                  <Text style={styles.priceText}>{item.price}</Text>
+                </TouchableOpacity>
+              </View>
             )}
           />
         </View>
@@ -101,7 +194,19 @@ function Cinema({route}) {
           renderItem={({item}) => (
             <View style={styles.movieItem}>
               <Text style={styles.name}> &#x2661; {item.name}</Text>
-              <Text>{item.createdat}</Text>
+              <View style={styles.timeView}>
+                <TouchableOpacity
+                  style={styles.timeBtn}
+                  onPress={() =>
+                    navigation.navigate('SelectSeat', {
+                      movie: movie,
+                      cinemaName: item.name,
+                      CinemaLocation: item.location,
+                    })
+                  }>
+                  <Text style={styles.timeText}>12:30</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         />
@@ -140,23 +245,26 @@ const styles = StyleSheet.create({
   },
 
   date: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
+    padding: 10,
+    paddingTop: 10,
+    marginHorizontal: 5,
     borderColor: '#dbd7d7',
+    alignItems: 'center',
+    borderBottomWidth: 1,
   },
   selectedDate: {
     backgroundColor: '#e3204a',
   },
   txt: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: 'Lato-Regular ',
     paddingLeft: 0,
+    fontSize: 17,
+    color: '#333',
+    paddingTop: 5,
   },
   selectedText: {
     color: '#ebe6e6',
-    fontFamily: 'Lato-Regular',
-    padding: 1,
-    paddingLeft: 0,
+    fontFamily: 'Lato-Bold',
   },
   priceText: {
     fontFamily: 'Lato-Regular',
@@ -164,14 +272,14 @@ const styles = StyleSheet.create({
   },
   priceDetail: {
     marginTop: 20,
-    elevation: 15,
+    paddingHorizontal: 10,
   },
   price: {
     borderWidth: 1,
-    padding: 5,
-    margin: 4,
+    padding: 8,
+    marginHorizontal: 5,
     borderRadius: 15,
-    paddingBottom: 6,
+    paddingBottom: 5,
     marginTop: 1,
     alignItems: 'center',
   },
@@ -206,7 +314,8 @@ const styles = StyleSheet.create({
   timeBtn: {
     borderWidth: 1,
     borderRadius: 5,
-    height: 35,
+    height: 30,
+    width: '40%',
     paddingHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'center',

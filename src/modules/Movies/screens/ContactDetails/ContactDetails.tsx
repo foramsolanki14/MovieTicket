@@ -56,7 +56,7 @@ export default ContactDetails;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fcf2f2',
-    paddingTop: 50,
+    // paddingTop: 50,
   },
   container: {
     padding: 10,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   btnView: {
-    paddingTop: '135%',
+    paddingTop: '125%',
   },
   btn: {
     backgroundColor: '#525151',

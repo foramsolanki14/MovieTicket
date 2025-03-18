@@ -6,17 +6,40 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {fetchShow} from '../../../Api/Api';
+
+interface ShowData {
+  show_id: number;
+  ticketprice: number;
+  theater_name: string;
+  showdate: string;
+  showtime: string;
+}
 
 function SelectSeat({route}) {
   const navigation = useNavigation();
-  const {movie, theater} = route.params;
+  const {movie, cinemaName, CinemaLocation} = route.params;
+  const [shows, setShows] = useState<ShowData[]>([]);
 
   const seat1 = [1, 2, 3, 4];
   const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
   const seat3 = [1, 2, 3, 4, 5, 6];
   const seat4 = [1, 2, 3, 4, 5, 6, 7];
+
+  useEffect(() => {
+    const loadMovies = async () => {
+      try {
+        const theaterData = await fetchShow();
+        setShows(theaterData);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    loadMovies();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -30,7 +53,9 @@ function SelectSeat({route}) {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{movie.title}</Text>
         </View>
-        <Text style={styles.theaterName}>{theater}</Text>
+        <Text style={styles.theaterName}>
+          {cinemaName} | {CinemaLocation}
+        </Text>
       </View>
       <View style={styles.topView}>
         <View style={styles.DateTime}>
@@ -42,58 +67,23 @@ function SelectSeat({route}) {
         </TouchableOpacity>
       </View>
       <View style={styles.section}>
-        <Text style={styles.sectionTxt}>Rs. 550 RECLINER: </Text>
-      </View>
-      <View style={styles.seatSection}>
         <FlatList
-          data={seat1}
-          numColumns={4}
+          data={shows}
           renderItem={({item}) => (
-            <TouchableOpacity>
-              <Text style={styles.seat}>{item}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTxt}>Rs. 250 PRIME PLUS: </Text>
-      </View>
-      <View style={styles.seatSection}>
-        <FlatList
-          data={seat2}
-          numColumns={4}
-          renderItem={({item}) => (
-            <TouchableOpacity>
-              <Text style={styles.seat}>{item}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTxt}>Rs. 200 PRIME : </Text>
-      </View>
-      <View style={styles.seatSection}>
-        <FlatList
-          data={seat3}
-          numColumns={4}
-          renderItem={({item}) => (
-            <TouchableOpacity>
-              <Text style={styles.seat}>{item}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTxt}>Rs. 170 CLASSIC: </Text>
-      </View>
-      <View style={styles.seatSection}>
-        <FlatList
-          data={seat4}
-          numColumns={4}
-          renderItem={({item}) => (
-            <TouchableOpacity>
-              <Text style={styles.seat}>{item}</Text>
-            </TouchableOpacity>
+            <View>
+              <Text style={styles.sectionTxt}>Rs. {item.ticketprice} </Text>
+              <View style={styles.seatSection}>
+                <FlatList
+                  data={seat1}
+                  numColumns={4}
+                  renderItem={({item}) => (
+                    <TouchableOpacity>
+                      <Text style={styles.seat}>{item}</Text>
+                    </TouchableOpacity>
+                  )}
+                />
+              </View>
+            </View>
           )}
         />
       </View>
@@ -135,7 +125,7 @@ export default SelectSeat;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fafcfc',
-    paddingTop: 50,
+    // paddingTop: 50,
     paddingLeft: 10,
     paddingRight: 10,
   },
@@ -167,7 +157,7 @@ const styles = StyleSheet.create({
 
   topView: {
     backgroundColor: '#e4eaeb',
-    height: '11%',
+    height: '8%',
     width: '100%',
     padding: 10,
   },
@@ -221,7 +211,7 @@ const styles = StyleSheet.create({
   },
   screenView: {
     paddingLeft: '30%',
-    paddingTop: '20%',
+    paddingTop: '10%',
   },
   screen: {
     height: 70,
@@ -239,7 +229,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 16,
-    paddingTop: '10%',
+    paddingTop: '5%',
   },
   slotItem: {
     flexDirection: 'row',
@@ -256,7 +246,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnView: {
-    paddingTop: '10%',
+    paddingTop: '5%',
   },
   countBtn: {
     backgroundColor: '#e3204a',

@@ -92,7 +92,7 @@ export default ConfirmBooking;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#ebf2f2',
-    paddingTop: 60,
+    // paddingTop: 60,
   },
   container: {
     padding: 10,

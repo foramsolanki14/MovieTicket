@@ -19,3 +19,23 @@ export const fetchMovieDetails = async movie_id => {
     console.log(err);
   }
 };
+
+export const fetchCinema = async () => {
+  const API_URL = 'http://10.0.2.2:5000/theaters/all-theaters';
+  try {
+    const res = await axios.get(API_URL);
+    return res.data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchShow = async () => {
+  const API_URL = 'http://10.0.2.2:5000/shows/shows';
+  try {
+    const res = await axios.get(API_URL);
+    return res.data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
