@@ -42,7 +42,10 @@ const Section = () => {
               onPress={() =>
                 navigation.navigate('MovieDetails', {movie: item})
               }>
-              <Image src={item.posterurl} style={styles.movieImage} />
+              <Image
+                src={`http://10.0.2.2:5000/images/${item.posterurl}`}
+                style={styles.movieImage}
+              />
               <Text style={styles.movieTitle}>{item.title}</Text>
             </TouchableOpacity>
           </View>
@@ -80,11 +83,10 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingTop: 10,
-    paddingLeft: 1.5,
   },
   movieItem: {
     flex: 1 / 2,
-    margin: 8,
+    margin: 5,
     alignItems: 'center',
   },
   movieImage: {
@@ -92,11 +94,10 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 10,
     resizeMode: 'contain',
-    elevation: 15,
   },
   movieTitle: {
     marginTop: 8,
-    fontSize: 16,
+    fontSize: 15,
     fontFamily: 'Lato-Regular',
     textAlign: 'center',
   },

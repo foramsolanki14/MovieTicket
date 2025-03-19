@@ -2,8 +2,9 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const ConfirmBooking = () => {
+function ConfirmBooking() {
   const navigation = useNavigation();
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.headerView}>
@@ -85,7 +86,7 @@ const ConfirmBooking = () => {
       </View>
     </View>
   );
-};
+}
 
 export default ConfirmBooking;
 

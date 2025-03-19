@@ -1,5 +1,4 @@
 import {useNavigation} from '@react-navigation/native';
-import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {fetchMovies} from '../../../Api/Api';
 import {
@@ -45,6 +44,10 @@ const Home = () => {
           ),
         );
         setGenres(allGenres);
+
+        if (!allGenres.includes('Recommended')) {
+          setGenres(['Recommended', ...allGenres]);
+        }
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -117,7 +120,7 @@ const Home = () => {
                           navigation.navigate('MovieDetails', {movie: item})
                         }>
                         <Image
-                          source={{uri: item.posterurl}}
+                          src={`http://10.0.2.2:5000/images/${item.posterurl}`}
                           style={styles.imgSection}
                         />
                       </Pressable>
@@ -203,9 +206,9 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   imgSection: {
-    width: 150,
-    height: 220,
-    resizeMode: 'cover',
+    width: 200,
+    height: 270,
+    resizeMode: 'contain',
     borderRadius: 10,
   },
   card: {

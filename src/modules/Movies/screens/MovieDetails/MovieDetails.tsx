@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import ReadMore from '@fawazahmed/react-native-read-more';
@@ -44,7 +37,10 @@ function MovieDetails({route}) {
       </View>
       <View>
         <View style={styles.dataView}>
-          <Image src={movie.posterurl} style={styles.movieImage} />
+          <Image
+            src={`http://10.0.2.2:5000/images/${movie.posterurl}`}
+            style={styles.movieImage}
+          />
           <View style={styles.textView}>
             <Text style={styles.text}>
               {movie.duration
@@ -68,14 +64,12 @@ function MovieDetails({route}) {
           {movie.description}
         </ReadMore>
       </View>
-      <View>
-        <View style={styles.btnView}>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => navigation.navigate('Cinema', {movie})}>
-            <Text style={styles.btnTxt}>Book Tickets</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.fixedButtonContainer}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate('Cinema', {movie, movieDetails})}>
+          <Text style={styles.btnTxt}>Book Tickets</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -86,7 +80,6 @@ export default MovieDetails;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop: 70,
   },
   headerView: {
     padding: 10,
@@ -129,10 +122,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  btnView: {
-    padding: 10,
-    paddingTop: '85%',
-  },
   btn: {
     backgroundColor: '#e33653',
     height: 40,
@@ -160,5 +149,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     paddingTop: 10,
     textAlign: 'center',
+  },
+  fixedButtonContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    padding: 10,
   },
 });

@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import axios from 'axios';
+
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -9,80 +9,51 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {fetchCinema, fetchShow} from '../../../Api/Api';
-
-interface CinemaData {
-  createdat: string;
-  location: string;
-  name: string;
-  theater_id: number;
-  totalscreens: number;
-}
+import {fetchCinema, fetchShow, fetchShowData} from '../../../Api/Api';
 
 interface DateItem {
   id: number;
   day: string;
   date: string;
   month: string;
-  fullDate: Date; // Add a full Date object
+  fullDate: Date;
 }
 interface ShowData {
-  show_id: number;
-  ticketprice: number;
-  theater_name: string;
-  showdate: string;
-  showtime: string;
+  theater_id: number;
+  TheaterName: string;
+  TheaterLocation: string;
+  ShowTimes: string;
+  TicketPrices: string;
 }
 
 function Cinema({route}) {
   const navigation = useNavigation();
-  const [cinema, setCinema] = useState<CinemaData[]>([]);
   const [datesOfWeek, setDatesOfWeek] = useState<DateItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [shows, setShows] = useState<ShowData[]>([]);
+  const [ShowData, setShowData] = useState<ShowData[]>();
   const {movie} = route.params;
-  const priceFilters = [
-    {price: '₹0-₹100'},
-    {price: '₹101-₹200'},
-    {price: '₹201-₹300'},
-    {price: '₹301-₹400'},
-    {price: '₹401-₹500'},
-  ];
 
   useEffect(() => {
-    const loadMovies = async () => {
+    const loadShowData = async () => {
       try {
-        const theaterData = await fetchCinema();
-        setCinema(theaterData);
+        const moviesData = await fetchShowData();
+        setShowData(moviesData);
       } catch (error) {
         console.error(error);
       }
     };
-    const loadShow = async () => {
-      try {
-        const showdate = await fetchShow();
-        setShows(showdate);
-      } catch (err) {
-        console.log(err);
-      }
-    };
 
-    loadMovies();
+    loadShowData();
+
     generateDatesOfWeek();
   }, []);
 
   const generateDatesOfWeek = () => {
     const today = new Date();
-    const currentDay = today.getDay();
-    const startDate = new Date(today);
-
-    const diff = startDate.getDate() - currentDay + (currentDay === 0 ? -7 : 1);
-    startDate.setDate(diff);
-
     const weekDates: DateItem[] = [];
     for (let i = 0; i < 7; i++) {
-      const currentDate = new Date(startDate);
-      currentDate.setDate(startDate.getDate() + i);
+      const currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
       const dayOptions: Intl.DateTimeFormatOptions = {weekday: 'short'};
       const dateOptions: Intl.DateTimeFormatOptions = {day: '2-digit'};
       const monthOptions: Intl.DateTimeFormatOptions = {month: 'short'};
@@ -138,72 +109,55 @@ function Cinema({route}) {
           data={datesOfWeek}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
-            <TouchableOpacity
-              style={[
-                styles.date,
-                isSameDate(item.fullDate, selectedDate) && styles.selectedDate,
-              ]}
-              onPress={() => handleDatePress(item)}>
-              <Text
+            <View style={{paddingBottom: 5, paddingTop: 5}}>
+              <TouchableOpacity
                 style={[
-                  styles.txt,
+                  styles.date,
                   isSameDate(item.fullDate, selectedDate) &&
-                    styles.selectedText,
-                ]}>
-                {item.date}
-              </Text>
-              <Text
-                style={[
-                  styles.txt,
-                  isSameDate(item.fullDate, selectedDate) &&
-                    styles.selectedText,
-                ]}>
-                {item.day}
-              </Text>
-              <Text
-                style={[
-                  styles.txt,
-                  isSameDate(item.fullDate, selectedDate) &&
-                    styles.selectedText,
-                ]}>
-                {item.month}
-              </Text>
-            </TouchableOpacity>
+                    styles.selectedDate,
+                ]}
+                onPress={() => handleDatePress(item)}>
+                <Text
+                  style={[
+                    styles.txt,
+                    isSameDate(item.fullDate, selectedDate) &&
+                      styles.selectedText,
+                  ]}>
+                  {item.date}
+                </Text>
+                <Text
+                  style={[
+                    styles.txt,
+                    isSameDate(item.fullDate, selectedDate) &&
+                      styles.selectedText,
+                  ]}>
+                  {item.day}
+                </Text>
+                <Text
+                  style={[
+                    styles.txt,
+                    isSameDate(item.fullDate, selectedDate) &&
+                      styles.selectedText,
+                  ]}>
+                  {item.month}
+                </Text>
+              </TouchableOpacity>
+            </View>
           )}
         />
-        <View style={styles.priceDetail}>
-          <FlatList
-            horizontal
-            data={priceFilters}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <View style={{paddingBottom: 5}}>
-                <TouchableOpacity style={styles.price}>
-                  <Text style={styles.priceText}>{item.price}</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-          />
-        </View>
       </View>
 
       <View style={styles.cinemaScroll}>
         <FlatList
           style={styles.cinema}
-          data={cinema}
+          data={ShowData}
           renderItem={({item}) => (
             <View style={styles.movieItem}>
-              <Text style={styles.name}> &#x2661; {item.name}</Text>
+              <Text style={styles.name}> &#x2661; {item.TheaterName}</Text>
               <View style={styles.timeView}>
                 <TouchableOpacity
                   style={styles.timeBtn}
-                  onPress={() =>
-                    navigation.navigate('SelectSeat', {
-                      movie: movie,
-                      cinemaName: item.name,
-                      CinemaLocation: item.location,
-                    })
-                  }>
+                  onPress={() => navigation.navigate('SelectSeat')}>
                   <Text style={styles.timeText}>12:30</Text>
                 </TouchableOpacity>
               </View>
@@ -284,7 +238,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cinemaScroll: {
-    maxHeight: '80%',
+    maxHeight: '89%',
     backgroundColor: '#ccc2c2',
     paddingBottom: 12,
   },

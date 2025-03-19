@@ -30,8 +30,9 @@ export const fetchCinema = async () => {
   }
 };
 
-export const fetchShow = async () => {
-  const API_URL = 'http://10.0.2.2:5000/shows/shows';
+export const fetchShowData = async () => {
+  const API_URL = `http://10.0.2.2:5000/shows/showsbydate?movieid=${movie_id}&selecteddate=${selecteddate}`;
+
   try {
     const res = await axios.get(API_URL);
     return res.data.data;

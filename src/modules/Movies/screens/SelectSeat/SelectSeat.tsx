@@ -6,40 +6,15 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {fetchShow} from '../../../Api/Api';
-
-interface ShowData {
-  show_id: number;
-  ticketprice: number;
-  theater_name: string;
-  showdate: string;
-  showtime: string;
-}
 
 function SelectSeat({route}) {
   const navigation = useNavigation();
-  const {movie, cinemaName, CinemaLocation} = route.params;
-  const [shows, setShows] = useState<ShowData[]>([]);
+  const {movie, cinemaName} = route.params;
+  const [show, setshow] = useState(null);
 
-  const seat1 = [1, 2, 3, 4];
-  const seat2 = [1, 2, 3, 4, 5, 6, 7, 8];
-  const seat3 = [1, 2, 3, 4, 5, 6];
-  const seat4 = [1, 2, 3, 4, 5, 6, 7];
-
-  useEffect(() => {
-    const loadMovies = async () => {
-      try {
-        const theaterData = await fetchShow();
-        setShows(theaterData);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
-    };
-
-    loadMovies();
-  }, []);
+  const seat1 = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <View style={styles.container}>
@@ -53,9 +28,7 @@ function SelectSeat({route}) {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>{movie.title}</Text>
         </View>
-        <Text style={styles.theaterName}>
-          {cinemaName} | {CinemaLocation}
-        </Text>
+        <Text style={styles.theaterName}>{cinemaName}</Text>
       </View>
       <View style={styles.topView}>
         <View style={styles.DateTime}>
@@ -68,7 +41,7 @@ function SelectSeat({route}) {
       </View>
       <View style={styles.section}>
         <FlatList
-          data={shows}
+          data={show}
           renderItem={({item}) => (
             <View>
               <Text style={styles.sectionTxt}>Rs. {item.ticketprice} </Text>
@@ -112,7 +85,7 @@ function SelectSeat({route}) {
       <View style={styles.btnView}>
         <TouchableOpacity
           style={styles.countBtn}
-          onPress={() => navigation.navigate('ContactDetails')}>
+          onPress={() => navigation.navigate('ContactDetails', {movie: movie})}>
           <Text style={styles.btnTxt}>Pay ₹ 0</Text>
         </TouchableOpacity>
       </View>
@@ -157,9 +130,9 @@ const styles = StyleSheet.create({
 
   topView: {
     backgroundColor: '#e4eaeb',
-    height: '8%',
+    height: '9%',
     width: '100%',
-    padding: 10,
+    padding: 5,
   },
   DateTime: {
     flexDirection: 'row',
