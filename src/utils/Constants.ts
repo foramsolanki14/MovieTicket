@@ -15,6 +15,7 @@ export const ScreenName = {
   SelectSeat: 'SelectSeat',
   ContactDetails: 'ContactDetails',
   ConfirmBooking: 'ConfirmBooking',
+  Success: 'Success',
 
   //profile Screen
   Profile: 'Profile',

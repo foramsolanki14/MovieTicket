@@ -15,6 +15,7 @@ import Cites from '../modules/Cites/screens/Cites/Cites';
 import Home from '../modules/Home/screens/Home/Home';
 import Section from '../modules/Home/screens/Section/Section';
 import Profile from '../modules/Profile/screens/Profile/Profile';
+import Success from '../modules/Movies/screens/Success/Success';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ const AppStack = () => {
       <Stack.Group screenOptions={{headerShown: false}}>
         <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
         <Stack.Screen name={ScreenName.SelectSeat} component={SelectSeat} />
+        <Stack.Screen name={ScreenName.Success} component={Success} />
         <Stack.Screen
           name={ScreenName.ContactDetails}
           component={ContactDetails}

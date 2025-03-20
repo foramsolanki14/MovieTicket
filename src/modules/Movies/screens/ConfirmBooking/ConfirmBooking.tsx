@@ -102,7 +102,9 @@ function ConfirmBooking({route}) {
             <Text style={styles.label}>₹{orderTotal}</Text>
           </View>
           <View style={styles.btnView}>
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={() => navigation.navigate('Success')}>
               <Text style={styles.btnTxt}>Continue</Text>
             </TouchableOpacity>
           </View>
