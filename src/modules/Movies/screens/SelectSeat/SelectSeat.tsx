@@ -56,6 +56,7 @@ function SelectSeat({route}) {
       return '#FFFFFF'; // Available
     }
   };
+  const totalPrice = selectedSeats.length * ticketPrice;
 
   const formattedDate = selectedDate
     ? selectedDate.toLocaleDateString('en-IN', {
@@ -150,12 +151,15 @@ function SelectSeat({route}) {
             navigation.navigate('ContactDetails', {
               movie: movie,
               selectedSeats,
-              ticketPrice,
+              totalPrice: totalPrice,
+              theaterName,
+              selectedDate: selectedDate,
+              selectedTime,
+              location: location,
+              selectedSeatsCount: selectedSeats.length,
             })
           }>
-          <Text style={styles.btnTxt}>
-            Pay ₹ {selectedSeats.length * ticketPrice}
-          </Text>
+          <Text style={styles.btnTxt}>Pay ₹ {totalPrice}</Text>
         </TouchableOpacity>
       </View>
     </View>

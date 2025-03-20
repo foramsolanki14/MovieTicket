@@ -1,3 +1,5 @@
+// ContactDetails.js
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,15 +8,24 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const ContactDetails = () => {
+const ContactDetails = ({route}) => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [contactnumber, setContactnumber] = useState('');
   const [emailError, setEmailError] = useState('');
   const [contactNumberError, setContactNumberError] = useState('');
+  const {
+    movie,
+    location,
+    theaterName,
+    selectedSeats,
+    totalPrice,
+    selectedTime,
+    selectedDate,
+    selectedSeatsCount,
+  } = route.params;
 
   const validateEmail = () => {
     if (!email.trim()) {
@@ -47,7 +58,18 @@ const ContactDetails = () => {
     const isContactNumberValid = validateContactNumber();
 
     if (isEmailValid && isContactNumberValid) {
-      navigation.navigate('ConfirmBooking');
+      navigation.navigate('ConfirmBooking', {
+        movie,
+        location,
+        theaterName,
+        selectedSeats,
+        totalPrice: totalPrice,
+        selectedTime,
+        selectedDate,
+        selectedSeatsCount,
+        userEmail: email,
+        userContactNumber: contactnumber,
+      });
     }
   };
 
@@ -68,7 +90,7 @@ const ContactDetails = () => {
         <View style={styles.main}>
           <Text style={styles.txt}>Your Email</Text>
           <TextInput
-            style={[styles.txtInput, emailError ? styles.inputError : null]}
+            style={[styles.txtInput, emailError ? styles.txtInput : null]}
             placeholder="eg : abc@gmail.com"
             onChangeText={text => {
               setEmail(text);
@@ -78,7 +100,7 @@ const ContactDetails = () => {
             onBlur={validateEmail}
           />
           {emailError ? (
-            <Text style={styles.errorText}>{emailError}</Text>
+            <Text style={styles.line}>{emailError}</Text>
           ) : (
             <Text style={styles.line}>
               This E-mail will only be used for sending ticket(s)
@@ -90,7 +112,7 @@ const ContactDetails = () => {
           <TextInput
             style={[
               styles.txtInput,
-              contactNumberError ? styles.inputError : null,
+              contactNumberError ? styles.txtInput : null,
             ]}
             placeholder="eg : 91480XXXXX"
             onChangeText={text => {
@@ -102,7 +124,7 @@ const ContactDetails = () => {
             onBlur={validateContactNumber}
           />
           {contactNumberError ? (
-            <Text style={styles.errorText}>{contactNumberError}</Text>
+            <Text style={styles.line}>{contactNumberError}</Text>
           ) : (
             <Text style={styles.line}>
               To access the ticket(s) on other devices, Login with this number

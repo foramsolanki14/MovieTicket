@@ -2,9 +2,29 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-function ConfirmBooking() {
+function ConfirmBooking({route}) {
   const navigation = useNavigation();
-
+  const {
+    movie,
+    location,
+    theaterName,
+    selectedSeats,
+    selectedTime,
+    totalPrice,
+    selectedDate,
+    selectedSeatsCount,
+    userEmail,
+    userContactNumber,
+  } = route.params;
+  const formattedDate = selectedDate
+    ? selectedDate.toLocaleDateString('en-IN', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short',
+      })
+    : '';
+  const convenienceFee = 45.0;
+  const orderTotal = totalPrice + convenienceFee;
   return (
     <View style={styles.mainContainer}>
       <View style={styles.headerView}>
@@ -22,13 +42,17 @@ function ConfirmBooking() {
         <View style={styles.main}>
           <View style={styles.card}>
             <View>
-              <Text style={styles.name}>Chhaava</Text>
-              <Text style={styles.date}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
-              <Text style={styles.theater}>Hindi</Text>
-              <Text style={styles.theater}>NY Cinemas: Swagat Mall</Text>
+              <Text style={styles.name}>{movie.title}</Text>
+              <Text style={styles.date}>
+                {formattedDate} | {selectedTime}
+              </Text>
+              <Text style={styles.theater}>{selectedSeats}</Text>
+              <Text style={styles.theater}>
+                {theaterName}|{location}
+              </Text>
             </View>
             <View>
-              <Text style={styles.number}>2</Text>
+              <Text style={styles.number}>{selectedSeatsCount}</Text>
               <Text style={styles.ticket}>M-Ticket</Text>
             </View>
           </View>
@@ -43,11 +67,11 @@ function ConfirmBooking() {
         <View style={styles.priceCard}>
           <View style={styles.card2}>
             <Text style={styles.label}>Ticket(s) price</Text>
-            <Text style={styles.label1}>₹300.00</Text>
+            <Text style={styles.label1}>₹{totalPrice}</Text>
           </View>
           <View style={styles.card2}>
             <Text style={styles.label}>Convenience fees</Text>
-            <Text style={styles.label1}>₹59.00</Text>
+            <Text style={styles.label1}>₹{convenienceFee}</Text>
           </View>
           <View style={styles.card2}>
             <Text style={styles.label}>Donate to BookAChange</Text>
@@ -55,7 +79,7 @@ function ConfirmBooking() {
           </View>
           <View style={styles.total}>
             <Text style={styles.label}>Order total</Text>
-            <Text style={styles.label}>₹359.00</Text>
+            <Text style={styles.label}>₹{orderTotal}</Text>
           </View>
         </View>
         <View style={styles.detailView}>
@@ -68,14 +92,14 @@ function ConfirmBooking() {
               <Text style={styles.data}>Edit</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.data1}>abc@gmail.com</Text>
-          <Text style={styles.data1}>9016171433 | Gujrat</Text>
+          <Text style={styles.data1}>{userEmail}</Text>
+          <Text style={styles.data1}>{userContactNumber}</Text>
         </View>
 
         <View style={styles.totalView}>
           <View>
             <Text style={styles.label}>Total</Text>
-            <Text style={styles.label}>₹359.00</Text>
+            <Text style={styles.label}>₹{orderTotal}</Text>
           </View>
           <View style={styles.btnView}>
             <TouchableOpacity style={styles.btn}>
@@ -127,6 +151,7 @@ const styles = StyleSheet.create({
   },
   theater: {
     fontFamily: 'Lato-Regular',
+    paddingTop: 5,
   },
   card: {
     flexDirection: 'row',
@@ -203,10 +228,11 @@ const styles = StyleSheet.create({
   },
   totalView: {
     backgroundColor: '#faf5f6',
-    marginTop: '90%',
+    marginTop: '70%',
     flexDirection: 'row',
     height: 60,
     width: '100%',
+    position: 'static',
   },
   btnView: {
     paddingLeft: '50%',
