@@ -30,7 +30,7 @@ export const fetchCinema = async () => {
   }
 };
 
-export const fetchShowData = async () => {
+export const fetchShowData = async (movie_id, selecteddate) => {
   const API_URL = `http://10.0.2.2:5000/shows/showsbydate?movieid=${movie_id}&selecteddate=${selecteddate}`;
 
   try {

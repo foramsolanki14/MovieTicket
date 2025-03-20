@@ -1,5 +1,4 @@
 import {useNavigation} from '@react-navigation/native';
-
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -9,7 +8,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {fetchCinema, fetchShow, fetchShowData} from '../../../Api/Api';
+import {fetchShowData} from '../../../Api/Api';
 
 interface DateItem {
   id: number;
@@ -18,6 +17,7 @@ interface DateItem {
   month: string;
   fullDate: Date;
 }
+
 interface ShowData {
   theater_id: number;
   TheaterName: string;
@@ -30,13 +30,16 @@ function Cinema({route}) {
   const navigation = useNavigation();
   const [datesOfWeek, setDatesOfWeek] = useState<DateItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [ShowData, setShowData] = useState<ShowData[]>();
+  const [showData, setShowData] = useState<ShowData[] | null>(null);
   const {movie} = route.params;
 
   useEffect(() => {
     const loadShowData = async () => {
       try {
-        const moviesData = await fetchShowData();
+        const formattedDate = selectedDate
+          ? selectedDate.toISOString().split('T')[0]
+          : '';
+        const moviesData = await fetchShowData(movie.movie_id, formattedDate);
         setShowData(moviesData);
       } catch (error) {
         console.error(error);
@@ -44,7 +47,9 @@ function Cinema({route}) {
     };
 
     loadShowData();
+  }, [movie.movie_id, selectedDate]);
 
+  useEffect(() => {
     generateDatesOfWeek();
   }, []);
 
@@ -76,7 +81,6 @@ function Cinema({route}) {
 
   const handleDatePress = (dateItem: DateItem) => {
     setSelectedDate(dateItem.fullDate);
-    console.log('Selected Date:', dateItem.fullDate);
   };
 
   const isSameDate = (date1: Date | null, date2: Date | null) => {
@@ -88,6 +92,39 @@ function Cinema({route}) {
       date1.getMonth() === date2.getMonth() &&
       date1.getDate() === date2.getDate()
     );
+  };
+
+  const formatTime = (timeString: string) => {
+    const [hours, minutes] = timeString.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours));
+    date.setMinutes(parseInt(minutes));
+
+    const options = {hour: 'numeric', minute: 'numeric', hour12: true};
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
+
+  const getPriceForTime = (
+    showTimes: string,
+    ticketPrices: string,
+    selectedTime: string,
+  ) => {
+    const times = showTimes.split(',');
+    const prices = ticketPrices.split(',');
+    const formattedSelectedTime = selectedTime.split(' ').slice(0, 2).join(' ');
+
+    for (let i = 0; i < times.length; i++) {
+      const formattedTime = formatTime(times[i]);
+      const formattedTimeTrimmed = formattedTime
+        .split(' ')
+        .slice(0, 2)
+        .join(' ');
+
+      if (formattedTimeTrimmed === formattedSelectedTime) {
+        return prices[i];
+      }
+    }
+    return 'Price not found';
   };
 
   return (
@@ -150,16 +187,38 @@ function Cinema({route}) {
       <View style={styles.cinemaScroll}>
         <FlatList
           style={styles.cinema}
-          data={ShowData}
+          data={showData}
           renderItem={({item}) => (
             <View style={styles.movieItem}>
               <Text style={styles.name}> &#x2661; {item.TheaterName}</Text>
               <View style={styles.timeView}>
-                <TouchableOpacity
-                  style={styles.timeBtn}
-                  onPress={() => navigation.navigate('SelectSeat')}>
-                  <Text style={styles.timeText}>12:30</Text>
-                </TouchableOpacity>
+                {item.ShowTimes.split(',').map((showTime, index) => {
+                  const formattedShowTime = formatTime(showTime);
+                  const price = getPriceForTime(
+                    item.ShowTimes,
+                    item.TicketPrices,
+                    formattedShowTime,
+                  );
+
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.timeBtn}
+                      onPress={() =>
+                        navigation.navigate('SelectSeat', {
+                          movie,
+                          selectedTime: formattedShowTime,
+                          selectedDate,
+                          theaterName: item.TheaterName,
+                          ticketPrice: price,
+                          location: item.TheaterLocation,
+                        })
+                      }>
+                      <Text style={styles.timeText}>{formattedShowTime}</Text>
+                      {/* <Text style={styles.priceText}>₹{price}</Text> */}
+                    </TouchableOpacity>
+                  );
+                })}
               </View>
             </View>
           )}
@@ -170,7 +229,6 @@ function Cinema({route}) {
 }
 
 export default Cinema;
-
 const styles = StyleSheet.create({
   container: {
     // paddingTop: 50,
@@ -204,7 +262,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderColor: '#dbd7d7',
     alignItems: 'center',
-    borderBottomWidth: 1,
   },
   selectedDate: {
     backgroundColor: '#e3204a',
