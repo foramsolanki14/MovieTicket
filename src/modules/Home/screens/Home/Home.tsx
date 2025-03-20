@@ -206,8 +206,8 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   imgSection: {
-    width: 200,
-    height: 270,
+    width: 190,
+    height: 280,
     resizeMode: 'contain',
     borderRadius: 10,
   },
