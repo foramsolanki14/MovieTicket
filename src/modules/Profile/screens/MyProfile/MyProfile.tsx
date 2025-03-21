@@ -6,11 +6,11 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Button,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
 const MyProfile = () => {
+  const [selectedGender, setSelectedGender] = useState(null);
   return (
     <ScrollView>
       <Text style={styles.mainTxt}>My Profile</Text>
@@ -36,10 +36,21 @@ const MyProfile = () => {
         <TextInput style={styles.txtInput} placeholder="Enter BirthDay Date" />
         <Text style={styles.txt}> Identity(Optional)</Text>
         <View style={{flexDirection: 'row', gap: 10, padding: 5}}>
-          <TouchableOpacity style={styles.genderView}>
-            <Text style={styles.gender}>male</Text>
+          <TouchableOpacity
+            style={[
+              styles.genderView,
+              selectedGender === 'male' && styles.selectedGender, // Conditional style for selected button
+            ]}
+            onPress={() => setSelectedGender('male')}>
+            <Text style={styles.gender}>Male</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.genderView}>
+
+          <TouchableOpacity
+            style={[
+              styles.genderView,
+              selectedGender === 'female' && styles.selectedGender, // Conditional style for selected button
+            ]}
+            onPress={() => setSelectedGender('female')}>
             <Text style={styles.gender}>Female</Text>
           </TouchableOpacity>
         </View>
@@ -94,7 +105,7 @@ const styles = StyleSheet.create({
     width: 70,
   },
   gender: {
-    fontFamily: 'Lato-Regular',
+    fontFamily: 'Lato-Black',
     fontSize: 15,
     textAlign: 'center',
   },
@@ -108,5 +119,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     fontSize: 15,
     textAlign: 'center',
+  },
+  selectedGender: {
+    backgroundColor: '#e8aeb1',
+    borderColor: '#f2999d',
   },
 });
