@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingTop: 10,
+    paddingLeft: 7,
   },
   movieItem: {
     flex: 1 / 2,
@@ -90,15 +91,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   movieImage: {
-    width: 195,
-    height: 280,
+    width: 180,
+    height: 270,
     borderRadius: 10,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   movieTitle: {
     marginTop: 8,
-    fontSize: 15,
-    fontFamily: 'Lato-Regular',
+    fontSize: 14,
+    fontFamily: 'Lato-Bold',
     textAlign: 'center',
   },
   nameCity: {

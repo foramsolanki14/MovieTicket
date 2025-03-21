@@ -207,15 +207,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   main: {
-    padding: 4,
+    padding: 3,
     paddingTop: 10,
     gap: 4,
   },
   imgSection: {
-    width: 140,
-    height: 240,
+    width: 130,
+    height: 200,
     resizeMode: 'contain',
-    borderRadius: 10,
+    borderRadius: 12,
   },
   card: {
     flexDirection: 'row',
@@ -229,6 +229,7 @@ const styles = StyleSheet.create({
   section: {
     paddingLeft: 11,
     paddingTop: 20,
+    gap: 10,
   },
   txtBtn: {
     fontFamily: 'Lato-Black',
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
   },
   txtImg: {
     fontFamily: 'Lato-Bold',
-    fontSize: 14,
+    fontSize: 12,
     borderRadius: 4,
     paddingLeft: 7,
   },
