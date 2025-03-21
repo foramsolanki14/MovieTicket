@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   movieImage: {
-    width: 190,
-    height: 300,
+    width: 195,
+    height: 280,
     borderRadius: 10,
     resizeMode: 'contain',
   },
