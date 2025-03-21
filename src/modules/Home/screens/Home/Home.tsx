@@ -101,7 +101,11 @@ const Home = () => {
                   <Text style={styles.cardHeader}>{genre} Movies</Text>
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('Section', {genre, moviesToShow})
+                      navigation.navigate('Section', {
+                        genre,
+                        moviesToShow,
+                        selectedCity,
+                      })
                     }>
                     <Text style={styles.txtBtn}>
                       See All
@@ -208,8 +212,8 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   imgSection: {
-    width: 190,
-    height: 280,
+    width: 140,
+    height: 240,
     resizeMode: 'contain',
     borderRadius: 10,
   },

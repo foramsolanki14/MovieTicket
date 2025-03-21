@@ -12,7 +12,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 const Section = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const {genre, moviesToShow} = route.params;
+  const {genre, moviesToShow, selectedCity} = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -27,7 +27,7 @@ const Section = () => {
         </View>
         <View>
           <Text style={styles.nameCity}>
-            Ahemdabad | {moviesToShow.length} Movies
+            {selectedCity.location} | {moviesToShow.length} Movies
           </Text>
         </View>
       </View>
