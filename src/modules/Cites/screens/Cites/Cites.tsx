@@ -1,62 +1,30 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
   FlatList,
+  Image,
+  StyleSheet,
+  Text,
   TouchableOpacity,
-  TextInput,
+  View,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {fetchCinema} from '../../../Api/Api';
 
 const Cites = () => {
   const navigation = useNavigation();
-  const route = useRoute();
-  const currentCity = route.params?.currentCity || 'Select City';
+  const [city, setCity] = useState<string[]>([]);
+  useEffect(() => {
+    const loadCity = async () => {
+      try {
+        const cityData = await fetchCinema();
+        setCity(cityData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const cites = [
-    {id: 1, name: 'Mumbai', image: require('../../../../assets/city/c1.webp')},
-    {
-      id: 2,
-      name: 'Delhi-NCR',
-      image: require('../../../../assets/city/c2.png'),
-    },
-    {
-      id: 3,
-      name: 'Bengaluru',
-      image: require('../../../../assets/city/c3.png'),
-    },
-    {
-      id: 4,
-      name: 'Hyderabad',
-      image: require('../../../../assets/city/c4.png'),
-    },
-    {
-      id: 5,
-      name: 'Ahmedabad',
-      image: require('../../../../assets/city/c5.png'),
-    },
-    {
-      id: 6,
-      name: 'Chandigarh',
-      image: require('../../../../assets/city/c6.png'),
-    },
-    {id: 7, name: 'Chennai', image: require('../../../../assets/city/c7.png')},
-    {id: 8, name: 'Pune', image: require('../../../../assets/city/c8.png')},
-    {id: 9, name: 'Kolkata', image: require('../../../../assets/city/c9.png')},
-    {id: 10, name: 'Kochi', image: require('../../../../assets/city/c10.png')},
-  ];
-  const otherCities = [
-    'Aalo',
-    'Abohar',
-    'Abu Road',
-    'Achampet',
-    'Addanki',
-    'Adilabad',
-    'Adimali',
-    'Adipur',
-  ];
+    loadCity();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -71,64 +39,26 @@ const Cites = () => {
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Pick a Region</Text>
           </View>
-          <View style={styles.header}>
-            <Image
-              source={require('../../../../assets/icon/search.png')}
-              style={styles.search}
-            />
-            <TextInput
-              placeholder="Search for your City"
-              style={styles.headerTitle}
-            />
-          </View>
-          <View style={styles.header}>
-            <Image
-              source={require('../../../../assets/icon/gps.png')}
-              style={styles.search}
-            />
-            <Text style={styles.gps}>Auto Detect My Location</Text>
-          </View>
         </View>
       </View>
-
-      <View style={styles.citesTitle}>
-        <Text style={styles.cityTitle}>POPULAR CITIES</Text>
-      </View>
-      <View style={styles.mainView}>
-        <FlatList
-          data={cites}
-          numColumns={4}
-          renderItem={({item}) => (
-            <View style={styles.citesView}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Home', {selectedCity: item.name});
-                }}>
-                <Image source={item.image} style={styles.citesImage} />
-              </TouchableOpacity>
-              <Text style={styles.cites}>{item.name}</Text>
-            </View>
-          )}
-        />
-      </View>
-
       <View style={styles.citesTitle}>
         <Text style={styles.cityTitle}>OTHER CITIES</Text>
       </View>
 
       <View style={[styles.otherCityView, {flex: 1}]}>
         <FlatList
-          data={otherCities}
+          data={city}
           renderItem={({item}) => (
             <View style={styles.cityView}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('Home', {selectedCity: item});
+                  navigation.navigate('Home', {selectedCity: {location: item}}); // Wrap in object
                 }}>
                 <Text style={styles.name}>{item}</Text>
               </TouchableOpacity>
             </View>
           )}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </View>

@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {useState, useEffect} from 'react';
 import {fetchMovies} from '../../../Api/Api';
 import {
@@ -26,6 +26,8 @@ const Home = () => {
   const navigation = useNavigation();
   const [movie, setMovie] = useState<movieData[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
+  const route = useRoute();
+  const {selectedCity} = route.params || {};
 
   const getMoviesByGenre = (genre: string) => {
     return movie.filter(movie => movie.genres.includes(genre));
@@ -75,7 +77,7 @@ const Home = () => {
           </View>
           <View style={styles.header}>
             <View>
-              <Text style={styles.nameCity}>Ahmedabad</Text>
+              <Text style={styles.nameCity}>City:{selectedCity?.location}</Text>
             </View>
             <View style={styles.menu}>
               <TouchableOpacity onPressOut={() => navigation.navigate('Cites')}>
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 30,
     resizeMode: 'contain',
-    paddingLeft: '105%',
+    paddingLeft: '100%',
     paddingTop: '7%',
   },
   nameCity: {

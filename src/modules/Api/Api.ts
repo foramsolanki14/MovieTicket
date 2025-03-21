@@ -24,9 +24,18 @@ export const fetchCinema = async () => {
   const API_URL = 'http://10.0.2.2:5000/theaters/all-theaters';
   try {
     const res = await axios.get(API_URL);
-    return res.data.data;
+    const theaters = res.data.data;
+
+    const uniqueLocations = [
+      ...new Set(theaters.map((theater: any) => theater.location)),
+    ];
+
+    uniqueLocations.sort();
+
+    return uniqueLocations;
   } catch (err) {
     console.log(err);
+    return [];
   }
 };
 
