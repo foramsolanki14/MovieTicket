@@ -14,7 +14,7 @@ const Success = () => {
               style={styles.backButtonImage}
             />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Confirm</Text>
+          <Text style={styles.headerTitle} />
         </View>
       </View>
 

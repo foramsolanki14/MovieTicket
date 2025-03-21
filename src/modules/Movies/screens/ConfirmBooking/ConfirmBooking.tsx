@@ -1,9 +1,13 @@
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {setBookingDetails} from '../../../../redux/bookingSlice';
 
 function ConfirmBooking({route}) {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const {
     movie,
     location,
@@ -16,6 +20,7 @@ function ConfirmBooking({route}) {
     userEmail,
     userContactNumber,
   } = route.params;
+
   const formattedDate = selectedDate
     ? selectedDate.toLocaleDateString('en-IN', {
         weekday: 'short',
@@ -25,6 +30,24 @@ function ConfirmBooking({route}) {
     : '';
   const convenienceFee = 45.0;
   const orderTotal = totalPrice + convenienceFee;
+
+  // Dispatch action to store booking details in Redux
+  useEffect(() => {
+    dispatch(
+      setBookingDetails({
+        movie,
+        selectedSeats,
+        selectedDate,
+        selectedTime,
+        totalPrice,
+        userEmail,
+        userContactNumber,
+        theaterName,
+        selectedSeatsCount,
+      }),
+    );
+  }, [dispatch]);
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.headerView}>
@@ -59,7 +82,7 @@ function ConfirmBooking({route}) {
           <View style={styles.cardBottom}>
             <Text style={styles.txtLine1}>Cancellation Available</Text>
             <Text style={styles.txtLine2}>
-              This Venue supports booking cancellation. to konw more view
+              This Venue supports booking cancellation. To know more, view the
               cancellation policy
             </Text>
           </View>

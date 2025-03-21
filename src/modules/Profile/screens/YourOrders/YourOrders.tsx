@@ -7,30 +7,67 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
+import {useSelector} from 'react-redux';
+import {RootState} from '@reduxjs/toolkit/query';
+
+// Function to format the date (e.g., "March 8, 2025")
+const formatDate = date => {
+  const options = {year: 'numeric', month: 'long', day: 'numeric'};
+  const formattedDate = new Date(date).toLocaleDateString('en-US', options);
+  return formattedDate;
+};
+
+// Function to format the time (e.g., "09:40:29 AM")
+const formatTime = date => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  const formattedHours = hours % 12 || 12; // Convert to 12-hour format
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+};
 
 const YourOrders = () => {
+  const booking = useSelector((state: RootState) => state.booking);
+
+  // Get the current date and time
+  const currentDate = new Date();
+  const formattedDate = formatDate(currentDate); // Format the current date
+  const formattedTime = formatTime(currentDate); // Format the current time
+
   return (
     <View style={styles.main}>
       <Text style={styles.txt}>
         Order on :
-        <Text style={styles.orderDetail}> 08 Mar , 2025 at 09:40:29 AM</Text>
+        <Text style={styles.orderDetail}>
+          {' '}
+          {formattedDate} at {formattedTime}
+        </Text>
       </Text>
       <View style={styles.orderCard}>
         <View style={styles.movieDetails}>
           <Image
-            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4zLzEwICAyOTUuNksgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00408691-wqmumfxjtk-portrait.jpg"
+            source={{
+              uri: `http://10.0.2.2:5000/images/${booking.movie.posterurl}`,
+            }}
             style={styles.moviePoster}
           />
           <View style={styles.movieInfo}>
-            <Text style={styles.movieTitle}>Chhaava</Text>
-            <Text style={styles.movieLang}> Hindi</Text>
-            <Text style={styles.movieTime}>Sun, 09 Mar, 2025 | 01:30 PM</Text>
-            <Text style={styles.theater}>NY Cinemas: Swagat Mall</Text>
-            <Text style={styles.seats}>2 ticket : Prime - E5, E6 </Text>
+            <Text style={styles.movieTitle}>{booking.movie.title}</Text>
+            <Text style={styles.movieTime}>
+              {formattedDate} | {formattedTime}
+            </Text>
+            <Text style={styles.theater}>{booking.theaterName}</Text>
+            <Text style={styles.seats}>
+              {booking.selectedSeatsCount} ticket(s): {booking.selectedSeats}
+            </Text>
           </View>
           <View>
             <Text style={styles.data}>M-Ticket</Text>
-            <Text style={styles.screen}>SCREEN 2</Text>
           </View>
         </View>
         <View style={styles.case}>
@@ -38,7 +75,7 @@ const YourOrders = () => {
             <Text style={styles.btnText}>REFUNDABLE</Text>
           </TouchableHighlight>
           <Text style={styles.caseText}>
-            Refund cradit to your BMS cash balance
+            Refund credit to your BMS cash balance
           </Text>
         </View>
       </View>
@@ -79,7 +116,7 @@ const styles = StyleSheet.create({
   moviePoster: {
     width: 80,
     height: 120,
-    borderRadius: 16,
+    borderRadius: 12,
     resizeMode: 'contain',
   },
   movieInfo: {
@@ -104,14 +141,14 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   theater: {
-    fontSize: 14,
+    fontSize: 15,
     padding: 5,
     fontFamily: 'Lato-Regular',
   },
   seats: {
     padding: 5,
     fontFamily: 'Lato-Bold',
-    fontSize: 14,
+    fontSize: 15,
   },
   data: {
     fontFamily: 'Lato-Regular',
