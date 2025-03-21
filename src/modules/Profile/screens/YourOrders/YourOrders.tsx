@@ -10,21 +10,19 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '@reduxjs/toolkit/query';
 
-// Function to format the date (e.g., "March 8, 2025")
 const formatDate = date => {
   const options = {year: 'numeric', month: 'long', day: 'numeric'};
   const formattedDate = new Date(date).toLocaleDateString('en-US', options);
   return formattedDate;
 };
 
-// Function to format the time (e.g., "09:40:29 AM")
 const formatTime = date => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
   const ampm = hours >= 12 ? 'PM' : 'AM';
 
-  const formattedHours = hours % 12 || 12; // Convert to 12-hour format
+  const formattedHours = hours % 12 || 12;
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
@@ -36,15 +34,14 @@ const YourOrders = () => {
 
   // Get the current date and time
   const currentDate = new Date();
-  const formattedDate = formatDate(currentDate); // Format the current date
-  const formattedTime = formatTime(currentDate); // Format the current time
+  const formattedDate = formatDate(currentDate);
+  const formattedTime = formatTime(currentDate);
 
   return (
     <View style={styles.main}>
       <Text style={styles.txt}>
         Order on :
         <Text style={styles.orderDetail}>
-          {' '}
           {formattedDate} at {formattedTime}
         </Text>
       </Text>
@@ -59,7 +56,7 @@ const YourOrders = () => {
           <View style={styles.movieInfo}>
             <Text style={styles.movieTitle}>{booking.movie.title}</Text>
             <Text style={styles.movieTime}>
-              {formattedDate} | {formattedTime}
+              {formattedDate} | {booking.selectedTime}
             </Text>
             <Text style={styles.theater}>{booking.theaterName}</Text>
             <Text style={styles.seats}>

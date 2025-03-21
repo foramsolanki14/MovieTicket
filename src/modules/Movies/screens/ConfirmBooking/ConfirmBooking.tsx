@@ -46,7 +46,18 @@ function ConfirmBooking({route}) {
         selectedSeatsCount,
       }),
     );
-  }, [dispatch]);
+  }, [
+    dispatch,
+    movie,
+    selectedDate,
+    selectedSeats,
+    selectedSeatsCount,
+    selectedTime,
+    theaterName,
+    totalPrice,
+    userContactNumber,
+    userEmail,
+  ]);
 
   return (
     <View style={styles.mainContainer}>

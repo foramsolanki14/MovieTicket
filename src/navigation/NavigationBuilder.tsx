@@ -16,6 +16,7 @@ import Home from '../modules/Home/screens/Home/Home';
 import Section from '../modules/Home/screens/Section/Section';
 import Profile from '../modules/Profile/screens/Profile/Profile';
 import Success from '../modules/Movies/screens/Success/Success';
+import AllOrder from '../modules/Profile/screens/AllOrder/allOrder';
 
 const Stack = createNativeStackNavigator();
 
