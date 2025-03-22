@@ -9,6 +9,7 @@ import {
   Image,
 } from 'react-native';
 import {fetchShowData} from '../../../Api/Api';
+import {Screen} from 'react-native-screens';
 
 interface DateItem {
   id: number;
@@ -24,6 +25,7 @@ interface ShowData {
   TheaterLocation: string;
   ShowTimes: string;
   TicketPrices: string;
+  ScreenName: string;
 }
 
 function Cinema({route}) {
@@ -212,6 +214,7 @@ function Cinema({route}) {
                           theaterName: item.TheaterName,
                           ticketPrice: price,
                           location: item.TheaterLocation,
+                          ScreenName: item.ScreenName,
                         })
                       }>
                       <Text style={styles.timeText}>{formattedShowTime}</Text>

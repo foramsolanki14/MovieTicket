@@ -65,6 +65,7 @@ const YourOrders = () => {
           </View>
           <View>
             <Text style={styles.data}>M-Ticket</Text>
+            <Text style={styles.screen}>{booking.ScreenName}</Text>
           </View>
         </View>
         <View style={styles.case}>
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
   screen: {
     fontSize: 15,
     fontFamily: 'Lato-Bold',
-    marginTop: 85,
+    marginTop: 75,
   },
   case: {
     borderTopWidth: 1,

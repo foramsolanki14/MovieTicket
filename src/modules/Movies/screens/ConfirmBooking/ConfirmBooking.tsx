@@ -19,6 +19,7 @@ function ConfirmBooking({route}) {
     selectedSeatsCount,
     userEmail,
     userContactNumber,
+    ScreenName,
   } = route.params;
 
   const formattedDate = selectedDate
@@ -44,6 +45,7 @@ function ConfirmBooking({route}) {
         userContactNumber,
         theaterName,
         selectedSeatsCount,
+        ScreenName,
       }),
     );
   }, [
@@ -57,6 +59,7 @@ function ConfirmBooking({route}) {
     totalPrice,
     userContactNumber,
     userEmail,
+    ScreenName,
   ]);
 
   return (
@@ -77,6 +80,7 @@ function ConfirmBooking({route}) {
           <View style={styles.card}>
             <View>
               <Text style={styles.name}>{movie.title}</Text>
+              <Text>{ScreenName}</Text>
               <Text style={styles.date}>
                 {formattedDate} | {selectedTime}
               </Text>
@@ -193,7 +197,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
-    paddingTop: 30,
+    paddingTop: 20,
   },
   cardBottom: {
     backgroundColor: '#f5dadd',

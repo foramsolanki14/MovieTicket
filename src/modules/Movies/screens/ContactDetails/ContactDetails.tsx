@@ -25,6 +25,7 @@ const ContactDetails = ({route}) => {
     selectedTime,
     selectedDate,
     selectedSeatsCount,
+    ScreenName,
   } = route.params;
 
   const validateEmail = () => {
@@ -69,6 +70,7 @@ const ContactDetails = ({route}) => {
         selectedSeatsCount,
         userEmail: email,
         userContactNumber: contactnumber,
+        ScreenName,
       });
     }
   };

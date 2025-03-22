@@ -10,6 +10,7 @@ const initialState = {
   userContactNumber: '',
   theaterName: '',
   selectedSeatsCount: 0,
+  ScreenName: '',
 };
 
 const bookingSlice = createSlice({
@@ -26,6 +27,7 @@ const bookingSlice = createSlice({
       state.userContactNumber = action.payload.userContactNumber;
       state.theaterName = action.payload.theaterName;
       state.selectedSeatsCount = action.payload.selectedSeatsCount;
+      state.ScreenName = action.payload.ScreenName;
     },
   },
 });

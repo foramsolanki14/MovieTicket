@@ -18,6 +18,7 @@ function SelectSeat({route}) {
     selectedTime,
     selectedDate,
     location,
+    ScreenName,
   } = route.params;
 
   const seat1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -85,8 +86,10 @@ function SelectSeat({route}) {
       <View style={styles.topView}>
         <View style={styles.DateTime}>
           <Text style={styles.date}>{formattedDate}</Text>
+
           <Text style={styles.ticket}>{selectedSeats.length} Ticket(s)</Text>
         </View>
+        <Text style={styles.sText}>{ScreenName}</Text>
         <TouchableOpacity style={styles.timeBtn}>
           <Text style={styles.timeTxt}>{selectedTime}</Text>
         </TouchableOpacity>
@@ -157,6 +160,7 @@ function SelectSeat({route}) {
               selectedTime,
               location: location,
               selectedSeatsCount: selectedSeats.length,
+              ScreenName,
             })
           }>
           <Text style={styles.btnTxt}>Pay ₹ {totalPrice}</Text>
@@ -202,7 +206,7 @@ const styles = StyleSheet.create({
 
   topView: {
     backgroundColor: '#e4eaeb',
-    height: '12%',
+    height: '14%',
     width: '100%',
     padding: 5,
   },
@@ -313,5 +317,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Lato-Bold',
     color: 'white',
+  },
+  sText: {
+    fontFamily: 'Lato-Bold',
+    paddingBottom: 4,
   },
 });
