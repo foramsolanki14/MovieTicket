@@ -6,15 +6,19 @@ import {
   Image,
   TextInput,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const payments = () => {
+function Payments({route}) {
   const navigation = useNavigation();
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
+  const [loading, setLoading] = useState(false);
+  const {orderTotal} = route.params;
+
   const validateCardNumber = number => {
     const cleanedNumber = number.replace(/\s+/g, '');
     if (!/^\d+$/.test(cleanedNumber)) {
@@ -45,11 +49,18 @@ const payments = () => {
       Alert.alert('Error', 'Please enter a valid CVV.');
       return;
     }
-    navigation.navigate('Success');
+
+    setLoading(true); // Start loading
+
+    // Simulate payment processing (replace with real payment gateway)
+    setTimeout(() => {
+      setLoading(false); // Stop loading
+      navigation.navigate('Success');
+    }, 2000); // Simulate 2 seconds of payment processing
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.headerView}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -65,7 +76,7 @@ const payments = () => {
       <View style={styles.main}>
         <View style={styles.cardMain}>
           <View style={styles.card}>
-            <Text style={styles.text}>Cardit/Dabit Card</Text>
+            <Text style={styles.text}>Credit/Debit Card</Text>
           </View>
           <View style={styles.Data}>
             <Text style={styles.label}>Card Number</Text>
@@ -99,17 +110,24 @@ const payments = () => {
             />
           </View>
           <View style={styles.btnView}>
-            <TouchableOpacity style={styles.btn} onPress={handleConfirmBooking}>
-              <Text style={styles.txtBtn}>Confirm Booking</Text>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={handleConfirmBooking}
+              disabled={loading}>
+              {loading ? (
+                <ActivityIndicator color="#e3dedf" />
+              ) : (
+                <Text style={styles.txtBtn}>Pay ₹{orderTotal}</Text>
+              )}
             </TouchableOpacity>
           </View>
         </View>
       </View>
     </View>
   );
-};
+}
 
-export default payments;
+export default Payments;
 
 const styles = StyleSheet.create({
   container: {
@@ -180,7 +198,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Lato-Black',
     fontSize: 20,
-    color: '#e3dedf',
+    color: 'white',
     paddingTop: 5,
   },
 });
