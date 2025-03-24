@@ -50,7 +50,7 @@ const Profile = () => {
             style={styles.img}
           />
           <View>
-            <Text style={styles.txt}>Your Orders</Text>
+            <Text style={styles.txt}>Your Booking</Text>
             <Text style={styles.textLine}>
               View all your booking & purchases
             </Text>

@@ -20,5 +20,6 @@ export const ScreenName = {
   //profile Screen
   Profile: 'Profile',
   MyProfile: 'MyProfile',
-  YourOrders: 'YourOrders',
+  YourBooking: 'YourOrders',
+  Payment: 'Payment',
 };

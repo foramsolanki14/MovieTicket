@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const Success = () => {
+const payments = () => {
   const navigation = useNavigation();
   return (
     <View>
@@ -21,7 +21,7 @@ const Success = () => {
       <View style={styles.main}>
         <View style={styles.cardMain}>
           <View style={styles.card}>
-            <Text style={styles.text}>Order Confirmed</Text>
+            <Text style={styles.text}>congratulation Confirm Booking</Text>
             <Image
               source={require('../../../../assets/icon/firework.png')}
               style={styles.img}
@@ -32,12 +32,13 @@ const Success = () => {
             style={styles.img2}
           />
         </View>
+        <Text>View your booking Page</Text>
       </View>
     </View>
   );
 };
 
-export default Success;
+export default payments;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,13 +80,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    fontSize: 20,
-    fontFamily: 'Lato-Black',
+    fontSize: 18,
+    fontFamily: 'Lato-Bold',
+    paddingLeft: 20,
   },
   img: {
-    height: 30,
-    width: 30,
-    marginLeft: 10,
+    height: 40,
+    width: 40,
   },
   img2: {
     height: 50,

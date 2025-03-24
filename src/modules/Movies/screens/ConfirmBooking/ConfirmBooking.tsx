@@ -142,7 +142,7 @@ function ConfirmBooking({route}) {
           <View style={styles.btnView}>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Success')}>
+              onPress={() => navigation.navigate('Payment')}>
               <Text style={styles.btnTxt}>Continue</Text>
             </TouchableOpacity>
           </View>
