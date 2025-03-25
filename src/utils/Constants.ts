@@ -22,5 +22,4 @@ export const ScreenName = {
   MyProfile: 'MyProfile',
   YourBooking: 'YourOrders',
   Payment: 'Payment',
-  Settings: 'Settings',
 };

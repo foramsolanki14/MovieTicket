@@ -52,7 +52,9 @@ const Cites = () => {
             <View style={styles.cityView}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('Home', {selectedCity: {location: item}}); // Wrap in object
+                  navigation.navigate('Home', {
+                    selectedCity: {location: item},
+                  }); // Wrap in object
                 }}>
                 <Text style={styles.name}>{item}</Text>
               </TouchableOpacity>

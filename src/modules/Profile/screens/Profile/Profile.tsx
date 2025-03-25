@@ -57,18 +57,6 @@ const Profile = () => {
             <Text style={styles.textLine}>View all your booking</Text>
           </View>
         </Pressable>
-        <View style={styles.gap} />
-        <Pressable
-          style={styles.data}
-          onPress={() => navigation.navigate('Settings')}>
-          <Image
-            source={require('../../../../assets/icon/settings.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Settings</Text>
-          </View>
-        </Pressable>
       </View>
     </View>
   );

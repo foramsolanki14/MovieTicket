@@ -18,7 +18,6 @@ import Profile from '../modules/Profile/screens/Profile/Profile';
 import Success from '../modules/Movies/screens/Success/Success';
 
 import Payment from '../modules/Movies/screens/Payment/Payment';
-import Setting from '../modules/Profile/screens/Setting/Setting';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +35,6 @@ const AppStack = () => {
       <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
         <Stack.Screen name={ScreenName.YourBooking} component={YourOrders} />
-        <Stack.Screen name={ScreenName.Settings} component={Setting} />
       </Stack.Group>
       <Stack.Group screenOptions={{headerShown: false}}>
         <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
