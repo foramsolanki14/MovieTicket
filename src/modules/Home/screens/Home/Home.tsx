@@ -64,7 +64,7 @@ const Home = () => {
         <View style={styles.headerView}>
           <View style={styles.header}>
             <View>
-              <Text style={styles.headerTitle}>Welcome Guest!</Text>
+              <Text style={styles.headerTitle}>It All start here. !</Text>
             </View>
             <View>
               <TouchableOpacity onPress={() => navigation.navigate('Profile')}>

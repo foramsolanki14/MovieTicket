@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Profile = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const {firstName} = route.params || {};
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -22,7 +24,7 @@ const Profile = () => {
               style={styles.backButtonImage}
             />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Hey!</Text>
+          <Text style={styles.headerTitle}>Hey {firstName}!</Text>
 
           <Image
             source={require('../../../../assets/icon/profile.png')}
@@ -42,6 +44,7 @@ const Profile = () => {
             <Text style={styles.txt}>My Profile</Text>
           </View>
         </Pressable>
+        <View style={styles.gap} />
         <Pressable
           style={styles.data}
           onPress={() => navigation.navigate('YourOrders')}>
@@ -51,106 +54,21 @@ const Profile = () => {
           />
           <View>
             <Text style={styles.txt}>Your Booking</Text>
-            <Text style={styles.textLine}>
-              View all your booking & purchases
-            </Text>
+            <Text style={styles.textLine}>View all your booking</Text>
           </View>
         </Pressable>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/streem.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Stream Library</Text>
-            <Text style={styles.textLine}>Rented & Purchsed Movies</Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            src="https://assets-in.bmscdn.com/members/common/icons/playcreditcard.png"
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Play Cradit Card</Text>
-            <Text style={styles.textLine}>
-              View your play cardit card details and offers
-            </Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/help.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Help Center</Text>
-            <Text style={styles.textLine}>Need help or have questions?</Text>
-          </View>
-        </View>
-        <View style={styles.data}>
+        <View style={styles.gap} />
+        <Pressable
+          style={styles.data}
+          onPress={() => navigation.navigate('Settings')}>
           <Image
             source={require('../../../../assets/icon/settings.png')}
             style={styles.img}
           />
           <View>
-            <Text style={styles.txt}>Account & Settings</Text>
-            <Text style={styles.textLine}>
-              Location, payments,permission & More
-            </Text>
+            <Text style={styles.txt}>Settings</Text>
           </View>
-        </View>
-        <View style={{backgroundColor: '#c0c4c1', paddingTop: 15}} />
-
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/reward.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Rewareds</Text>
-            <Text style={styles.textLine}>
-              View your rewards & unlock new ones
-            </Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/offer.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>offers</Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/gift-card.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Gift Cards</Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/food.png')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>Food & Beverages</Text>
-          </View>
-        </View>
-        <View style={styles.data}>
-          <Image
-            source={require('../../../../assets/icon/show.webp')}
-            style={styles.img}
-          />
-          <View>
-            <Text style={styles.txt}>List your Show</Text>
-            <Text style={styles.textLine}>got an event ? Partner with us</Text>
-          </View>
-        </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -202,20 +120,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 17,
     fontFamily: 'Lato-Regular',
-    paddingLeft: 12,
+    paddingLeft: 20,
   },
   textLine: {
     justifyContent: 'center',
     fontSize: 12,
     fontFamily: 'Lato-Regular',
-    paddingLeft: 12,
+    paddingLeft: 20,
     paddingTop: 3,
   },
   img: {
     padding: 10,
-    height: 23,
-    width: 23,
+    height: 30,
+    width: 30,
     margin: 10,
     resizeMode: 'contain',
+  },
+  gap: {
+    backgroundColor: '#e6e5e3',
+
+    paddingTop: 15,
   },
 });

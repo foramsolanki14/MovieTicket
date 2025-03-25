@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {RootState} from '@reduxjs/toolkit/query';
 
 const formatDate = date => {
   const options = {year: 'numeric', month: 'long', day: 'numeric'};
@@ -30,7 +29,7 @@ const formatTime = date => {
 };
 
 const YourOrders = () => {
-  const booking = useSelector((state: RootState) => state.booking);
+  const booking = useSelector(state => state.booking);
 
   // Get the current date and time
   const currentDate = new Date();

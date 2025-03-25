@@ -16,8 +16,9 @@ import Home from '../modules/Home/screens/Home/Home';
 import Section from '../modules/Home/screens/Section/Section';
 import Profile from '../modules/Profile/screens/Profile/Profile';
 import Success from '../modules/Movies/screens/Success/Success';
-import AllOrder from '../modules/Profile/screens/AllOrder/allOrder';
+
 import Payment from '../modules/Movies/screens/Payment/Payment';
+import Setting from '../modules/Profile/screens/Setting/Setting';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,18 +29,21 @@ const AppStack = () => {
         <Stack.Screen name={ScreenName.Home} component={Home} />
         <Stack.Screen name={ScreenName.Section} component={Section} />
         <Stack.Screen name={ScreenName.Cites} component={Cites} />
+
         <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
         <Stack.Screen name={ScreenName.Profile} component={Profile} />
       </Stack.Group>
       <Stack.Group screenOptions={{headerShown: true}}>
         <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
         <Stack.Screen name={ScreenName.YourBooking} component={YourOrders} />
+        <Stack.Screen name={ScreenName.Settings} component={Setting} />
       </Stack.Group>
       <Stack.Group screenOptions={{headerShown: false}}>
         <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
         <Stack.Screen name={ScreenName.SelectSeat} component={SelectSeat} />
         <Stack.Screen name={ScreenName.Payment} component={Payment} />
         <Stack.Screen name={ScreenName.Success} component={Success} />
+
         <Stack.Screen
           name={ScreenName.ContactDetails}
           component={ContactDetails}

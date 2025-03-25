@@ -6,11 +6,29 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const MyProfile = () => {
   const [selectedGender, setSelectedGender] = useState(null);
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [fname, setFname] = useState('');
+  const [sname, setSname] = useState('');
+  const navigation = useNavigation();
+
+  const validateAndSave = () => {
+    if (!mobile || !email || !fname || !sname) {
+      Alert.alert('Error', 'Please fill all the required fields.');
+      return;
+    }
+    // Proceed with saving
+    navigation.navigate('Profile', {firstName: fname});
+    Alert.alert('Success', 'Profile saved successfully!');
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={styles.mainTxt}>My Profile</Text>
@@ -22,16 +40,36 @@ const MyProfile = () => {
       </View>
       <View style={styles.view}>
         <Text style={styles.txt}>Mobile Number</Text>
-        <TextInput style={styles.txtInput} placeholder="Enter name" />
+        <TextInput
+          style={styles.txtInput}
+          placeholder="Enter name"
+          value={mobile}
+          onChangeText={setMobile}
+        />
         <Text style={styles.txt}>Email Address</Text>
-        <TextInput style={styles.txtInput} placeholder="Enter Email Address" />
+        <TextInput
+          style={styles.txtInput}
+          placeholder="Enter Email Address"
+          value={email}
+          onChangeText={setEmail}
+        />
       </View>
       <View style={{backgroundColor: '#c0c4c1', paddingTop: 15}} />
       <View style={styles.card}>
         <Text style={styles.txt}>First Name</Text>
-        <TextInput style={styles.txtInput} placeholder="Enter First Name" />
+        <TextInput
+          style={styles.txtInput}
+          placeholder="Enter First Name"
+          value={fname}
+          onChangeText={setFname}
+        />
         <Text style={styles.txt}>Last Name</Text>
-        <TextInput style={styles.txtInput} placeholder="Enter Last Name" />
+        <TextInput
+          style={styles.txtInput}
+          placeholder="Enter Last Name"
+          value={sname}
+          onChangeText={setSname}
+        />
         <Text style={styles.txt}>BirthDay Date(optional)</Text>
         <TextInput style={styles.txtInput} placeholder="Enter BirthDay Date" />
         <Text style={styles.txt}> Identity(Optional)</Text>
@@ -54,7 +92,7 @@ const MyProfile = () => {
             <Text style={styles.gender}>Female</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={validateAndSave}>
           <Text style={styles.btnText}>SAVE</Text>
         </TouchableOpacity>
       </View>
