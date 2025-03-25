@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
   },
   totalView: {
     backgroundColor: '#faf5f6',
-    marginTop: '70%',
+    marginTop: '50%',
     flexDirection: 'row',
     height: 60,
     width: '100%',

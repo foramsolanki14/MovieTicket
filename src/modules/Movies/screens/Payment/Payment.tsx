@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   main: {
     alignItems: 'center',
-    paddingTop: 200,
+    paddingTop: 150,
   },
   cardMain: {
     backgroundColor: '#fcf7f8',

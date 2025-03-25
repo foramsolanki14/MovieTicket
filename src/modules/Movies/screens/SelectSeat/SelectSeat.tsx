@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   screenView: {
     paddingLeft: '30%',
-    paddingTop: '10%',
+    paddingTop: '4%',
     position: 'static',
   },
   screen: {
@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   btnView: {
-    paddingTop: '10%',
+    paddingTop: '2%',
     position: 'static',
   },
   countBtn: {

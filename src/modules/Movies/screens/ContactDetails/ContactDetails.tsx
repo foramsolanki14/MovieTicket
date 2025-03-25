@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   btnView: {
-    paddingTop: '125%',
+    paddingTop: '110%',
   },
   btn: {
     backgroundColor: '#525151',
