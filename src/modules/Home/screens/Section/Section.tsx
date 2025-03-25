@@ -32,6 +32,7 @@ const Section = () => {
         </View>
       </View>
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={moviesToShow}
         numColumns={2}
         keyExtractor={item => item.movie_id.toString()}

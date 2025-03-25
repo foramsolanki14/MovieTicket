@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 const MyProfile = () => {
   const [selectedGender, setSelectedGender] = useState(null);
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={styles.mainTxt}>My Profile</Text>
       <View style={styles.main}>
         <Image

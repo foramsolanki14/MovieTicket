@@ -144,6 +144,7 @@ function Cinema({route}) {
       </View>
       <View>
         <FlatList
+          showsHorizontalScrollIndicator={false}
           horizontal
           data={datesOfWeek}
           keyExtractor={item => item.id.toString()}
@@ -188,6 +189,7 @@ function Cinema({route}) {
 
       <View style={styles.cinemaScroll}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           style={styles.cinema}
           data={showData}
           renderItem={({item}) => (

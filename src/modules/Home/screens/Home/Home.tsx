@@ -89,7 +89,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {genres.map(genre => {
             const moviesToShow =
               genre === 'Recommended' ? movie : getMoviesByGenre(genre);
@@ -116,26 +116,29 @@ const Home = () => {
                     </Text>
                   </TouchableOpacity>
                 </View>
-                <FlatList
-                  horizontal
-                  data={moviesToShow}
-                  renderItem={({item}) => (
-                    <View style={styles.main}>
-                      <Pressable
-                        onPress={() =>
-                          navigation.navigate('MovieDetails', {movie: item})
-                        }>
-                        <Image
-                          src={`http://10.0.2.2:5000/images/${item.posterurl}`}
-                          style={styles.imgSection}
-                        />
-                      </Pressable>
-                      <View style={styles.title}>
-                        <Text style={styles.txtImg}>{item.title}</Text>
+                <View>
+                  <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    horizontal
+                    data={moviesToShow}
+                    renderItem={({item}) => (
+                      <View style={styles.main}>
+                        <Pressable
+                          onPress={() =>
+                            navigation.navigate('MovieDetails', {movie: item})
+                          }>
+                          <Image
+                            src={`http://10.0.2.2:5000/images/${item.posterurl}`}
+                            style={styles.imgSection}
+                          />
+                        </Pressable>
+                        <View style={styles.title}>
+                          <Text style={styles.txtImg}>{item.title}</Text>
+                        </View>
                       </View>
-                    </View>
-                  )}
-                />
+                    )}
+                  />
+                </View>
               </View>
             );
           })}
