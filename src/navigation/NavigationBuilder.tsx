@@ -3,7 +3,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ScreenName} from '../utils/Constants';
 import {NavigationContainer} from '@react-navigation/native';
 
-import TabNavigator from './TabNavigator';
 import MyProfile from '../modules/Profile/screens/MyProfile/MyProfile';
 import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
 import MovieDetails from '../modules/Movies/screens/MovieDetails/MovieDetails';

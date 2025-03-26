@@ -9,13 +9,13 @@ import {
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-const formatDate = date => {
+const formatDate = (date: any) => {
   const options = {year: 'numeric', month: 'long', day: 'numeric'};
   const formattedDate = new Date(date).toLocaleDateString('en-US', options);
   return formattedDate;
 };
 
-const formatTime = date => {
+const formatTime = (date: any) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
