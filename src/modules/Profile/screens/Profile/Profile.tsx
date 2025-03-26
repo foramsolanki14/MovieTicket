@@ -43,6 +43,10 @@ const Profile = () => {
           <View>
             <Text style={styles.txt}>My Profile</Text>
           </View>
+          <Image
+            source={require('../../../../assets/icon/arrow-right.png')}
+            style={styles.arrow1}
+          />
         </Pressable>
         <View style={styles.gap} />
         <Pressable
@@ -56,6 +60,10 @@ const Profile = () => {
             <Text style={styles.txt}>Your Booking</Text>
             <Text style={styles.textLine}>View all your booking</Text>
           </View>
+          <Image
+            source={require('../../../../assets/icon/arrow-right.png')}
+            style={styles.arrow2}
+          />
         </Pressable>
       </View>
     </View>
@@ -126,7 +134,16 @@ const styles = StyleSheet.create({
   },
   gap: {
     backgroundColor: '#e6e5e3',
-
     paddingTop: 15,
+  },
+  arrow1: {
+    height: 20,
+    width: 20,
+    marginLeft: '55%',
+  },
+  arrow2: {
+    height: 20,
+    width: 20,
+    marginLeft: '47%',
   },
 });
