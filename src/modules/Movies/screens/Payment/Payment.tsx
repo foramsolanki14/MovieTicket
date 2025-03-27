@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,18 +9,19 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {payment} from '../../../Api/Api';
 
-function Payments({route}) {
+const Payments = ({route}: any) => {
   const navigation = useNavigation();
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [loading, setLoading] = useState(false);
-  const {orderTotal} = route.params;
+  const {orderTotal} = route.params; // Get the order total from route params
 
-  const validateCardNumber = number => {
+  // Validate card number (16 digits)
+  const validateCardNumber = (number: string) => {
     const cleanedNumber = number.replace(/\s+/g, '');
     if (!/^\d+$/.test(cleanedNumber)) {
       return false;
@@ -27,16 +29,19 @@ function Payments({route}) {
     return cleanedNumber.length === 16;
   };
 
-  const validateExpiryDate = date => {
+  // Validate expiry date (MM/YY)
+  const validateExpiryDate = (date: string) => {
     const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
     return regex.test(date);
   };
 
-  const validateCvv = cvvValue => {
+  // Validate CVV (3 or 4 digits)
+  const validateCvv = (cvvValue: string) => {
     return /^\d{3,4}$/.test(cvvValue);
   };
 
-  const handleConfirmBooking = () => {
+  // Handle booking confirmation and payment processing
+  const handleConfirmBooking = async () => {
     if (!validateCardNumber(cardNumber)) {
       Alert.alert('Error', 'Please enter a valid 16-digit card number.');
       return;
@@ -52,11 +57,29 @@ function Payments({route}) {
 
     setLoading(true); // Start loading
 
-    // Simulate payment processing (replace with real payment gateway)
-    setTimeout(() => {
+    // Prepare payment data
+    const paymentData = {
+      cardNumber,
+      expiryDate,
+      cvv,
+      orderTotal,
+    };
+
+    try {
+      // Call the payment function to save the data
+      const result = await payment(paymentData);
+
+      if (result && result.message === 'Payment saved successfully') {
+        setLoading(false); // Stop loading
+        navigation.navigate('Success'); // Navigate to success screen
+      } else {
+        setLoading(false); // Stop loading
+        Alert.alert('Error', 'Payment failed. Please try again.');
+      }
+    } catch (error) {
       setLoading(false); // Stop loading
-      navigation.navigate('Success');
-    }, 2000); // Simulate 2 seconds of payment processing
+      Alert.alert('Error', 'An error occurred while processing payment.');
+    }
   };
 
   return (
@@ -125,7 +148,7 @@ function Payments({route}) {
       </View>
     </View>
   );
-}
+};
 
 export default Payments;
 

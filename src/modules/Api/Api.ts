@@ -49,3 +49,13 @@ export const fetchShowData = async (movie_id, selecteddate) => {
     console.log(err);
   }
 };
+
+export const payment = async paymentData => {
+  const API_URL = 'http://10.0.2.2:5000/payment/savePayment';
+  try {
+    const res = await axios.post(API_URL, paymentData);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
