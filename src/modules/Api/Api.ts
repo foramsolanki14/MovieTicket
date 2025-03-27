@@ -10,7 +10,7 @@ export const fetchMovies = async () => {
   }
 };
 
-export const fetchMovieDetails = async (movie_id: any) => {
+export const fetchMovieDetails = async movie_id => {
   const API_URL = `http://10.0.2.2:5000/movies/${movie_id}`;
   try {
     const res = await axios.get(API_URL);
@@ -39,7 +39,7 @@ export const fetchCinema = async () => {
   }
 };
 
-export const fetchShowData = async ({movie_id, selecteddate}: any) => {
+export const fetchShowData = async (movie_id, selecteddate) => {
   const API_URL = `http://10.0.2.2:5000/shows/showsbydate?movieid=${movie_id}&selecteddate=${selecteddate}`;
 
   try {
@@ -50,7 +50,7 @@ export const fetchShowData = async ({movie_id, selecteddate}: any) => {
   }
 };
 
-export const payment = async (paymentData: any) => {
+export const payment = async paymentData => {
   const API_URL = 'http://10.0.2.2:5000/payment/savePayment';
   try {
     const res = await axios.post(API_URL, paymentData);
