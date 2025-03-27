@@ -116,7 +116,6 @@ const Payments = ({route}: any) => {
             <TextInput
               placeholder="MM/YY"
               style={styles.labelInput}
-              keyboardType="numeric"
               value={expiryDate}
               onChangeText={setExpiryDate}
             />
