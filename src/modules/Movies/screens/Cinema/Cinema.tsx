@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cinemaScroll: {
-    maxHeight: '89%',
+    flex: 1,
     backgroundColor: '#ccc2c2',
     paddingBottom: 12,
   },
@@ -341,6 +341,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   movieItem: {
-    marginBottom: 10,
+    marginBottom: 21,
   },
 });
