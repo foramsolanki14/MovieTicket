@@ -1,0 +1,65 @@
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {ScreenName} from '../utils/Constants';
+import {NavigationContainer} from '@react-navigation/native';
+
+import MyProfile from '../modules/Profile/screens/MyProfile/MyProfile';
+import YourOrders from '../modules/Profile/screens/YourOrders/YourOrders';
+import MovieDetails from '../modules/Movies/screens/MovieDetails/MovieDetails';
+import SelectSeat from '../modules/Movies/screens/SelectSeat/SelectSeat';
+import Cinema from '../modules/Movies/screens/Cinema/Cinema';
+import ContactDetails from '../modules/Movies/screens/ContactDetails/ContactDetails';
+import ConfirmBooking from '../modules/Movies/screens/ConfirmBooking/ConfirmBooking';
+import Cites from '../modules/Cites/screens/Cites/Cites';
+import Home from '../modules/Home/screens/Home/Home';
+import Section from '../modules/Home/screens/Section/Section';
+import Profile from '../modules/Profile/screens/Profile/Profile';
+import Success from '../modules/Movies/screens/Success/Success';
+
+import Payment from '../modules/Movies/screens/Payment/Payment';
+
+const Stack = createNativeStackNavigator();
+
+const AppStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Group screenOptions={{headerShown: false}}>
+        <Stack.Screen name={ScreenName.Home} component={Home} />
+        <Stack.Screen name={ScreenName.Section} component={Section} />
+        <Stack.Screen name={ScreenName.Cites} component={Cites} />
+
+        <Stack.Screen name={ScreenName.MovieDetails} component={MovieDetails} />
+        <Stack.Screen name={ScreenName.Profile} component={Profile} />
+      </Stack.Group>
+      <Stack.Group screenOptions={{headerShown: true}}>
+        <Stack.Screen name={ScreenName.MyProfile} component={MyProfile} />
+        <Stack.Screen name={ScreenName.YourBooking} component={YourOrders} />
+      </Stack.Group>
+      <Stack.Group screenOptions={{headerShown: false}}>
+        <Stack.Screen name={ScreenName.Cinema} component={Cinema} />
+        <Stack.Screen name={ScreenName.SelectSeat} component={SelectSeat} />
+        <Stack.Screen name={ScreenName.Payment} component={Payment} />
+        <Stack.Screen name={ScreenName.Success} component={Success} />
+
+        <Stack.Screen
+          name={ScreenName.ContactDetails}
+          component={ContactDetails}
+        />
+        <Stack.Screen
+          name={ScreenName.ConfirmBooking}
+          component={ConfirmBooking}
+        />
+      </Stack.Group>
+    </Stack.Navigator>
+  );
+};
+
+const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <AppStack />
+    </NavigationContainer>
+  );
+};
+
+export default Navigation;
